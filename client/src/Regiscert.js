@@ -71,6 +71,25 @@ function Regiscert() {
             helperText="School's Public Key"
           />
         </Box>
+
+        <Box
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          justifyContent="center"
+          bgcolor="background.paper"
+        >
+          <Box mx={4}>
+            <Button variant="contained" >
+              Reset
+            </Button>
+          </Box>
+          <Box mx={4}>
+            <Button variant="contained" color="primary" >
+              Submit
+            </Button>
+          </Box>
+        </Box>
       </Box>
     </div>
   );
