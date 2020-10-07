@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Dump from "./dump";
+import Regiscert from "./Regiscert"
+import Choice from "./Choice"
 import Counter from "./Components/Counter";
 import Navbar from "./Components/Navbar";
 import * as serviceWorker from "./serviceWorker";
@@ -11,8 +13,10 @@ ReactDOM.render(
 	<React.StrictMode>
 		{/* <App /> */}
 		<Navbar />
-		<Dump name="Krxw" />
-		<Counter />
+		{/* <Choice /> */}
+		<Regiscert />
+		{/* <Dump name="Krxw" /> */}
+		{/* <Counter /> */}
 	</React.StrictMode>,
 	document.getElementById("root")
 );
