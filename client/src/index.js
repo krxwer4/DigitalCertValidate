@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import Dump from "./dump";
 import Regiscert from "./Regiscert"
+import Validate from "./Validate"
 import Choice from "./Choice"
 import Counter from "./Components/Counter";
 import Navbar from "./Components/Navbar";
@@ -15,6 +16,7 @@ ReactDOM.render(
 		<Navbar />
 		{/* <Choice /> */}
 		<Regiscert />
+		{/* <Validate /> */}
 		{/* <Dump name="Krxw" /> */}
 		{/* <Counter /> */}
 	</React.StrictMode>,

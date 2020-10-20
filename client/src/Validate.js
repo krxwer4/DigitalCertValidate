@@ -31,7 +31,7 @@ function Validate() {
         bgcolor="background.paper"
       >
         <Box p={1} textAlign="center">
-          <h3 text-align="center">Upload your Certificate file.</h3>
+          <h3 text-align="center">Upload your Certificate file to validate.</h3>
         </Box>
         <Box
           p={1}
