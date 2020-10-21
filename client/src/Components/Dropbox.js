@@ -38,8 +38,15 @@ function Dropbox(props) {
     isDragActive,
     isDragAccept,
     isDragReject,
+    acceptedFiles,
     open,
   } = useDropzone({ accept: "application/*", noClick: true, noKeyboard: true });
+
+  const files = acceptedFiles.map(file => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
 
   const style = useMemo(
     () => ({
