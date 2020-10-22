@@ -1,7 +1,11 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import fileImportIcon from "../svg/upload.svg";
+import pdfIcon from "../svg/pdf.svg";
 import Button from "@material-ui/core/Button";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 const baseStyle = {
   flex: 1,
@@ -42,9 +46,11 @@ function Dropbox(props) {
     open,
   } = useDropzone({ accept: "application/*", noClick: true, noKeyboard: true });
 
-  const files = acceptedFiles.map(file => (
+  const [fileAvailable, setFileAvailable] = useState(false);
+
+  const files = acceptedFiles.map((file) => (
     <li key={file.path}>
-      {file.path} - {file.size} bytes
+      <img src={pdfIcon} width="16px" /> {file.path}
     </li>
   ));
 
@@ -76,6 +82,12 @@ function Dropbox(props) {
         >
           Browse
         </Button>
+
+        <List>
+          <ListItem>
+            <ListItemText primary={files} />
+          </ListItem>
+        </List>
       </div>
     </div>
   );
