@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Grid from "@material-ui/core/Grid";
 
 const baseStyle = {
   flex: 1,
@@ -68,20 +69,26 @@ function Dropbox(props) {
     <div className="container">
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <img
-          src={fileImportIcon}
-          alt="upload icon made by < href=www.freepik.com Freepik from"
-          width="32%"
-        />
-        <p style={{ fontSize: 18 }}>Drag your files here or</p>
-        <Button
-          type="button"
-          onClick={open}
-          variant="contained"
-          color="primary"
-        >
-          Browse
-        </Button>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Grid item xs={12}>
+            <img
+              src={fileImportIcon}
+              alt="upload icon made by www.freepik.com Freepik"
+              width="32%"
+            />
+            <p style={{ fontSize: 18 }}>Drag your files here or</p>
+          </Grid>
+          <Grid item xs={12} display="none" displayPrint="block">
+            <Button
+              type="button"
+              onClick={open}
+              variant="contained"
+              color="primary"
+            >
+              Browse
+            </Button>
+          </Grid>
+        </Grid>
 
         <List>
           <ListItem>
