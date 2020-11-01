@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Dropbox from "./Components/Dropbox";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
 
 function Regiscert() {
   const classes = useStyles();
+
+  const [resetState, clickReset] = useState(0);
+
   return (
     <div>
       <IconButton className={classes.hoverFocus}>
@@ -42,7 +45,7 @@ function Regiscert() {
           alignSelf="center"
           css={{ width: 670, height: 400 }}
         >
-          <Dropbox />
+          <Dropbox reset={resetState} />
         </Box>
 
         <Box
@@ -53,7 +56,12 @@ function Regiscert() {
           bgcolor="background.paper"
         >
           <Box mx={4}>
-            <Button variant="contained">Reset</Button>
+            <Button
+              variant="contained"
+              onClick={() => clickReset(resetState + 1)}
+            >
+              Reset
+            </Button>
           </Box>
           <Box mx={4}>
             <Button variant="contained" color="primary">

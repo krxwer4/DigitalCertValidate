@@ -30,7 +30,7 @@ const activeStyle = {
 };
 
 const acceptStyle = {
-  borderColor: "green",
+  borderColor: "royalblue",
 };
 
 const rejectStyle = {
@@ -49,14 +49,14 @@ function Dropbox(props) {
   } = useDropzone({ accept: "application/*", noClick: true, noKeyboard: true });
 
   const [fileAvailable, setFileAvailable] = useState(0);
-
+  const [reset, setReset] = useState(0);
   // useEffect(()=>{
   //   setFileAvailable(false);
   // })
   const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
+    <ul key={file.path}>
       <img src={pdfIcon} width="16px" /> {file.path}
-    </li>
+    </ul>
   ));
 
   if (files.length > 0 && fileAvailable <= 0) {
@@ -73,6 +73,12 @@ function Dropbox(props) {
     }),
     [isDragActive, isDragReject, isDragAccept]
   );
+
+  if (props.reset > reset) {
+    console.log("props = " + props.reset);
+    console.log("this reset = " + reset);
+    setReset(reset + 1);
+  }
 
   return (
     <div className="container">
