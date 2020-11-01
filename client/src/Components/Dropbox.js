@@ -50,17 +50,22 @@ function Dropbox(props) {
 
   const [fileAvailable, setFileAvailable] = useState(0);
   const [reset, setReset] = useState(0);
-  // useEffect(()=>{
-  //   setFileAvailable(false);
-  // })
-  const files = acceptedFiles.map((file) => (
-    <ul key={file.path}>
-      <img src={pdfIcon} width="16px" /> {file.path}
-    </ul>
-  ));
 
-  if (files.length > 0 && fileAvailable <= 0) {
-    setFileAvailable(fileAvailable + 1);
+  const files = acceptedFiles.map((file) => (
+      <ul key={file.path}>
+        <img src={pdfIcon} width="16px" /> {file.path}
+      </ul>
+    ));
+  useEffect(() => {
+    console.log("from useEffect"+fileAvailable);
+
+    return () => console.log('files has change')
+  }, [files]);
+
+  
+
+  if (files.length > 0 && fileAvailable === 0) {
+    setFileAvailable(1);
     console.log(fileAvailable);
   }
 
@@ -75,8 +80,11 @@ function Dropbox(props) {
   );
 
   if (props.reset > reset) {
-    console.log("props = " + props.reset);
-    console.log("this reset = " + reset);
+    console.log(acceptedFiles)
+    for (let ele in acceptedFiles) {
+      // console.log(ele);
+      acceptedFiles.pop(ele);
+    }
     setReset(reset + 1);
   }
 

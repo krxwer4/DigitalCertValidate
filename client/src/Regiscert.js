@@ -58,7 +58,9 @@ function Regiscert() {
           <Box mx={4}>
             <Button
               variant="contained"
-              onClick={() => clickReset(resetState + 1)}
+              onClick={() => {
+                clickReset(resetState + 1);
+              }}
             >
               Reset
             </Button>
