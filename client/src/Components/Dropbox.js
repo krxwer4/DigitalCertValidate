@@ -13,7 +13,7 @@ const baseStyle = {
   flex: 1,
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  // alignItems: "center",
   padding: "20px",
   height: 300,
   borderWidth: 5,
@@ -48,25 +48,33 @@ function Dropbox(props) {
     open,
   } = useDropzone({ accept: "application/*", noClick: true, noKeyboard: true });
 
-  const [fileAvailable, setFileAvailable] = useState(0);
-  const [reset, setReset] = useState(0);
+  const [fileAvailable, setFileAvailable] = useState(false);
 
   const files = acceptedFiles.map((file) => (
-      <ul key={file.path}>
-        <img src={pdfIcon} width="16px" /> {file.path}
-      </ul>
-    ));
-  useEffect(() => {
-    console.log("from useEffect"+props.reset);
+    <ul key={file.path}>
+      <img
+        src={pdfIcon}
+        alt="pdf icon made by Dimitry Miroliubov from www.flaticon.com/authors/dimitry-miroliubov"
+        width="16px"
+      />
+      {"  "}
+      {file.path}
+    </ul>
+  ));
 
-    return () => console.log('props has change')
+  useEffect(() => {
+    // console.log("from useEffect" + props.reset);
+    while (acceptedFiles.length > 0) {
+      // console.log(ele);
+      acceptedFiles.pop();
+    }
+    setFileAvailable(false);
+    return () => console.log("reset");
   }, [props.reset]);
 
-  
-
-  if (files.length > 0 && fileAvailable === 0) {
-    setFileAvailable(1);
-    console.log(fileAvailable);
+  if (files.length > 0 && !fileAvailable) {
+    setFileAvailable(true);
+    // console.log(fileAvailable);
   }
 
   const style = useMemo(
@@ -79,50 +87,49 @@ function Dropbox(props) {
     [isDragActive, isDragReject, isDragAccept]
   );
 
-  if (props.reset > reset) {
-    console.log(acceptedFiles)
-    while (acceptedFiles.length > 0) {
-      // console.log(ele);
-      acceptedFiles.pop();
-    }
-    setFileAvailable(0);
-    setReset(reset + 1);
-  }
-
   return (
     <div className="container">
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <Grid container direction="column" justify="center" alignItems="center">
-          <Grid item xs={12}>
-            <Box display="block" displayPrint="none">
-              <img
-                src={fileImportIcon}
-                alt="upload icon made by www.freepik.com Freepik"
-                width="32%"
-              />
-              <p style={{ fontSize: 18 }}>Drag your files here or</p>
-            </Box>
+        {!fileAvailable && (
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+            <Grid item xs={12}>
+              <Box display="block" displayPrint="none">
+                <img
+                  src={fileImportIcon}
+                  alt="upload icon made by Freepik (www.freepik.com) from www.flaticon.com"
+                  width="32%"
+                />
+                <p style={{ fontSize: 18 }}>Drag your files here or</p>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box display="block" displayPrint="none">
+                <Button
+                  type="button"
+                  onClick={open}
+                  variant="contained"
+                  color="primary"
+                >
+                  Browse
+                </Button>
+              </Box>
+            </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <Box display="block" displayPrint="none">
-              <Button
-                type="button"
-                onClick={open}
-                variant="contained"
-                color="primary"
-              >
-                Browse
-              </Button>
-            </Box>
-          </Grid>
-        </Grid>
+        )}
 
-        <List>
-          <ListItem>
-            <ListItemText primary={files} />
-          </ListItem>
-        </List>
+        {fileAvailable && (
+          <List>
+            <ListItem>
+              <ListItemText primary={files} />
+            </ListItem>
+          </List>
+        )}
       </div>
     </div>
   );
