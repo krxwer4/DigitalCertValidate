@@ -57,10 +57,10 @@ function Dropbox(props) {
       </ul>
     ));
   useEffect(() => {
-    console.log("from useEffect"+fileAvailable);
+    console.log("from useEffect"+props.reset);
 
-    return () => console.log('files has change')
-  }, [files]);
+    return () => console.log('props has change')
+  }, [props.reset]);
 
   
 
@@ -81,10 +81,11 @@ function Dropbox(props) {
 
   if (props.reset > reset) {
     console.log(acceptedFiles)
-    for (let ele in acceptedFiles) {
+    while (acceptedFiles.length > 0) {
       // console.log(ele);
-      acceptedFiles.pop(ele);
+      acceptedFiles.pop();
     }
+    setFileAvailable(0);
     setReset(reset + 1);
   }
 
