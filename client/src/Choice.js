@@ -1,7 +1,7 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-// import "./Choice.css";
 import { green, blue } from "@material-ui/core/colors";
 
 function Choice() {
@@ -28,14 +28,24 @@ function Choice() {
       },
     },
   }))(Button);
+  const history = useHistory();
 
   return (
     <div>
-      <RegistCert variant="outlined" color="primary" size="large">
+      <RegistCert
+        onClick={()=>{history.push('/regist')}}
+        variant="outlined"
+        color="primary"
+        size="large"
+      >
         Regist Cert
       </RegistCert>
-
-      <ValidateButton variant="outlined" color="primary" size="large">
+      <ValidateButton
+        onClick={()=>{history.push('/validate')}}
+        variant="outlined"
+        color="primary"
+        size="large"
+      >
         Cert Check
       </ValidateButton>
     </div>

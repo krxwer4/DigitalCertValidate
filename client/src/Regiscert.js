@@ -18,9 +18,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Regiscert() {
   const classes = useStyles();
-
   const [resetState, clickReset] = useState(0);
-
+  console.log("regist");
   return (
     <div>
       <IconButton className={classes.hoverFocus}>

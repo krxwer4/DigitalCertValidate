@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import history from "./history";
+
+import Choice from "./Choice";
+import Regiscert from "./Regiscert";
+import Validate from "./Validate";
 
 function App() {
+  useEffect(() => {
+    history.listen(() => {
+      console.log("wow");
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://www.instagram.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/" component={Choice} />
+          <Route path="/regist" component={Regiscert} />
+          <Route path="/validate" component={Validate} />
+        </Switch>
+      </Router>
     </div>
   );
 }

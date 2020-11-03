@@ -79,12 +79,10 @@ function Validate() {
           bgcolor="background.paper"
         >
           <Box mx={4}>
-            <Button variant="contained" >
-              Reset
-            </Button>
+            <Button variant="contained">Reset</Button>
           </Box>
           <Box mx={4}>
-            <Button variant="contained" color="primary" >
+            <Button variant="contained" color="primary">
               Submit
             </Button>
           </Box>
