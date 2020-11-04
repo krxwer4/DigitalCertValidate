@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   hoverFocus: {
@@ -17,12 +18,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Regiscert() {
+  const history = useHistory();
   const classes = useStyles();
   const [resetState, clickReset] = useState(0);
   console.log("regist");
   return (
     <div>
-      <IconButton className={classes.hoverFocus}>
+      <IconButton
+        className={classes.hoverFocus}
+        onClick={() => {
+          history.push("/");
+        }}
+      >
         <ArrowBackIcon fontSize="large" />
       </IconButton>
       <Box

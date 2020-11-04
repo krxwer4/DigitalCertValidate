@@ -3,7 +3,9 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-
+import { useHistory } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import IconButton from "@material-ui/core/IconButton";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -13,13 +15,29 @@ const useStyles = makeStyles((theme) => ({
   input: {
     display: "none",
   },
+  hoverFocus: {
+    color: "#3f51b5",
+    "&:hover, &.Mui-focusVisible": {
+      backgroundColor: "#3f51b5",
+      color: "white",
+    },
+  },
 }));
 
 function Validate() {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <div>
+      <IconButton
+        className={classes.hoverFocus}
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        <ArrowBackIcon fontSize="large" />
+      </IconButton>
       <Box
         display="flex"
         flexDirection="column"

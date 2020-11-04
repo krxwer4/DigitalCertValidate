@@ -5,7 +5,7 @@ import App from "./App";
 import Dump from "./dump";
 import Regiscert from "./Regiscert";
 import Validate from "./Validate";
-import Choice from "./Choice";
+import Menu from "./Menu";
 import Counter from "./Components/Counter";
 import Navbar from "./Components/Navbar";
 import * as serviceWorker from "./serviceWorker";
@@ -14,6 +14,7 @@ ReactDOM.render(
   <div>
     <Navbar />
     <App />
+    {/* <Menu /> */}
   </div>,
   document.getElementById("root")
 );

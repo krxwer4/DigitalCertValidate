@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import history from "./history";
 
-import Choice from "./Choice";
+import Menu from "./Menu";
 import Regiscert from "./Regiscert";
 import Validate from "./Validate";
 
@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <Router history={history}>
         <Switch>
-          <Route exact path="/" component={Choice} />
+          <Route exact path="/" component={Menu} />
           <Route path="/regist" component={Regiscert} />
           <Route path="/validate" component={Validate} />
         </Switch>

@@ -1,10 +1,14 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+
+import { useRoutes, RT } from "hookrouter";
+import routes from "./router";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+// import "./Choice.css";
 import { green, blue } from "@material-ui/core/colors";
 
 function Choice() {
+  const routeResult = useRoutes(routes);
   const ValidateButton = withStyles((theme) => ({
     root: {
       color: theme.palette.getContrastText(blue[500]),
@@ -28,24 +32,17 @@ function Choice() {
       },
     },
   }))(Button);
-  const history = useHistory();
 
   return (
     <div>
-      <RegistCert
-        onClick={()=>{history.push('/regist')}}
-        variant="outlined"
-        color="primary"
-        size="large"
-      >
+      <RT href="/regist">regist Page</RT> <br />
+      <RT href="/validate">validate Page</RT>
+      <br />
+      {routeResult}
+      <RegistCert variant="outlined" color="primary" size="large">
         Regist Cert
       </RegistCert>
-      <ValidateButton
-        onClick={()=>{history.push('/validate')}}
-        variant="outlined"
-        color="primary"
-        size="large"
-      >
+      <ValidateButton variant="outlined" color="primary" size="large">
         Cert Check
       </ValidateButton>
     </div>
