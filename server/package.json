@@ -1,0 +1,11 @@
+{
+  "name": "certificate-validate-server",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "jssha": "^3.1.2",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.6"
+  }
+}
