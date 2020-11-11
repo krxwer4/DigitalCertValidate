@@ -38,11 +38,11 @@ function init () {
       "outputs": [
         {
           "name": "",
-          "type": "address"
+          "type": "bool"
         },
         {
           "name": "",
-          "type": "bool"
+          "type": "address"
         },
         {
           "name": "",
@@ -80,7 +80,7 @@ function init () {
   ];
 
   //asign contract address
-  let address = "0x3Fd423724cc64a0655Cc33ae32a76700e48074Df";
+  let address = "0xFf3F8Ca0AaF90Bf7c2c3743A13f3B4a2682CAaec";
 
   //init contract
   contract = new web3.eth.Contract(abi, address);
