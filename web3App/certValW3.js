@@ -80,7 +80,7 @@ function init () {
   ];
 
   //asign contract address
-  let address = "0xFf3F8Ca0AaF90Bf7c2c3743A13f3B4a2682CAaec";
+  let address = "0x5bEBfDD24c7F6eFFc4C5fa38990f2accBC834CE4";
 
   //init contract
   contract = new web3.eth.Contract(abi, address);
