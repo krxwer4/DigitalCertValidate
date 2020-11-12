@@ -22,18 +22,14 @@ app.get("/", function (req, res) {
   res.send("<p>hello</p>");
 });
 
-// app.post('/upload', function (req, res) {
-//   res.send(req.files)
-// })
-
 app.post("/upload", upload.single("file"), function (req, res, next) {
-  // req.file is the `avatar` file
-  // req.body will hold the text fields, if there were any
   console.log("upload");
   console.log(req.file, req.body);
+  res.contentType("application/pdf");
   let data = fs.createReadStream(path.join(__dirname, req.file.path), "utf8");
   // const jsonObject = JSON.parse(data);
-  res.json(data);
+  // res.json(data);
+  data.pipe(res);
 });
 
 app.listen(9876, function () {
