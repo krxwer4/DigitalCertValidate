@@ -1,8 +1,19 @@
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
+const jsSHA = require("jssha");
 const bdps = require("body-parser");
 const app = express();
+const Web3 = require('web3');
+const contArtifact = require('../client/src/artifacts/Poe.json');
+const contJson = contArtifact;
+
+// console.log(contArtifact)
+let provider = new Web3.providers.HttpProvider("http://localhost:2804");
+web3 = new Web3(provider);
+const contAddr = "0x3bfF0bfCE2a6630542DF02305832dcDaE8ed6C2b";
+const contract = new web3.eth.Contract([contJson], contAddr);
+
 
 var getSslCertificate = require("get-ssl-certificate");
 getCert = async () =>  {
@@ -38,17 +49,16 @@ app.get("/", function (req, res) {
   // res.send("<p>hello</p>");
 });
 
-app.post("/upload", upload.single("file"), function (req, res, next) {
-  console.log("upload");
-  // console.log(req.file, req.body);
+app.post("/registcert", upload.single("file"), async function (req, res, next) {
+  console.log("regist certificate");
+  let readFile = fs.readFileSync(path.join(__dirname, req.file.path));
+  // console.log(req.file.path)
+  let  shaObj = new jsSHA("SHA-512", "ARRAYBUFFER");
+  await shaObj.update(readFile);
+  let hashFile = "0x" + await shaObj.getHash("HEX");
+  console.log(hashFile)
   res.contentType("application/pdf");
-  // let data = fs.createReadStream(path.join(__dirname, req.file.path), "utf8");
-  // const jsonObject = JSON.parse(data);
-  // res.json(data);
-  // data.pipe(res);
-  let fileContent = fs.readFileSync(path.join(__dirname, req.file.path));
-  console.log(fileContent)
-  res.send(fileContent);
+  res.send(hashFile);
 });
 
 app.post("/registweb", function (req, res) {
