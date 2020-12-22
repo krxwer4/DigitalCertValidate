@@ -8,6 +8,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import axios from "axios";
 
 const baseStyle = {
   flex: 1,
@@ -72,7 +73,19 @@ function Dropbox(props) {
     return () => console.log("reset");
   }, [props.reset]);
 
+  useEffect(() => {
+    console.log("from useEffect " + props.submit);
+    const data = new FormData();
+    data.append("file", acceptedFiles[0]);
+    console.log(data)
+    axios
+      .post("http://localhost:9876/registcert", data)
+      .then(res => console.log(res))
+      .catch(console.log('err'))
+  }, [props.submit]);
+
   if (files.length > 0 && !fileAvailable) {
+    console.log(acceptedFiles[0]);
     setFileAvailable(true);
     // console.log(fileAvailable);
   }

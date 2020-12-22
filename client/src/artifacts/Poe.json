@@ -1,0 +1,3589 @@
+{
+  "contractName": "Poe",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "hash",
+          "type": "string"
+        }
+      ],
+      "name": "addCertificate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "hash",
+          "type": "string"
+        }
+      ],
+      "name": "findCertificate",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "hash",
+          "type": "string"
+        }
+      ],
+      "name": "toggleStatus",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"hash\",\"type\":\"string\"}],\"name\":\"addCertificate\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"string\",\"name\":\"hash\",\"type\":\"string\"}],\"name\":\"findCertificate\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"hash\",\"type\":\"string\"}],\"name\":\"toggleStatus\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/krxw/Me/DigitalCertValidate/contracts/Poe.sol\":\"Poe\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/krxw/Me/DigitalCertValidate/contracts/Poe.sol\":{\"keccak256\":\"0x6cbd2f60975ee4ea9eb055990dfe85aba04e992306c481bdbd701ca118b7186d\",\"urls\":[\"bzz-raw://aaa7280ad737153ce499b12285fb259300ad330433a778e7e9c43b8e65754017\",\"dweb:/ipfs/Qmbdzgoe7WH6GJgBNrt7eua3GWouW8DqfG87AsWqHwqREY\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610a15806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80630a99e4f814610046578063450a296814610101578063b976e9d7146101bc575b600080fd5b6100ff6004803603602081101561005c57600080fd5b810190808035906020019064010000000081111561007957600080fd5b82018360208201111561008b57600080fd5b803590602001918460018302840111640100000000831117156100ad57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192905050506102d0565b005b6101ba6004803603602081101561011757600080fd5b810190808035906020019064010000000081111561013457600080fd5b82018360208201111561014657600080fd5b8035906020019184600183028401116401000000008311171561016857600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610400565b005b610275600480360360208110156101d257600080fd5b81019080803590602001906401000000008111156101ef57600080fd5b82018360208201111561020157600080fd5b8035906020019184600183028401116401000000008311171561022357600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192905050506107aa565b60405180851515151581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200182815260200194505050505060405180910390f35b6102d86109a0565b60405180608001604052806001151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001428152602001438152509050806000836040518082805190602001908083835b6020831061034b5780518252602082019150602081019050602083039250610328565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060408201518160010155606082015181600201559050505050565b6000816040518082805190602001908083835b602083106104365780518252602082019150602081019050602083039250610413565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156107a757600115156000826040518082805190602001908083835b602083106104fa57805182526020820191506020810190506020830392506104d7565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060000160009054906101000a900460ff16151514156106785761054e6109a0565b60405180608001604052806000151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001428152602001438152509050806000836040518082805190602001908083835b602083106105c1578051825260208201915060208101905060208303925061059e565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506040820151816001015560608201518160020155905050506107a6565b6106806109a0565b60405180608001604052806001151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001428152602001438152509050806000836040518082805190602001908083835b602083106106f357805182526020820191506020810190506020830392506106d0565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506040820151816001015560608201518160020155905050505b5b50565b6000806000806000856040518082805190602001908083835b602083106107e657805182526020820191506020810190506020830392506107c3565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060000160009054906101000a900460ff166000866040518082805190602001908083835b60208310610860578051825260208201915060208101905060208303925061083d565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff166000876040518082805190602001908083835b602083106108ed57805182526020820191506020810190506020830392506108ca565b6001836020036101000a0380198251168184511680821785525050505050509050019150509081526020016040518091039020600101546000886040518082805190602001908083835b6020831061095a5780518252602082019150602081019050602083039250610937565b6001836020036101000a03801982511681845116808217855250505050505090500191505090815260200160405180910390206002015493509350935093509193509193565b6040518060800160405280600015158152602001600073ffffffffffffffffffffffffffffffffffffffff1681526020016000815260200160008152509056fea265627a7a723158201edd66f50139f54ac39f160921230bd365dfc2ea3239419555ab88ab8b7176b064736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80630a99e4f814610046578063450a296814610101578063b976e9d7146101bc575b600080fd5b6100ff6004803603602081101561005c57600080fd5b810190808035906020019064010000000081111561007957600080fd5b82018360208201111561008b57600080fd5b803590602001918460018302840111640100000000831117156100ad57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192905050506102d0565b005b6101ba6004803603602081101561011757600080fd5b810190808035906020019064010000000081111561013457600080fd5b82018360208201111561014657600080fd5b8035906020019184600183028401116401000000008311171561016857600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610400565b005b610275600480360360208110156101d257600080fd5b81019080803590602001906401000000008111156101ef57600080fd5b82018360208201111561020157600080fd5b8035906020019184600183028401116401000000008311171561022357600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192905050506107aa565b60405180851515151581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200182815260200194505050505060405180910390f35b6102d86109a0565b60405180608001604052806001151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001428152602001438152509050806000836040518082805190602001908083835b6020831061034b5780518252602082019150602081019050602083039250610328565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060408201518160010155606082015181600201559050505050565b6000816040518082805190602001908083835b602083106104365780518252602082019150602081019050602083039250610413565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156107a757600115156000826040518082805190602001908083835b602083106104fa57805182526020820191506020810190506020830392506104d7565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060000160009054906101000a900460ff16151514156106785761054e6109a0565b60405180608001604052806000151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001428152602001438152509050806000836040518082805190602001908083835b602083106105c1578051825260208201915060208101905060208303925061059e565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506040820151816001015560608201518160020155905050506107a6565b6106806109a0565b60405180608001604052806001151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001428152602001438152509050806000836040518082805190602001908083835b602083106106f357805182526020820191506020810190506020830392506106d0565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506040820151816001015560608201518160020155905050505b5b50565b6000806000806000856040518082805190602001908083835b602083106107e657805182526020820191506020810190506020830392506107c3565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060000160009054906101000a900460ff166000866040518082805190602001908083835b60208310610860578051825260208201915060208101905060208303925061083d565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff166000876040518082805190602001908083835b602083106108ed57805182526020820191506020810190506020830392506108ca565b6001836020036101000a0380198251168184511680821785525050505050509050019150509081526020016040518091039020600101546000886040518082805190602001908083835b6020831061095a5780518252602082019150602081019050602083039250610937565b6001836020036101000a03801982511681845116808217855250505050505090500191505090815260200160405180910390206002015493509350935093509193509193565b6040518060800160405280600015158152602001600073ffffffffffffffffffffffffffffffffffffffff1681526020016000815260200160008152509056fea265627a7a723158201edd66f50139f54ac39f160921230bd365dfc2ea3239419555ab88ab8b7176b064736f6c63430005100032",
+  "sourceMap": "25:1452:1:-;;;222:23;8:9:-1;5:2;;;30:1;27;20:12;5:2;222:23:1;25:1452;;;;;;",
+  "deployedSourceMap": "25:1452:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:1452:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;251:174;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;251:174:1;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;251:174:1;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;251:174:1;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;251:174:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;251:174:1;;;;;;;;;;;;;;;:::i;:::-;;809:666;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;809:666:1;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;809:666:1;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;809:666:1;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;809:666:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;809:666:1;;;;;;;;;;;;;;;:::i;:::-;;431:372;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;431:372:1;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;431:372:1;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;431:372:1;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;431:372:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;431:372:1;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;251:174;312:23;;:::i;:::-;338:43;;;;;;;;345:4;338:43;;;;;;351:10;338:43;;;;;;363:3;338:43;;;;368:12;338:43;;;312:69;;409:9;391;401:4;391:15;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;391:15:1;;;;;;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;251:174;;:::o;809:666::-;886:9;896:4;886:15;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;886:15:1;;;;;;;;;;;;;;;;;;;;;:24;;;;;;;;;;;;872:38;;:10;:38;;;868:601;;;956:4;930:30;;:9;940:4;930:15;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;930:15:1;;;;;;;;;;;;;;;;;;;;;:22;;;;;;;;;;;;:30;;;926:533;;;980:23;;:::i;:::-;1006:142;;;;;;;;1034:5;1006:142;;;;;;1061:10;1006:142;;;;;;1093:3;1006:142;;;;1118:12;1006:142;;;980:168;;1184:9;1166;1176:4;1166:15;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;1166:15:1;;;;;;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;926:533;;;;1232:23;;:::i;:::-;1258:141;;;;;;;;1286:4;1258:141;;;;;;1312:10;1258:141;;;;;;1344:3;1258:141;;;;1369:12;1258:141;;;1232:167;;1435:9;1417;1427:4;1417:15;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;1417:15:1;;;;;;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;926:533;;868:601;809:666;:::o;431:372::-;534:4;552:7;573;594;647:9;657:4;647:15;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;647:15:1;;;;;;;;;;;;;;;;;;;;;:22;;;;;;;;;;;;683:9;693:4;683:15;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;683:15:1;;;;;;;;;;;;;;;;;;;;;:24;;;;;;;;;;;;721:9;731:4;721:15;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;721:15:1;;;;;;;;;;;;;;;;;;;;;:24;;;759:9;769:4;759:15;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;759:15:1;;;;;;;;;;;;;;;;;;;;;:27;;;626:170;;;;;;;;431:372;;;;;:::o;25:1452::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\ncontract Poe {\n    struct Record {\n        bool status;\n        address adderPub;\n        uint256 mineTime;\n        uint256 blockNumber;\n    }\n    mapping(string => Record) private docHashes;\n\n    constructor() public {}\n\n    function addCertificate(string memory hash) public {\n        Record memory newRecord = Record(true, msg.sender, now, block.number);\n        docHashes[hash] = newRecord;\n    }\n\n    function findCertificate(string memory hash)\n        public\n        view\n        returns (\n            bool,\n            address,\n            uint256,\n            uint256\n        )\n    {\n        return (\n            docHashes[hash].status,\n            docHashes[hash].adderPub,\n            docHashes[hash].mineTime,\n            docHashes[hash].blockNumber\n        );\n    }\n\n    function toggleStatus(string memory hash) public {\n        if (msg.sender == docHashes[hash].adderPub) {\n            if (docHashes[hash].status == true) {\n                Record memory newRecord = Record(\n                    false,\n                    msg.sender,\n                    now,\n                    block.number\n                );\n                docHashes[hash] = newRecord;\n            } else {\n                Record memory newRecord = Record(\n                    true,\n                    msg.sender,\n                    now,\n                    block.number\n                );\n                docHashes[hash] = newRecord;\n            }\n        }\n    }\n}\n",
+  "sourcePath": "/Users/krxw/Me/DigitalCertValidate/contracts/Poe.sol",
+  "ast": {
+    "absolutePath": "/Users/krxw/Me/DigitalCertValidate/contracts/Poe.sol",
+    "exportedSymbols": {
+      "Poe": [
+        169
+      ]
+    },
+    "id": 170,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 38,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 169,
+        "linearizedBaseContracts": [
+          169
+        ],
+        "name": "Poe",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Poe.Record",
+            "id": 47,
+            "members": [
+              {
+                "constant": false,
+                "id": 40,
+                "name": "status",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "68:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 39,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "68:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 42,
+                "name": "adderPub",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "89:16:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 41,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "89:7:1",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 44,
+                "name": "mineTime",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "115:16:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 43,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "115:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 46,
+                "name": "blockNumber",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "141:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 45,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "141:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Record",
+            "nodeType": "StructDefinition",
+            "scope": 169,
+            "src": "44:123:1",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 51,
+            "name": "docHashes",
+            "nodeType": "VariableDeclaration",
+            "scope": 169,
+            "src": "172:43:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+              "typeString": "mapping(string => struct Poe.Record)"
+            },
+            "typeName": {
+              "id": 50,
+              "keyType": {
+                "id": 48,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "180:6:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "172:25:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                "typeString": "mapping(string => struct Poe.Record)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 49,
+                "name": "Record",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 47,
+                "src": "190:6:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Record_$47_storage_ptr",
+                  "typeString": "struct Poe.Record"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 54,
+              "nodeType": "Block",
+              "src": "243:2:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 55,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 52,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "233:2:1"
+            },
+            "returnParameters": {
+              "id": 53,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "243:0:1"
+            },
+            "scope": 169,
+            "src": "222:23:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 77,
+              "nodeType": "Block",
+              "src": "302:123:1",
+              "statements": [
+                {
+                  "assignments": [
+                    61
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 61,
+                      "name": "newRecord",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 77,
+                      "src": "312:23:1",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                        "typeString": "struct Poe.Record"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 60,
+                        "name": "Record",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 47,
+                        "src": "312:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$47_storage_ptr",
+                          "typeString": "struct Poe.Record"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 70,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "74727565",
+                        "id": 63,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "345:4:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "true"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 64,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 184,
+                          "src": "351:3:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 65,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "351:10:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 66,
+                        "name": "now",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 186,
+                        "src": "363:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 67,
+                          "name": "block",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 174,
+                          "src": "368:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_block",
+                            "typeString": "block"
+                          }
+                        },
+                        "id": 68,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "number",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "368:12:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 62,
+                      "name": "Record",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 47,
+                      "src": "338:6:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Record_$47_storage_ptr_$",
+                        "typeString": "type(struct Poe.Record storage pointer)"
+                      }
+                    },
+                    "id": 69,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "338:43:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Record_$47_memory",
+                      "typeString": "struct Poe.Record memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "312:69:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 75,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 71,
+                        "name": "docHashes",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 51,
+                        "src": "391:9:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                          "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                        }
+                      },
+                      "id": 73,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 72,
+                        "name": "hash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 57,
+                        "src": "401:4:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "391:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Record_$47_storage",
+                        "typeString": "struct Poe.Record storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 74,
+                      "name": "newRecord",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 61,
+                      "src": "409:9:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                        "typeString": "struct Poe.Record memory"
+                      }
+                    },
+                    "src": "391:27:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Record_$47_storage",
+                      "typeString": "struct Poe.Record storage ref"
+                    }
+                  },
+                  "id": 76,
+                  "nodeType": "ExpressionStatement",
+                  "src": "391:27:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 78,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addCertificate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 58,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 57,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 78,
+                  "src": "275:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 56,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "275:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "274:20:1"
+            },
+            "returnParameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "302:0:1"
+            },
+            "scope": 169,
+            "src": "251:174:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 109,
+              "nodeType": "Block",
+              "src": "616:187:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 91,
+                            "name": "docHashes",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 51,
+                            "src": "647:9:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                              "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                            }
+                          },
+                          "id": 93,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 92,
+                            "name": "hash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 80,
+                            "src": "657:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "647:15:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Record_$47_storage",
+                            "typeString": "struct Poe.Record storage ref"
+                          }
+                        },
+                        "id": 94,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "status",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 40,
+                        "src": "647:22:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 95,
+                            "name": "docHashes",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 51,
+                            "src": "683:9:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                              "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                            }
+                          },
+                          "id": 97,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 96,
+                            "name": "hash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 80,
+                            "src": "693:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "683:15:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Record_$47_storage",
+                            "typeString": "struct Poe.Record storage ref"
+                          }
+                        },
+                        "id": 98,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "adderPub",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 42,
+                        "src": "683:24:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 99,
+                            "name": "docHashes",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 51,
+                            "src": "721:9:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                              "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                            }
+                          },
+                          "id": 101,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 100,
+                            "name": "hash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 80,
+                            "src": "731:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "721:15:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Record_$47_storage",
+                            "typeString": "struct Poe.Record storage ref"
+                          }
+                        },
+                        "id": 102,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "mineTime",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 44,
+                        "src": "721:24:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 103,
+                            "name": "docHashes",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 51,
+                            "src": "759:9:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                              "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                            }
+                          },
+                          "id": 105,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 104,
+                            "name": "hash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 80,
+                            "src": "769:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "759:15:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Record_$47_storage",
+                            "typeString": "struct Poe.Record storage ref"
+                          }
+                        },
+                        "id": 106,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "blockNumber",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 46,
+                        "src": "759:27:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "id": 107,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "633:163:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bool_$_t_address_$_t_uint256_$_t_uint256_$",
+                      "typeString": "tuple(bool,address,uint256,uint256)"
+                    }
+                  },
+                  "functionReturnParameters": 90,
+                  "id": 108,
+                  "nodeType": "Return",
+                  "src": "626:170:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 110,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "findCertificate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 81,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 80,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "456:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 79,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "456:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "455:20:1"
+            },
+            "returnParameters": {
+              "id": 90,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 83,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "534:4:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 82,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "534:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 85,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "552:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 84,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "552:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 87,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "573:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 86,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "573:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 89,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "594:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 88,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "594:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "520:91:1"
+            },
+            "scope": 169,
+            "src": "431:372:1",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 167,
+              "nodeType": "Block",
+              "src": "858:617:1",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 121,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 115,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 184,
+                        "src": "872:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 116,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "872:10:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 117,
+                          "name": "docHashes",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 51,
+                          "src": "886:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                            "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                          }
+                        },
+                        "id": 119,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 118,
+                          "name": "hash",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 112,
+                          "src": "896:4:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "886:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$47_storage",
+                          "typeString": "struct Poe.Record storage ref"
+                        }
+                      },
+                      "id": 120,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "adderPub",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 42,
+                      "src": "886:24:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "872:38:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 166,
+                  "nodeType": "IfStatement",
+                  "src": "868:601:1",
+                  "trueBody": {
+                    "id": 165,
+                    "nodeType": "Block",
+                    "src": "912:557:1",
+                    "statements": [
+                      {
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "id": 127,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 122,
+                                "name": "docHashes",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 51,
+                                "src": "930:9:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                                  "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                                }
+                              },
+                              "id": 124,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 123,
+                                "name": "hash",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 112,
+                                "src": "940:4:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "930:15:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Record_$47_storage",
+                                "typeString": "struct Poe.Record storage ref"
+                              }
+                            },
+                            "id": 125,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "status",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 40,
+                            "src": "930:22:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "hexValue": "74727565",
+                            "id": 126,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "bool",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "956:4:1",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            },
+                            "value": "true"
+                          },
+                          "src": "930:30:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": {
+                          "id": 163,
+                          "nodeType": "Block",
+                          "src": "1214:245:1",
+                          "statements": [
+                            {
+                              "assignments": [
+                                147
+                              ],
+                              "declarations": [
+                                {
+                                  "constant": false,
+                                  "id": 147,
+                                  "name": "newRecord",
+                                  "nodeType": "VariableDeclaration",
+                                  "scope": 163,
+                                  "src": "1232:23:1",
+                                  "stateVariable": false,
+                                  "storageLocation": "memory",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                                    "typeString": "struct Poe.Record"
+                                  },
+                                  "typeName": {
+                                    "contractScope": null,
+                                    "id": 146,
+                                    "name": "Record",
+                                    "nodeType": "UserDefinedTypeName",
+                                    "referencedDeclaration": 47,
+                                    "src": "1232:6:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_Record_$47_storage_ptr",
+                                      "typeString": "struct Poe.Record"
+                                    }
+                                  },
+                                  "value": null,
+                                  "visibility": "internal"
+                                }
+                              ],
+                              "id": 156,
+                              "initialValue": {
+                                "argumentTypes": null,
+                                "arguments": [
+                                  {
+                                    "argumentTypes": null,
+                                    "hexValue": "74727565",
+                                    "id": 149,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "bool",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "1286:4:1",
+                                    "subdenomination": null,
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    "value": "true"
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 150,
+                                      "name": "msg",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 184,
+                                      "src": "1312:3:1",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_message",
+                                        "typeString": "msg"
+                                      }
+                                    },
+                                    "id": 151,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "sender",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1312:10:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    }
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "id": 152,
+                                    "name": "now",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 186,
+                                    "src": "1344:3:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 153,
+                                      "name": "block",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 174,
+                                      "src": "1369:5:1",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_block",
+                                        "typeString": "block"
+                                      }
+                                    },
+                                    "id": 154,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "number",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1369:12:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  ],
+                                  "id": 148,
+                                  "name": "Record",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 47,
+                                  "src": "1258:6:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_type$_t_struct$_Record_$47_storage_ptr_$",
+                                    "typeString": "type(struct Poe.Record storage pointer)"
+                                  }
+                                },
+                                "id": 155,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "structConstructorCall",
+                                "lValueRequested": false,
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "1258:141:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Record_$47_memory",
+                                  "typeString": "struct Poe.Record memory"
+                                }
+                              },
+                              "nodeType": "VariableDeclarationStatement",
+                              "src": "1232:167:1"
+                            },
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 161,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "argumentTypes": null,
+                                  "baseExpression": {
+                                    "argumentTypes": null,
+                                    "id": 157,
+                                    "name": "docHashes",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 51,
+                                    "src": "1417:9:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                                      "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                                    }
+                                  },
+                                  "id": 159,
+                                  "indexExpression": {
+                                    "argumentTypes": null,
+                                    "id": 158,
+                                    "name": "hash",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 112,
+                                    "src": "1427:4:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_string_memory_ptr",
+                                      "typeString": "string memory"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": true,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1417:15:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_storage",
+                                    "typeString": "struct Poe.Record storage ref"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 160,
+                                  "name": "newRecord",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 147,
+                                  "src": "1435:9:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                                    "typeString": "struct Poe.Record memory"
+                                  }
+                                },
+                                "src": "1417:27:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Record_$47_storage",
+                                  "typeString": "struct Poe.Record storage ref"
+                                }
+                              },
+                              "id": 162,
+                              "nodeType": "ExpressionStatement",
+                              "src": "1417:27:1"
+                            }
+                          ]
+                        },
+                        "id": 164,
+                        "nodeType": "IfStatement",
+                        "src": "926:533:1",
+                        "trueBody": {
+                          "id": 145,
+                          "nodeType": "Block",
+                          "src": "962:246:1",
+                          "statements": [
+                            {
+                              "assignments": [
+                                129
+                              ],
+                              "declarations": [
+                                {
+                                  "constant": false,
+                                  "id": 129,
+                                  "name": "newRecord",
+                                  "nodeType": "VariableDeclaration",
+                                  "scope": 145,
+                                  "src": "980:23:1",
+                                  "stateVariable": false,
+                                  "storageLocation": "memory",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                                    "typeString": "struct Poe.Record"
+                                  },
+                                  "typeName": {
+                                    "contractScope": null,
+                                    "id": 128,
+                                    "name": "Record",
+                                    "nodeType": "UserDefinedTypeName",
+                                    "referencedDeclaration": 47,
+                                    "src": "980:6:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_Record_$47_storage_ptr",
+                                      "typeString": "struct Poe.Record"
+                                    }
+                                  },
+                                  "value": null,
+                                  "visibility": "internal"
+                                }
+                              ],
+                              "id": 138,
+                              "initialValue": {
+                                "argumentTypes": null,
+                                "arguments": [
+                                  {
+                                    "argumentTypes": null,
+                                    "hexValue": "66616c7365",
+                                    "id": 131,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "bool",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "1034:5:1",
+                                    "subdenomination": null,
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    "value": "false"
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 132,
+                                      "name": "msg",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 184,
+                                      "src": "1061:3:1",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_message",
+                                        "typeString": "msg"
+                                      }
+                                    },
+                                    "id": 133,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "sender",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1061:10:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    }
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "id": 134,
+                                    "name": "now",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 186,
+                                    "src": "1093:3:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 135,
+                                      "name": "block",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 174,
+                                      "src": "1118:5:1",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_block",
+                                        "typeString": "block"
+                                      }
+                                    },
+                                    "id": 136,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "number",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1118:12:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  ],
+                                  "id": 130,
+                                  "name": "Record",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 47,
+                                  "src": "1006:6:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_type$_t_struct$_Record_$47_storage_ptr_$",
+                                    "typeString": "type(struct Poe.Record storage pointer)"
+                                  }
+                                },
+                                "id": 137,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "structConstructorCall",
+                                "lValueRequested": false,
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "1006:142:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Record_$47_memory",
+                                  "typeString": "struct Poe.Record memory"
+                                }
+                              },
+                              "nodeType": "VariableDeclarationStatement",
+                              "src": "980:168:1"
+                            },
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 143,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "argumentTypes": null,
+                                  "baseExpression": {
+                                    "argumentTypes": null,
+                                    "id": 139,
+                                    "name": "docHashes",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 51,
+                                    "src": "1166:9:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                                      "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                                    }
+                                  },
+                                  "id": 141,
+                                  "indexExpression": {
+                                    "argumentTypes": null,
+                                    "id": 140,
+                                    "name": "hash",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 112,
+                                    "src": "1176:4:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_string_memory_ptr",
+                                      "typeString": "string memory"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": true,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1166:15:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_storage",
+                                    "typeString": "struct Poe.Record storage ref"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 142,
+                                  "name": "newRecord",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 129,
+                                  "src": "1184:9:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                                    "typeString": "struct Poe.Record memory"
+                                  }
+                                },
+                                "src": "1166:27:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Record_$47_storage",
+                                  "typeString": "struct Poe.Record storage ref"
+                                }
+                              },
+                              "id": 144,
+                              "nodeType": "ExpressionStatement",
+                              "src": "1166:27:1"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 168,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "toggleStatus",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 113,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 112,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 168,
+                  "src": "831:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 111,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "831:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "830:20:1"
+            },
+            "returnParameters": {
+              "id": 114,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "858:0:1"
+            },
+            "scope": 169,
+            "src": "809:666:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 170,
+        "src": "25:1452:1"
+      }
+    ],
+    "src": "0:1478:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/krxw/Me/DigitalCertValidate/contracts/Poe.sol",
+    "exportedSymbols": {
+      "Poe": [
+        169
+      ]
+    },
+    "id": 170,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 38,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 169,
+        "linearizedBaseContracts": [
+          169
+        ],
+        "name": "Poe",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Poe.Record",
+            "id": 47,
+            "members": [
+              {
+                "constant": false,
+                "id": 40,
+                "name": "status",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "68:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 39,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "68:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 42,
+                "name": "adderPub",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "89:16:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 41,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "89:7:1",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 44,
+                "name": "mineTime",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "115:16:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 43,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "115:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 46,
+                "name": "blockNumber",
+                "nodeType": "VariableDeclaration",
+                "scope": 47,
+                "src": "141:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 45,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "141:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Record",
+            "nodeType": "StructDefinition",
+            "scope": 169,
+            "src": "44:123:1",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 51,
+            "name": "docHashes",
+            "nodeType": "VariableDeclaration",
+            "scope": 169,
+            "src": "172:43:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+              "typeString": "mapping(string => struct Poe.Record)"
+            },
+            "typeName": {
+              "id": 50,
+              "keyType": {
+                "id": 48,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "180:6:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "172:25:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                "typeString": "mapping(string => struct Poe.Record)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 49,
+                "name": "Record",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 47,
+                "src": "190:6:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Record_$47_storage_ptr",
+                  "typeString": "struct Poe.Record"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 54,
+              "nodeType": "Block",
+              "src": "243:2:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 55,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 52,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "233:2:1"
+            },
+            "returnParameters": {
+              "id": 53,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "243:0:1"
+            },
+            "scope": 169,
+            "src": "222:23:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 77,
+              "nodeType": "Block",
+              "src": "302:123:1",
+              "statements": [
+                {
+                  "assignments": [
+                    61
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 61,
+                      "name": "newRecord",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 77,
+                      "src": "312:23:1",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                        "typeString": "struct Poe.Record"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 60,
+                        "name": "Record",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 47,
+                        "src": "312:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$47_storage_ptr",
+                          "typeString": "struct Poe.Record"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 70,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "74727565",
+                        "id": 63,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "345:4:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "true"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 64,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 184,
+                          "src": "351:3:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 65,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "351:10:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 66,
+                        "name": "now",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 186,
+                        "src": "363:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 67,
+                          "name": "block",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 174,
+                          "src": "368:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_block",
+                            "typeString": "block"
+                          }
+                        },
+                        "id": 68,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "number",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "368:12:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 62,
+                      "name": "Record",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 47,
+                      "src": "338:6:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Record_$47_storage_ptr_$",
+                        "typeString": "type(struct Poe.Record storage pointer)"
+                      }
+                    },
+                    "id": 69,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "338:43:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Record_$47_memory",
+                      "typeString": "struct Poe.Record memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "312:69:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 75,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 71,
+                        "name": "docHashes",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 51,
+                        "src": "391:9:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                          "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                        }
+                      },
+                      "id": 73,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 72,
+                        "name": "hash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 57,
+                        "src": "401:4:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "391:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Record_$47_storage",
+                        "typeString": "struct Poe.Record storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 74,
+                      "name": "newRecord",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 61,
+                      "src": "409:9:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                        "typeString": "struct Poe.Record memory"
+                      }
+                    },
+                    "src": "391:27:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Record_$47_storage",
+                      "typeString": "struct Poe.Record storage ref"
+                    }
+                  },
+                  "id": 76,
+                  "nodeType": "ExpressionStatement",
+                  "src": "391:27:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 78,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addCertificate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 58,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 57,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 78,
+                  "src": "275:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 56,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "275:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "274:20:1"
+            },
+            "returnParameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "302:0:1"
+            },
+            "scope": 169,
+            "src": "251:174:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 109,
+              "nodeType": "Block",
+              "src": "616:187:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 91,
+                            "name": "docHashes",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 51,
+                            "src": "647:9:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                              "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                            }
+                          },
+                          "id": 93,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 92,
+                            "name": "hash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 80,
+                            "src": "657:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "647:15:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Record_$47_storage",
+                            "typeString": "struct Poe.Record storage ref"
+                          }
+                        },
+                        "id": 94,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "status",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 40,
+                        "src": "647:22:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 95,
+                            "name": "docHashes",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 51,
+                            "src": "683:9:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                              "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                            }
+                          },
+                          "id": 97,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 96,
+                            "name": "hash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 80,
+                            "src": "693:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "683:15:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Record_$47_storage",
+                            "typeString": "struct Poe.Record storage ref"
+                          }
+                        },
+                        "id": 98,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "adderPub",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 42,
+                        "src": "683:24:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 99,
+                            "name": "docHashes",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 51,
+                            "src": "721:9:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                              "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                            }
+                          },
+                          "id": 101,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 100,
+                            "name": "hash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 80,
+                            "src": "731:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "721:15:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Record_$47_storage",
+                            "typeString": "struct Poe.Record storage ref"
+                          }
+                        },
+                        "id": 102,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "mineTime",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 44,
+                        "src": "721:24:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 103,
+                            "name": "docHashes",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 51,
+                            "src": "759:9:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                              "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                            }
+                          },
+                          "id": 105,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 104,
+                            "name": "hash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 80,
+                            "src": "769:4:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_memory_ptr",
+                              "typeString": "string memory"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "759:15:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Record_$47_storage",
+                            "typeString": "struct Poe.Record storage ref"
+                          }
+                        },
+                        "id": 106,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "blockNumber",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 46,
+                        "src": "759:27:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "id": 107,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "633:163:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bool_$_t_address_$_t_uint256_$_t_uint256_$",
+                      "typeString": "tuple(bool,address,uint256,uint256)"
+                    }
+                  },
+                  "functionReturnParameters": 90,
+                  "id": 108,
+                  "nodeType": "Return",
+                  "src": "626:170:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 110,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "findCertificate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 81,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 80,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "456:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 79,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "456:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "455:20:1"
+            },
+            "returnParameters": {
+              "id": 90,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 83,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "534:4:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 82,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "534:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 85,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "552:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 84,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "552:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 87,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "573:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 86,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "573:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 89,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "594:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 88,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "594:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "520:91:1"
+            },
+            "scope": 169,
+            "src": "431:372:1",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 167,
+              "nodeType": "Block",
+              "src": "858:617:1",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 121,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 115,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 184,
+                        "src": "872:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 116,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "872:10:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 117,
+                          "name": "docHashes",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 51,
+                          "src": "886:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                            "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                          }
+                        },
+                        "id": 119,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 118,
+                          "name": "hash",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 112,
+                          "src": "896:4:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "886:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$47_storage",
+                          "typeString": "struct Poe.Record storage ref"
+                        }
+                      },
+                      "id": 120,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "adderPub",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 42,
+                      "src": "886:24:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "872:38:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 166,
+                  "nodeType": "IfStatement",
+                  "src": "868:601:1",
+                  "trueBody": {
+                    "id": 165,
+                    "nodeType": "Block",
+                    "src": "912:557:1",
+                    "statements": [
+                      {
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "id": 127,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 122,
+                                "name": "docHashes",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 51,
+                                "src": "930:9:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                                  "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                                }
+                              },
+                              "id": 124,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 123,
+                                "name": "hash",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 112,
+                                "src": "940:4:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "930:15:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Record_$47_storage",
+                                "typeString": "struct Poe.Record storage ref"
+                              }
+                            },
+                            "id": 125,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "status",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 40,
+                            "src": "930:22:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "hexValue": "74727565",
+                            "id": 126,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "bool",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "956:4:1",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            },
+                            "value": "true"
+                          },
+                          "src": "930:30:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": {
+                          "id": 163,
+                          "nodeType": "Block",
+                          "src": "1214:245:1",
+                          "statements": [
+                            {
+                              "assignments": [
+                                147
+                              ],
+                              "declarations": [
+                                {
+                                  "constant": false,
+                                  "id": 147,
+                                  "name": "newRecord",
+                                  "nodeType": "VariableDeclaration",
+                                  "scope": 163,
+                                  "src": "1232:23:1",
+                                  "stateVariable": false,
+                                  "storageLocation": "memory",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                                    "typeString": "struct Poe.Record"
+                                  },
+                                  "typeName": {
+                                    "contractScope": null,
+                                    "id": 146,
+                                    "name": "Record",
+                                    "nodeType": "UserDefinedTypeName",
+                                    "referencedDeclaration": 47,
+                                    "src": "1232:6:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_Record_$47_storage_ptr",
+                                      "typeString": "struct Poe.Record"
+                                    }
+                                  },
+                                  "value": null,
+                                  "visibility": "internal"
+                                }
+                              ],
+                              "id": 156,
+                              "initialValue": {
+                                "argumentTypes": null,
+                                "arguments": [
+                                  {
+                                    "argumentTypes": null,
+                                    "hexValue": "74727565",
+                                    "id": 149,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "bool",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "1286:4:1",
+                                    "subdenomination": null,
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    "value": "true"
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 150,
+                                      "name": "msg",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 184,
+                                      "src": "1312:3:1",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_message",
+                                        "typeString": "msg"
+                                      }
+                                    },
+                                    "id": 151,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "sender",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1312:10:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    }
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "id": 152,
+                                    "name": "now",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 186,
+                                    "src": "1344:3:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 153,
+                                      "name": "block",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 174,
+                                      "src": "1369:5:1",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_block",
+                                        "typeString": "block"
+                                      }
+                                    },
+                                    "id": 154,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "number",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1369:12:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  ],
+                                  "id": 148,
+                                  "name": "Record",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 47,
+                                  "src": "1258:6:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_type$_t_struct$_Record_$47_storage_ptr_$",
+                                    "typeString": "type(struct Poe.Record storage pointer)"
+                                  }
+                                },
+                                "id": 155,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "structConstructorCall",
+                                "lValueRequested": false,
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "1258:141:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Record_$47_memory",
+                                  "typeString": "struct Poe.Record memory"
+                                }
+                              },
+                              "nodeType": "VariableDeclarationStatement",
+                              "src": "1232:167:1"
+                            },
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 161,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "argumentTypes": null,
+                                  "baseExpression": {
+                                    "argumentTypes": null,
+                                    "id": 157,
+                                    "name": "docHashes",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 51,
+                                    "src": "1417:9:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                                      "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                                    }
+                                  },
+                                  "id": 159,
+                                  "indexExpression": {
+                                    "argumentTypes": null,
+                                    "id": 158,
+                                    "name": "hash",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 112,
+                                    "src": "1427:4:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_string_memory_ptr",
+                                      "typeString": "string memory"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": true,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1417:15:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_storage",
+                                    "typeString": "struct Poe.Record storage ref"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 160,
+                                  "name": "newRecord",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 147,
+                                  "src": "1435:9:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                                    "typeString": "struct Poe.Record memory"
+                                  }
+                                },
+                                "src": "1417:27:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Record_$47_storage",
+                                  "typeString": "struct Poe.Record storage ref"
+                                }
+                              },
+                              "id": 162,
+                              "nodeType": "ExpressionStatement",
+                              "src": "1417:27:1"
+                            }
+                          ]
+                        },
+                        "id": 164,
+                        "nodeType": "IfStatement",
+                        "src": "926:533:1",
+                        "trueBody": {
+                          "id": 145,
+                          "nodeType": "Block",
+                          "src": "962:246:1",
+                          "statements": [
+                            {
+                              "assignments": [
+                                129
+                              ],
+                              "declarations": [
+                                {
+                                  "constant": false,
+                                  "id": 129,
+                                  "name": "newRecord",
+                                  "nodeType": "VariableDeclaration",
+                                  "scope": 145,
+                                  "src": "980:23:1",
+                                  "stateVariable": false,
+                                  "storageLocation": "memory",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                                    "typeString": "struct Poe.Record"
+                                  },
+                                  "typeName": {
+                                    "contractScope": null,
+                                    "id": 128,
+                                    "name": "Record",
+                                    "nodeType": "UserDefinedTypeName",
+                                    "referencedDeclaration": 47,
+                                    "src": "980:6:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_Record_$47_storage_ptr",
+                                      "typeString": "struct Poe.Record"
+                                    }
+                                  },
+                                  "value": null,
+                                  "visibility": "internal"
+                                }
+                              ],
+                              "id": 138,
+                              "initialValue": {
+                                "argumentTypes": null,
+                                "arguments": [
+                                  {
+                                    "argumentTypes": null,
+                                    "hexValue": "66616c7365",
+                                    "id": 131,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "bool",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "1034:5:1",
+                                    "subdenomination": null,
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    "value": "false"
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 132,
+                                      "name": "msg",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 184,
+                                      "src": "1061:3:1",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_message",
+                                        "typeString": "msg"
+                                      }
+                                    },
+                                    "id": 133,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "sender",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1061:10:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    }
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "id": 134,
+                                    "name": "now",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 186,
+                                    "src": "1093:3:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 135,
+                                      "name": "block",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 174,
+                                      "src": "1118:5:1",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_block",
+                                        "typeString": "block"
+                                      }
+                                    },
+                                    "id": 136,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "number",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1118:12:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  ],
+                                  "id": 130,
+                                  "name": "Record",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 47,
+                                  "src": "1006:6:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_type$_t_struct$_Record_$47_storage_ptr_$",
+                                    "typeString": "type(struct Poe.Record storage pointer)"
+                                  }
+                                },
+                                "id": 137,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "structConstructorCall",
+                                "lValueRequested": false,
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "1006:142:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Record_$47_memory",
+                                  "typeString": "struct Poe.Record memory"
+                                }
+                              },
+                              "nodeType": "VariableDeclarationStatement",
+                              "src": "980:168:1"
+                            },
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 143,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "argumentTypes": null,
+                                  "baseExpression": {
+                                    "argumentTypes": null,
+                                    "id": 139,
+                                    "name": "docHashes",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 51,
+                                    "src": "1166:9:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_Record_$47_storage_$",
+                                      "typeString": "mapping(string memory => struct Poe.Record storage ref)"
+                                    }
+                                  },
+                                  "id": 141,
+                                  "indexExpression": {
+                                    "argumentTypes": null,
+                                    "id": 140,
+                                    "name": "hash",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 112,
+                                    "src": "1176:4:1",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_string_memory_ptr",
+                                      "typeString": "string memory"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": true,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1166:15:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_storage",
+                                    "typeString": "struct Poe.Record storage ref"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 142,
+                                  "name": "newRecord",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 129,
+                                  "src": "1184:9:1",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Record_$47_memory_ptr",
+                                    "typeString": "struct Poe.Record memory"
+                                  }
+                                },
+                                "src": "1166:27:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Record_$47_storage",
+                                  "typeString": "struct Poe.Record storage ref"
+                                }
+                              },
+                              "id": 144,
+                              "nodeType": "ExpressionStatement",
+                              "src": "1166:27:1"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 168,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "toggleStatus",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 113,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 112,
+                  "name": "hash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 168,
+                  "src": "831:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 111,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "831:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "830:20:1"
+            },
+            "returnParameters": {
+              "id": 114,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "858:0:1"
+            },
+            "scope": 169,
+            "src": "809:666:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 170,
+        "src": "25:1452:1"
+      }
+    ],
+    "src": "0:1478:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x3bfF0bfCE2a6630542DF02305832dcDaE8ed6C2b",
+      "transactionHash": "0x3f0458f5d508181a1e3d9a2179c6b7574fc0318f52a7cf7c35f8c2abe543ba5f"
+    }
+  },
+  "schemaVersion": "3.3.0",
+  "updatedAt": "2020-11-21T13:56:28.410Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
