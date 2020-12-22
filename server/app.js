@@ -7,7 +7,10 @@ const app = express();
 const Web3 = require('web3');
 const contArtifact = require('../client/src/artifacts/Poe.json');
 const contJson = contArtifact;
+const cors = require("cors")
 
+// app.use(cors);
+app.options('*', cors());
 // console.log(contArtifact)
 let provider = new Web3.providers.HttpProvider("http://localhost:2804");
 web3 = new Web3(provider);
@@ -50,8 +53,10 @@ app.get("/", function (req, res) {
 });
 
 app.post("/registcert", upload.single("file"), async function (req, res, next) {
-  console.log("regist certificate");
-  let readFile = fs.readFileSync(path.join(__dirname, req.file.path));
+  // console.log("regist certificate");
+  // console.log(req.file.path)
+  console.log(req)
+  let readFile = await fs.readFileSync(path.join(__dirname, req.file.path));
   // console.log(req.file.path)
   let  shaObj = new jsSHA("SHA-512", "ARRAYBUFFER");
   await shaObj.update(readFile);

@@ -21,6 +21,7 @@ function Regiscert() {
   const history = useHistory();
   const classes = useStyles();
   const [resetState, clickReset] = useState(0);
+  const [submitState, submitTrigger] = useState(false);
   console.log("regist");
   return (
     <div>
@@ -32,6 +33,7 @@ function Regiscert() {
       >
         <ArrowBackIcon fontSize="large" />
       </IconButton>
+
       <Box
         display="flex"
         flexDirection="column"
@@ -51,7 +53,7 @@ function Regiscert() {
           alignSelf="center"
           css={{ width: 670, height: 400 }}
         >
-          <Dropbox reset={resetState} />
+          <Dropbox reset={resetState} submit={submitState} />
         </Box>
 
         <Box
@@ -72,7 +74,13 @@ function Regiscert() {
             </Button>
           </Box>
           <Box mx={4}>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                submitTrigger(!submitState);
+              }}
+            >
               Submit
             </Button>
           </Box>
