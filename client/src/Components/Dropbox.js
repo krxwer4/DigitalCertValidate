@@ -76,12 +76,15 @@ function Dropbox(props) {
   useEffect(() => {
     console.log("from useEffect " + props.submit);
     const data = new FormData();
-    data.append("file", acceptedFiles[0]);
-    console.log(data)
-    axios
-      .post("http://localhost:9876/registcert", data)
-      .then(res => console.log(res))
-      .catch(console.log('err'))
+    if (acceptedFiles.length > 0) {
+      data.append("file", acceptedFiles[0]);
+      // console.log(data)
+
+      axios
+        .post("http://localhost:9876/registcert", data)
+        .then(res => console.log(res.data))
+        .catch((e) => console.log(e));
+    }
   }, [props.submit]);
 
   if (files.length > 0 && !fileAvailable) {
