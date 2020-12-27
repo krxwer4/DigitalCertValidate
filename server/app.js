@@ -13,6 +13,7 @@ app.use(cors());
 app.options('*', cors());
 // console.log(contArtifact)
 app.use(bdps.json());
+
 let provider = new Web3.providers.HttpProvider("http://localhost:2804");
 web3 = new Web3(provider);
 const contAddr = "0x3bfF0bfCE2a6630542DF02305832dcDaE8ed6C2b";
