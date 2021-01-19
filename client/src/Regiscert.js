@@ -52,7 +52,7 @@ function Regiscert() {
           p={1}
           align="center"
           alignSelf="center"
-          css={{ width: 670, height: 350 }}
+          css={{ width: 670, height: 370 }}
         >
           <Dropbox reset={resetState} submit={submitState} />
         </Box>

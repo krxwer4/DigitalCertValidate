@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { drizzleReactHooks } from "@drizzle/react-plugin";
 import { newContextComponents } from "@drizzle/react-components";
 
-
 const { useDrizzle, useDrizzleState } = drizzleReactHooks;
 const { AccountData } = newContextComponents;
 
@@ -16,6 +15,8 @@ export default () => {
       drizzleState={state}
       accounts={state.accounts}
       accountIndex={0}
+      units="ether"
+      precision={3}
     />
   );
 };
