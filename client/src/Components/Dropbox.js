@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
+import { newContextComponents } from "@drizzle/react-components";
 import { useDropzone } from "react-dropzone";
 import fileImportIcon from "../svg/upload.svg";
 import pdfIcon from "../svg/pdf.svg";
@@ -65,6 +66,7 @@ function Dropbox(props) {
 
   useEffect(() => {
     // console.log("from useEffect" + props.reset);
+    
     while (acceptedFiles.length > 0) {
       // console.log(ele);
       acceptedFiles.pop();
@@ -82,7 +84,7 @@ function Dropbox(props) {
 
       axios
         .post("http://localhost:9876/registcert", data)
-        .then(res => console.log(res.data))
+        .then((res) => console.log(res.data))
         .catch((e) => console.log(e));
     }
   }, [props.submit]);

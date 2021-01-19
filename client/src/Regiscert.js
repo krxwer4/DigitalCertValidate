@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Regiscert() {
+  
   const history = useHistory();
   const classes = useStyles();
   const [resetState, clickReset] = useState(0);
@@ -51,11 +52,10 @@ function Regiscert() {
           p={1}
           align="center"
           alignSelf="center"
-          css={{ width: 670, height: 400 }}
+          css={{ width: 670, height: 350 }}
         >
           <Dropbox reset={resetState} submit={submitState} />
         </Box>
-
         <Box
           display="flex"
           flexDirection="row"

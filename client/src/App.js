@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import history from "./history";
-
 import Menu from "./Menu";
 import Regiscert from "./Regiscert";
 import Validate from "./Validate";
