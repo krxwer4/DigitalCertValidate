@@ -2,11 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import Dump from "./dump";
-import Regiscert from "./Regiscert";
-import Validate from "./Validate";
-import Menu from "./Menu";
-import Counter from "./Components/Counter";
 import Navbar from "./Components/Navbar";
 import * as serviceWorker from "./serviceWorker";
 

@@ -33,7 +33,7 @@ const { DrizzleProvider } = drizzleReactHooks;
 
 // const { AccountData } = newContextComponents;
 
-const Navbar = ({ drizzle, drizzlState }) => {
+const Navbar = () => {
   const classes = useStyles();
 
   return (

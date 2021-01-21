@@ -1,5 +1,4 @@
 import React, { useMemo, useState, useEffect } from "react";
-import { newContextComponents } from "@drizzle/react-components";
 import { useDropzone } from "react-dropzone";
 import fileImportIcon from "../svg/upload.svg";
 import pdfIcon from "../svg/pdf.svg";
@@ -10,6 +9,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import axios from "axios";
+
 
 const baseStyle = {
   flex: 1,
@@ -40,6 +40,7 @@ const rejectStyle = {
 };
 
 function Dropbox(props) {
+
   const {
     getRootProps,
     getInputProps,
@@ -140,7 +141,7 @@ function Dropbox(props) {
             </Grid>
           </Grid>
         )}
-
+          
         {fileAvailable && (
           <List>
             <ListItem>
