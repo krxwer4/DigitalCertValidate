@@ -3,10 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { Drizzle } from "@drizzle/store";
-import { drizzleReactHooks } from "@drizzle/react-plugin";
-import Poe from "../artifacts/Poe.json";
-import LoadingContainer from "./LoadingContainer";
 import DrizzleComponent from "./DrizzleComponent"
 
 const useStyles = makeStyles((theme) => ({
@@ -21,17 +17,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const drizzleOptions = {
-  contracts: [Poe],
-  // events: {
-  //   Poe: ["Poeset"],
-  // },
-};
 
-const drizzleO = new Drizzle(drizzleOptions);
-const { DrizzleProvider } = drizzleReactHooks;
 
-// const { AccountData } = newContextComponents;
 
 const Navbar = () => {
   const classes = useStyles();
@@ -42,11 +29,7 @@ const Navbar = () => {
         <Typography variant="h6" className={classes.title}>
           Digital Certificate Validator
         </Typography>
-        <DrizzleProvider drizzle={drizzleO}>
-          <LoadingContainer>
-            <DrizzleComponent/>
-          </LoadingContainer>
-        </DrizzleProvider>
+        <DrizzleComponent/>
       </Toolbar>
     </AppBar>
   );
