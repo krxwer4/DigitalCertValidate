@@ -6,8 +6,11 @@ import Navbar from "./Components/Navbar";
 import Menu from "./Menu";
 import Regiscert from "./Regiscert";
 import Validate from "./Validate";
+// import TransHistory from "./TransHistory"
 
-function DappComponents() {
+function DappComponents(props) {
+  const { drizzle } = props;
+  // console.log(drizzle)
   useEffect(() => {
     history.listen(() => {
       console.log("wow");
@@ -17,9 +20,9 @@ function DappComponents() {
   return (
     <div className="App">
       <Router history={history}>
-        <Navbar />
+        <Navbar drizzle = {drizzle}/>
         <Switch>
-          <Route exact path="/" component={Menu} />
+          <Route exact path="/" render = {(props) => <Menu drizzle = {drizzle}/>}/>
           <Route path="/regist" component={Regiscert} />
           <Route path="/validate" component={Validate} />
         </Switch>

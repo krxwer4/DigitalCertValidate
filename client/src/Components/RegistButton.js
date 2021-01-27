@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import { green,blue } from "@material-ui/core/colors";
+import { green, blue } from "@material-ui/core/colors";
 
-const RegistButton = () => {
+const RegistButton = (props) => {
   const history = useHistory();
+  console.log(props)
   const RegistCertButStyle = withStyles((theme) => ({
     root: {
       color: theme.palette.getContrastText(green[500]),
@@ -22,15 +23,19 @@ const RegistButton = () => {
   }))(Button);
 
   return (
-    <RegistCertButStyle
-      onClick={() => {
-        history.push("/regist");
+    <Link
+      to={{
+        pathname: "/regist",
+        drizzle: props.drizzle,
       }}
-      variant="outlined"
-      color="primary"
     >
-      Regist Cert
-    </RegistCertButStyle>
+      <RegistCertButStyle
+        variant="outlined"
+        color="primary"
+      >
+        Regist Cert
+      </RegistCertButStyle>
+    </Link>
   );
 };
 

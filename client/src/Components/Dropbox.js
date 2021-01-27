@@ -9,6 +9,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import axios from "axios";
+import { drizzleReactHooks } from "@drizzle/react-plugin";
+const { useDrizzleState }  = drizzleReactHooks;
 
 
 const baseStyle = {
@@ -40,6 +42,12 @@ const rejectStyle = {
 };
 
 function Dropbox(props) {
+  const drizzle = props.drizzle
+  console.log(props)
+  const contract = drizzle.contracts.Poe;
+  console.log(contract)
+  const drizzleState = useDrizzleState((drizzleState) => drizzleState);
+  // console.log(useCacheCall('Poe','findCertificate'))
 
   const {
     getRootProps,
@@ -67,7 +75,7 @@ function Dropbox(props) {
 
   useEffect(() => {
     // console.log("from useEffect" + props.reset);
-    
+
     while (acceptedFiles.length > 0) {
       // console.log(ele);
       acceptedFiles.pop();
@@ -77,7 +85,7 @@ function Dropbox(props) {
   }, [props.reset]);
 
   useEffect(() => {
-    console.log("from useEffect " + props.submit);
+    console.log("from useEffect " + props.submitReg);
     const data = new FormData();
     if (acceptedFiles.length > 0) {
       data.append("file", acceptedFiles[0]);
@@ -85,10 +93,10 @@ function Dropbox(props) {
 
       axios
         .post("http://localhost:9876/registcert", data)
-        .then((res) => console.log(res.data))
+        .then((res) => contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]}))
         .catch((e) => console.log(e));
     }
-  }, [props.submit]);
+  }, [props.submitReg]);
 
   if (files.length > 0 && !fileAvailable) {
     console.log(acceptedFiles[0]);
@@ -141,7 +149,7 @@ function Dropbox(props) {
             </Grid>
           </Grid>
         )}
-          
+
         {fileAvailable && (
           <List>
             <ListItem>

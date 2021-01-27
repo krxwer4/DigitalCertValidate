@@ -17,8 +17,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Regiscert() {
-  
+function Regiscert(props) {
+  const drizzle  = props.location.drizzle;
+  console.log(props)
   const history = useHistory();
   const classes = useStyles();
   const [resetState, clickReset] = useState(0);
@@ -54,7 +55,7 @@ function Regiscert() {
           alignSelf="center"
           css={{ width: 670, height: 370 }}
         >
-          <Dropbox reset={resetState} submit={submitState} />
+          <Dropbox reset={resetState} submitReg={submitState} drizzle = {drizzle}/>
         </Box>
         <Box
           display="flex"

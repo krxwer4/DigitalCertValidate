@@ -13,7 +13,7 @@ const drizzleOptions = {
   // },
 };
 
-const drizzleO = new Drizzle(drizzleOptions);
+const drizzle = new Drizzle(drizzleOptions);
 const { DrizzleProvider } = drizzleReactHooks;
 
 // const { AccountData } = newContextComponents;
@@ -21,9 +21,9 @@ const { DrizzleProvider } = drizzleReactHooks;
 function App() {
 
   return (
-    <DrizzleProvider drizzle={drizzleO}>
+    <DrizzleProvider drizzle={drizzle}>
       <LoadingContainer>
-        <DappComponents/>
+        <DappComponents drizzle = {drizzle}/>
       </LoadingContainer>
     </DrizzleProvider>
   );

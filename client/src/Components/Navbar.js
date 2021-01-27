@@ -20,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Navbar = () => {
+const Navbar = (props) => {
   const classes = useStyles();
-
+  // console.log(props)
   return (
     <AppBar position="static">
       <Toolbar>

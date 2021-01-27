@@ -11,18 +11,18 @@ export default () => {
   //   accounts: state.accounts,
   //   balance: state.accountBalances[state.accounts[0]],
   // }));
-  const state = useDrizzleState((state) => state);
+  const drizzleState = useDrizzleState((drizzleState) => drizzleState);
 
   useEffect(() => {
     console.log("accout change")
-  }, [state.accounts]);
+  }, [drizzleState.accounts]);
 
-  console.log(state);
+  // console.log(drizzleState.accounts[0]);
   return (
     <AccountData
       drizzle={drizzle}
-      drizzleState={state}
-      accounts={state.accounts}
+      drizzleState={drizzleState}
+      accounts={drizzleState.accounts}
       accountIndex={0}
       units="ether"
       precision={3}

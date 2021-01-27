@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { pink, grey } from "@material-ui/core/colors";
 
-const ValidateButton = () => {
-  const history = useHistory();
+const ValidateButton = (props) => {
 
   const ValidateButStyle = withStyles((theme) => ({
     root: {
@@ -24,16 +23,16 @@ const ValidateButton = () => {
   }))(Button);
 
   return (
-    <ValidateButStyle
-      onClick={() => {
-        history.push("/validate");
+    <Link
+      to={{
+        pathname: "/validate",
+        drizzle: props.drizzle,
       }}
-      variant="outlined"
-      color="primary"
-      size="large"
     >
-      Cert Check
-    </ValidateButStyle>
+      <ValidateButStyle variant="outlined" color="primary" size="large">
+        Cert Check
+      </ValidateButStyle>
+    </Link>
   );
 };
 
