@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import { useDropzone } from "react-dropzone";
 import fileImportIcon from "../svg/upload.svg";
 import pdfIcon from "../svg/pdf.svg";
@@ -10,8 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import axios from "axios";
 import { drizzleReactHooks } from "@drizzle/react-plugin";
-const { useDrizzleState }  = drizzleReactHooks;
-
+const { useDrizzleState } = drizzleReactHooks;
 
 const baseStyle = {
   flex: 1,
@@ -42,10 +41,10 @@ const rejectStyle = {
 };
 
 function Dropbox(props) {
-  const drizzle = props.drizzle
-  console.log(props)
+  const drizzle = props.drizzle;
+  // console.log(props)
   const contract = drizzle.contracts.Poe;
-  console.log(contract)
+  // console.log(contract)
   const drizzleState = useDrizzleState((drizzleState) => drizzleState);
   // console.log(useCacheCall('Poe','findCertificate'))
 
@@ -60,6 +59,7 @@ function Dropbox(props) {
   } = useDropzone({ accept: "application/*", noClick: true, noKeyboard: true });
 
   const [fileAvailable, setFileAvailable] = useState(false);
+  const initialRender = useRef(true);
 
   const files = acceptedFiles.map((file) => (
     <ul key={file.path}>
@@ -73,9 +73,9 @@ function Dropbox(props) {
     </ul>
   ));
 
+
   useEffect(() => {
     // console.log("from useEffect" + props.reset);
-
     while (acceptedFiles.length > 0) {
       // console.log(ele);
       acceptedFiles.pop();
@@ -85,19 +85,36 @@ function Dropbox(props) {
   }, [props.reset]);
 
   useEffect(() => {
-    console.log("from useEffect " + props.submitReg);
-    const data = new FormData();
-    if (acceptedFiles.length > 0) {
-      data.append("file", acceptedFiles[0]);
-      // console.log(data)
-
-      axios
-        .post("http://localhost:9876/registcert", data)
-        .then((res) => contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]}))
-        .catch((e) => console.log(e));
+    if (initialRender.current) {
+      initialRender.current = false;
+    } else {
+      console.log("from useEffect " + props.submitReg);
+      const data = new FormData();
+      if (acceptedFiles.length > 0) {
+        data.append("file", acceptedFiles[0]);
+        // console.log(data)
+        axios
+          .post("http://localhost:9876/registcert", data)
+          .then((res) => {
+            contract.methods["addCertificate"].cacheSend(res.data, {
+              from: drizzleState.accounts[0],
+            });
+          })
+          .catch((e) => console.log(e));
+      }
+      // console.log(hash)
+      // const transaction = addCertificate(hash);
+      // console.log(transaction);
     }
+    // contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]})
     // 0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336
-    console.log(contract.methods.findCertificate("0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336").call())
+    console.log(
+      contract.methods
+        .findCertificate(
+          "0xffe4b9fe1db4a36ac0a12396cba53a5e3ffe6972de91a92524f3bb8f630131d0417f0cbeca8056a9e4e59ac6c8a92064761064fc2fe8107a178ed02f227b8299"
+        )
+        .call()
+    );
   }, [props.submitReg]);
 
   if (files.length > 0 && !fileAvailable) {
