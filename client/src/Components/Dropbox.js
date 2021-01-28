@@ -96,6 +96,8 @@ function Dropbox(props) {
         .then((res) => contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]}))
         .catch((e) => console.log(e));
     }
+    // 0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336
+    console.log(contract.methods.findCertificate("0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336").call())
   }, [props.submitReg]);
 
   if (files.length > 0 && !fileAvailable) {
