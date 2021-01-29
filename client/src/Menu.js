@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import RegistButton from "./Components/RegistButton";
 import ValidateButton from "./Components/ValidateButton";
 import HistoryButton from "./Components/HistoryButton";
@@ -18,7 +17,7 @@ const centStyle = makeStyles((theme) => ({
 function Menu(props) {
   const { drizzle } = props;
   const classes = centStyle();
-  console.log(props.drizzle);
+  // console.log(props.drizzle);
   return (
     <div>
       <Grid

@@ -59,7 +59,8 @@ function Dropbox(props) {
   } = useDropzone({ accept: "application/*", noClick: true, noKeyboard: true });
 
   const [fileAvailable, setFileAvailable] = useState(false);
-  const initialRender = useRef(true);
+  const initialRenderReset = useRef(true);
+  const initialRenderSubmit = useRef(true);
 
   const files = acceptedFiles.map((file) => (
     <ul key={file.path}>
@@ -73,22 +74,25 @@ function Dropbox(props) {
     </ul>
   ));
 
-
   useEffect(() => {
-    // console.log("from useEffect" + props.reset);
-    while (acceptedFiles.length > 0) {
-      // console.log(ele);
-      acceptedFiles.pop();
+    if (initialRenderReset.current) {
+      initialRenderReset.current = false;
+    } else {
+      // console.log("from useEffect" + props.reset);
+      while (acceptedFiles.length > 0) {
+        // console.log(ele);
+        acceptedFiles.pop();
+      }
+      setFileAvailable(false);
+      return () => console.log("reset");
     }
-    setFileAvailable(false);
-    return () => console.log("reset");
   }, [props.reset]);
 
   useEffect(() => {
-    if (initialRender.current) {
-      initialRender.current = false;
+    if (initialRenderSubmit.current) {
+      initialRenderSubmit.current = false;
     } else {
-      console.log("from useEffect " + props.submitReg);
+      console.log("useEffect submit " + props.submitReg);
       const data = new FormData();
       if (acceptedFiles.length > 0) {
         data.append("file", acceptedFiles[0]);
@@ -108,13 +112,16 @@ function Dropbox(props) {
     }
     // contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]})
     // 0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336
-    console.log(
-      contract.methods
-        .findCertificate(
-          "0xffe4b9fe1db4a36ac0a12396cba53a5e3ffe6972de91a92524f3bb8f630131d0417f0cbeca8056a9e4e59ac6c8a92064761064fc2fe8107a178ed02f227b8299"
-        )
-        .call()
-    );
+    // contract.methods
+    //   .findCertificate(
+    //     "0xffe4b9fe1db4a36ac0a12396cba53a5e3ffe6972de91a92524f3bb8f630131d0417f0cbeca8056a9e4e59ac6c8a92064761064fc2fe8107a178ed02f227b8299"
+    //   )
+    //   .call()
+    //   .then((res) => {
+    //     if (res != undefined) {
+    //       console.log(res);
+    //     }
+    //   });
   }, [props.submitReg]);
 
   if (files.length > 0 && !fileAvailable) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
@@ -8,7 +8,6 @@ const ValidateButton = (props) => {
 
   const ValidateButStyle = withStyles((theme) => ({
     root: {
-      color: theme.palette.getContrastText(pink[500]),
       backgroundColor: pink[300],
       borderColor: pink[500],
       color: grey[900],

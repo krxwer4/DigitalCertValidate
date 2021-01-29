@@ -8,7 +8,6 @@ const HistoryButton = (props) => {
 
   const HistoryButStyle = withStyles((theme) => ({
     root: {
-      color: theme.palette.getContrastText(blue[500]),
       backgroundColor: blue[300],
       borderColor: blue[500],
       color: grey[900],

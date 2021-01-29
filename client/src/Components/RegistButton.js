@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { green, blue } from "@material-ui/core/colors";
 
 const RegistButton = (props) => {
-  const history = useHistory();
-  console.log(props)
+  // console.log(props)
   const RegistCertButStyle = withStyles((theme) => ({
     root: {
       color: theme.palette.getContrastText(green[500]),

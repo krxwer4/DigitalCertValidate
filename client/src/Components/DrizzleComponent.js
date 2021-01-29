@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { drizzleReactHooks } from "@drizzle/react-plugin";
 import { newContextComponents } from "@drizzle/react-components";
 
@@ -7,16 +7,11 @@ const { AccountData } = newContextComponents;
 
 export default () => {
   const { drizzle } = useDrizzle();
-  // const state = useDrizzleState((state) => ({
-  //   accounts: state.accounts,
-  //   balance: state.accountBalances[state.accounts[0]],
+  // const drizzleState = useDrizzleState((drizzleState) => ({
+  //   accounts: drizzleState.accounts,
+  //   balance: drizzleState.accountBalances[drizzleState.accounts[0]],
   // }));
   const drizzleState = useDrizzleState((drizzleState) => drizzleState);
-
-  useEffect(() => {
-    console.log("accout change")
-  }, [drizzleState.accounts]);
-
   // console.log(drizzleState.accounts[0]);
   return (
     <AccountData
