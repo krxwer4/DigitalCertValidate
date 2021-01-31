@@ -49,6 +49,12 @@ function Validate(props) {
 
   const [resetState, clickReset] = useState(false);
   const [validateState, validateTrigger] = useState(false);
+  const [pubValue, setPubValue] = useState("");
+
+  const handleChange = (event) => {
+    setPubValue(event.target.value);
+  };
+
   return (
     <div>
       <IconButton
@@ -76,6 +82,7 @@ function Validate(props) {
             picsize={picUploadSize}
             dropboxStyle={dropboxStyle}
             validate={validateState}
+            publicKey={pubValue}
             reset={resetState}
             drizzle={drizzle}
           />
@@ -97,16 +104,18 @@ function Validate(props) {
         <Box
           align="center"
           alignSelf="center"
-          css={{ width: 600, height: 200 }}
+          css={{ width: 600, height: 100 }}
         >
           <TextField
             required
             id="outlined-search"
             label="Public Key"
+            value={pubValue}
             type="text"
             variant="outlined"
             fullWidth
             helperText="School's Public Key"
+            onChange={handleChange}
           />
         </Box>
 
@@ -128,9 +137,19 @@ function Validate(props) {
             </Button>
           </Box>
           <Box mx={4}>
-            <Button variant="contained" color="primary" onClick={()=>{
-              validateTrigger(!validateState)
-            }}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                if(pubValue != ""){
+                  validateTrigger(!validateState);
+                }
+                else{
+                  console.log("pls enter pubkey")
+                }
+                
+              }}
+            >
               Submit
             </Button>
           </Box>

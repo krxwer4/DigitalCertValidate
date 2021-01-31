@@ -82,7 +82,7 @@ function Dropbox(props) {
         data.append("file", acceptedFiles[0]);
         // console.log(data)
         axios
-          .post("http://localhost:9876/registcert", data)
+          .post("http://localhost:9876/gethash", data)
           .then((res) => {
             contract.methods["addCertificate"].cacheSend(res.data, {
               from: drizzleState.accounts[0],
@@ -91,23 +91,7 @@ function Dropbox(props) {
           .catch((e) => console.log(e));
         history.push("/regsuccess");
       }
-
-      // console.log(hash)
-      // const transaction = addCertificate(hash);
-      // console.log(transaction);
     }
-    // contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]})
-    // 0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336
-    // contract.methods
-    //   .findCertificate(
-    //     "0xffe4b9fe1db4a36ac0a12396cba53a5e3ffe6972de91a92524f3bb8f630131d0417f0cbeca8056a9e4e59ac6c8a92064761064fc2fe8107a178ed02f227b8299"
-    //   )
-    //   .call()
-    //   .then((res) => {
-    //     if (res != undefined) {
-    //       console.log(res);
-    //     }
-    //   });
   }, [props.submitReg]);
 
   useEffect(() => {
@@ -115,32 +99,31 @@ function Dropbox(props) {
       initialRenderSubmit.current = false;
     } else {
       console.log("useEffect validate " + props.validate);
+      // console.log(props.publicKey)
       const data = new FormData();
       if (acceptedFiles.length > 0) {
         data.append("file", acceptedFiles[0]);
         // console.log(data)
         axios
-          .post("http://localhost:9876/registcert", data)
+          .post("http://localhost:9876/gethash", data)
           .then((res) => {
-            contract.methods["addCertificate"].cacheSend(res.data, {
-              from: drizzleState.accounts[0],
-            });
+            contract.methods
+              .findCertificate(res.data)
+              .call()
+              .then((res) => {
+                if (res[2] != "0" && res[1] === props.publicKey) {
+                  console.log("Available");
+                }
+                else{
+                  console.log("Not Available")
+                }
+              });
           })
           .catch((e) => console.log(e));
       }
     }
     // contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]})
     // 0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336
-    // contract.methods
-    //   .findCertificate(
-    //     "0xffe4b9fe1db4a36ac0a12396cba53a5e3ffe6972de91a92524f3bb8f630131d0417f0cbeca8056a9e4e59ac6c8a92064761064fc2fe8107a178ed02f227b8299"
-    //   )
-    //   .call()
-    //   .then((res) => {
-    //     if (res != undefined) {
-    //       console.log(res);
-    //     }
-    //   });
   }, [props.validate]);
 
   if (files.length > 0 && !fileAvailable) {

@@ -54,7 +54,7 @@ app.get("/", function (req, res) {
   // res.send("<p>hello</p>");
 });
 
-app.post("/registcert", upload.single("file"), async function (req, res, next) {
+app.post("/gethash", upload.single("file"), async function (req, res, next) {
   // console.log("regist certificate");
   // console.log(req.file.path)
   // console.log(req.file.filename)
