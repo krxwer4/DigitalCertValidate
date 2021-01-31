@@ -13,23 +13,6 @@ import axios from "axios";
 import { drizzleReactHooks } from "@drizzle/react-plugin";
 const { useDrizzleState } = drizzleReactHooks;
 
-
-const baseStyle = {
-  flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  // alignItems: "center",
-  padding: "20px",
-  height: 300,
-  borderWidth: 5,
-  borderRadius: 2,
-  borderColor: "darkgray",
-  borderStyle: "dashed",
-  backgroundColor: "#CECECE",
-  color: "#000000",
-  transition: "border .24s ease-in-out",
-};
-
 const activeStyle = {
   borderColor: "gold",
 };
@@ -44,11 +27,10 @@ const rejectStyle = {
 
 function Dropbox(props) {
   const drizzle = props.drizzle;
-  // console.log(props)
   const contract = drizzle.contracts.Poe;
-  // console.log(contract)
   const drizzleState = useDrizzleState((drizzleState) => drizzleState);
-  // console.log(useCacheCall('Poe','findCertificate'))
+  const baseStyle = props.dropboxStyle;
+  const picsize = props.picsize;
   const history = useHistory();
   const {
     getRootProps,
@@ -109,7 +91,7 @@ function Dropbox(props) {
           .catch((e) => console.log(e));
         history.push("/regsuccess");
       }
-      
+
       // console.log(hash)
       // const transaction = addCertificate(hash);
       // console.log(transaction);
@@ -127,6 +109,39 @@ function Dropbox(props) {
     //     }
     //   });
   }, [props.submitReg]);
+
+  useEffect(() => {
+    if (initialRenderSubmit.current) {
+      initialRenderSubmit.current = false;
+    } else {
+      console.log("useEffect validate " + props.validate);
+      const data = new FormData();
+      if (acceptedFiles.length > 0) {
+        data.append("file", acceptedFiles[0]);
+        // console.log(data)
+        axios
+          .post("http://localhost:9876/registcert", data)
+          .then((res) => {
+            contract.methods["addCertificate"].cacheSend(res.data, {
+              from: drizzleState.accounts[0],
+            });
+          })
+          .catch((e) => console.log(e));
+      }
+    }
+    // contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]})
+    // 0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336
+    // contract.methods
+    //   .findCertificate(
+    //     "0xffe4b9fe1db4a36ac0a12396cba53a5e3ffe6972de91a92524f3bb8f630131d0417f0cbeca8056a9e4e59ac6c8a92064761064fc2fe8107a178ed02f227b8299"
+    //   )
+    //   .call()
+    //   .then((res) => {
+    //     if (res != undefined) {
+    //       console.log(res);
+    //     }
+    //   });
+  }, [props.validate]);
 
   if (files.length > 0 && !fileAvailable) {
     console.log(acceptedFiles[0]);
@@ -160,7 +175,7 @@ function Dropbox(props) {
                 <img
                   src={fileImportIcon}
                   alt="upload icon made by Freepik (www.freepik.com) from www.flaticon.com"
-                  width="32%"
+                  width={picsize}
                 />
                 <p style={{ fontSize: 18 }}>Drag your files here or</p>
               </Box>

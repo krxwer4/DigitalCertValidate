@@ -17,13 +17,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const dropboxStyle = {
+  flex: 1,
+  display: "flex",
+  flexDirection: "column",
+  // alignItems: "center",
+  padding: "20px",
+  height: 300,
+  borderWidth: 5,
+  borderRadius: 2,
+  borderColor: "darkgray",
+  borderStyle: "dashed",
+  backgroundColor: "#CECECE",
+  color: "#000000",
+  transition: "border .24s ease-in-out",
+};
+
 function Regiscert(props) {
-  const drizzle  = props.location.drizzle;
-  console.log(drizzle)
+  const drizzle = props.location.drizzle;
+  console.log(drizzle);
   const history = useHistory();
   const classes = useStyles();
-  const [resetState, clickReset] = useState(0);
+  const [resetState, clickReset] = useState(false);
   const [submitState, submitTrigger] = useState(false);
+  const uploadPicSize = "32%";
   console.log("regist");
   return (
     <div>
@@ -55,7 +72,13 @@ function Regiscert(props) {
           alignSelf="center"
           css={{ width: 670, height: 370 }}
         >
-          <Dropbox reset={resetState} submitReg={submitState} drizzle = {drizzle}/>
+          <Dropbox
+            picsize={uploadPicSize}
+            dropboxStyle={dropboxStyle}
+            reset={resetState}
+            submitReg={submitState}
+            drizzle={drizzle}
+          />
         </Box>
         <Box
           display="flex"
@@ -68,7 +91,7 @@ function Regiscert(props) {
             <Button
               variant="contained"
               onClick={() => {
-                clickReset(resetState + 1);
+                clickReset(!resetState);
               }}
             >
               Reset

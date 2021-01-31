@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Dropbox from "./Components/Dropbox";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -24,10 +25,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Validate() {
+const dropboxStyle = {
+  flex: 1,
+  display: "flex",
+  flexDirection: "column",
+  // alignItems: "center",
+  padding: "20px",
+  height: 200,
+  borderWidth: 5,
+  borderRadius: 2,
+  borderColor: "darkgray",
+  borderStyle: "dashed",
+  backgroundColor: "#CECECE",
+  color: "#000000",
+  transition: "border .24s ease-in-out",
+};
+
+function Validate(props) {
+  const drizzle = props.location.drizzle;
   const classes = useStyles();
   const history = useHistory();
+  const picUploadSize = "20%";
 
+  const [resetState, clickReset] = useState(false);
+  const [validateState, validateTrigger] = useState(false);
   return (
     <div>
       <IconButton
@@ -50,14 +71,14 @@ function Validate() {
         <Box p={1} textAlign="center">
           <h3 text-align="center">Upload your Certificate file to validate.</h3>
         </Box>
-        <Box
-          p={1}
-          align="center"
-          alignSelf="center"
-          bgcolor="grey.300"
-          css={{ width: 500, height: 200 }}
-        >
-          details
+        <Box p={1} align="center" alignSelf="center">
+          <Dropbox
+            picsize={picUploadSize}
+            dropboxStyle={dropboxStyle}
+            validate={validateState}
+            reset={resetState}
+            drizzle={drizzle}
+          />
         </Box>
         <Box m={1} p={1} align="center" alignSelf="center">
           <input
@@ -97,10 +118,19 @@ function Validate() {
           bgcolor="background.paper"
         >
           <Box mx={4}>
-            <Button variant="contained">Reset</Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                clickReset(!resetState);
+              }}
+            >
+              Reset
+            </Button>
           </Box>
           <Box mx={4}>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" onClick={()=>{
+              validateTrigger(!validateState)
+            }}>
               Submit
             </Button>
           </Box>
