@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Regiscert(props) {
   const drizzle  = props.location.drizzle;
-  console.log(props)
+  console.log(drizzle)
   const history = useHistory();
   const classes = useStyles();
   const [resetState, clickReset] = useState(0);

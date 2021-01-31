@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar";
 import Menu from "./Menu";
 import Regiscert from "./Regiscert";
 import Validate from "./Validate";
+import RegCertSuccess from "./Components/RegCertSuccess";
 // import TransHistory from "./TransHistory"
 
 function DappComponents(props) {
@@ -20,11 +21,16 @@ function DappComponents(props) {
   return (
     <div className="App">
       <Router history={history}>
-        <Navbar drizzle = {drizzle}/>
+        <Navbar drizzle={drizzle} />
         <Switch>
-          <Route exact path="/" render = {(props) => <Menu drizzle = {drizzle}/>}/>
+          <Route
+            exact
+            path="/"
+            render={(props) => <Menu drizzle={drizzle} />}
+          />
           <Route path="/regist" component={Regiscert} />
           <Route path="/validate" component={Validate} />
+          <Route path="/regsuccess" component={RegCertSuccess} />
         </Switch>
       </Router>
     </div>

@@ -1,8 +1,9 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
-RegCertSuccess = () => {
+const RegCertSuccess = () => {
   return (
     <div>
       <Box
@@ -26,25 +27,29 @@ RegCertSuccess = () => {
           bgcolor="background.paper"
         >
           <Box mx={4}>
-            <Button
-              variant="contained"
-              onClick={() => {
-                console.log("wait for edit");
-              }}
-            >
-              Menu
-            </Button>
+            <Link to={{ pathname: "/" }}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  console.log("wait for edit");
+                }}
+              >
+                Menu
+              </Button>
+            </Link>
           </Box>
           <Box mx={4}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                console.log("wait for edit too");
-              }}
-            >
-              View History
-            </Button>
+            <Link to={{ pathname: "/" }}>
+              <Button
+                variant="contained"
+                color = "primary"
+                onClick={() => {
+                  console.log("wait for edit");
+                }}
+              >
+                View History
+              </Button>
+            </Link>
           </Box>
         </Box>
       </Box>

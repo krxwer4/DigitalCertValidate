@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import fileImportIcon from "../svg/upload.svg";
 import pdfIcon from "../svg/pdf.svg";
@@ -11,6 +12,7 @@ import Box from "@material-ui/core/Box";
 import axios from "axios";
 import { drizzleReactHooks } from "@drizzle/react-plugin";
 const { useDrizzleState } = drizzleReactHooks;
+
 
 const baseStyle = {
   flex: 1,
@@ -47,7 +49,7 @@ function Dropbox(props) {
   // console.log(contract)
   const drizzleState = useDrizzleState((drizzleState) => drizzleState);
   // console.log(useCacheCall('Poe','findCertificate'))
-
+  const history = useHistory();
   const {
     getRootProps,
     getInputProps,
@@ -105,7 +107,9 @@ function Dropbox(props) {
             });
           })
           .catch((e) => console.log(e));
+        history.push("/regsuccess");
       }
+      
       // console.log(hash)
       // const transaction = addCertificate(hash);
       // console.log(transaction);
