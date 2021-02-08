@@ -111,7 +111,7 @@ function Dropbox(props) {
               .findCertificate(res.data)
               .call()
               .then((res) => {
-                if (res[2] != "0" && res[1] === props.publicKey) {
+                if (res[2] !== "0" && res[1] === props.publicKey) {
                   console.log("Available");
                 }
                 else{
