@@ -45,6 +45,7 @@ function Dropbox(props) {
   const [fileAvailable, setFileAvailable] = useState(false);
   const initialRenderReset = useRef(true);
   const initialRenderSubmit = useRef(true);
+  const initialRenderValidate = useRef(true);
 
   const files = acceptedFiles.map((file) => (
     <ul key={file.path}>
@@ -77,12 +78,13 @@ function Dropbox(props) {
       initialRenderSubmit.current = false;
     } else {
       console.log("useEffect submit " + props.submitReg);
+      console.log(drizzle)
       const data = new FormData();
       if (acceptedFiles.length > 0) {
         data.append("file", acceptedFiles[0]);
         // console.log(data)
         axios
-          .post("http://localhost:9876/gethash", data)
+          .post("http://localhost:9876/registcert", data)
           .then((res) => {
             contract.methods["addCertificate"].cacheSend(res.data, {
               from: drizzleState.accounts[0],
@@ -95,8 +97,8 @@ function Dropbox(props) {
   }, [props.submitReg]);
 
   useEffect(() => {
-    if (initialRenderSubmit.current) {
-      initialRenderSubmit.current = false;
+    if (initialRenderValidate.current) {
+      initialRenderValidate.current = false;
     } else {
       console.log("useEffect validate " + props.validate);
       // console.log(props.publicKey)

@@ -1,20 +1,37 @@
+const HDWalletProvider = require('truffle-hdwallet-provider')
+require('dotenv').config()
 // const path = require("path");
 
+console.log(process.env.INFURA_KEY)
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
   contracts_build_directory: "./client/src/artifacts/",
   networks: {
-    development: {
-      host: "127.0.0.1",
-      port: 2805,
-      network_id: "*",
-    },
-  },
+        development: {
+          host: '127.0.0.1',
+          port: process.env.GANACHE_PORT,
+          network_id: '*'
+        },
+        test: {
+          host: '127.0.0.1',
+          port: process.env.GANACHE_PORT,
+          network_id: '*'
+        },
+        rinkeby: {
+          provider: function() {
+            return new HDWalletProvider(
+              // process.env.MNEMONIC,
+              process.env.PRIVATE_KEY,
+              `https://rinkeby.infura.io/v3/${process.env.INFURA_KEY}`
+            )
+          },
+          network_id: 4,
+          skipDryRun: true,
+          gas: 4000000 //make sure this gas allocation isn't over 4M, which is the max
+        }
+      }
 };
-
-// const HDWalletProvider = require('truffle-hdwallet-provider')
-// require('dotenv').config()
 
 // module.exports = {
 //   networks: {
@@ -28,11 +45,11 @@ module.exports = {
 //       port: process.env.GANACHE_PORT,
 //       network_id: '*'
 //     },
-//     ropsten: {
+//     rinkeby: {
 //       provider: function() {
 //         return new HDWalletProvider(
 //           process.env.PRIVATE_KEY,
-//           `https://ropsten.infura.io/v3/${process.env.INFURA_KEY}`
+//           `https://rinkeby.infura.io/v3/${process.env.INFURA_KEY}`
 //         )
 //       },
 //       network_id: 3,
