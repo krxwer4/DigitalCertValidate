@@ -84,7 +84,7 @@ function Dropbox(props) {
         data.append("file", acceptedFiles[0]);
         // console.log(data)
         axios
-          .post("http://localhost:9876/registcert", data)
+          .post("http://localhost:9876/gethash", data)
           .then((res) => {
             contract.methods["addCertificate"].cacheSend(res.data, {
               from: drizzleState.accounts[0],

@@ -6,59 +6,40 @@ const bdps = require("body-parser");
 const app = express();
 const Web3 = require("web3");
 const myContract = require("../client/src/artifacts/Poe.json");
-const HDWalletProvider = require('truffle-hdwallet-provider')
+const HDWalletProvider = require("truffle-hdwallet-provider");
 // const contJson = myContract;
 const cors = require("cors");
-require('dotenv').config()
+require("dotenv").config();
 
 app.use(cors());
 app.options("*", cors());
-// console.log(contArtifact)
 app.use(bdps.json());
 
-// console.log(process.env.MNEMONIC)
 // const provider = new Web3.providers.HttpProvider("http://localhost:2805");
-const provider = new HDWalletProvider(process.env.MNEMONIC,"https://rinkeby.infura.io/v3/b7a05df5e4ff4c05b767ad142933054e")
-const web3 = new Web3(provider);
-var id = {}
-var contract = {}
-const account = '0xe084FeA965b591a8AB68506FBafd66682DAda026'
+// const account = '0xe084FeA965b591a8AB68506FBafd66682DAda026'
 
-const init = async () => {
-  id = await web3.eth.net.getId();
-  const deployNetwork = myContract.networks[id];
-  contract = new web3.eth.Contract(myContract.abi, deployNetwork.address);
-  // contract = new web3.eth.Contract(myContract.abi);
-  console.log(contract.methods)
-  // contract = await contract.deploy({data:myContract.bytecode}).send({from:account})
+const init = async (pvk) => {
+  const provider = new HDWalletProvider(
+    // process.env.MNEMONIC,
+    pvk,
+    "https://rinkeby.infura.io/v3/b7a05df5e4ff4c05b767ad142933054e"
+  );
+  const web3 = new Web3(provider);
+
+  return web3;
 };
 
-init();
+// console.log(contract.methods.findCertificate(hashFile).call())
 
-// var getSslCertificate = require("get-ssl-certificate");
-// getCert = async () => {
-//   await getSslCertificate.get(req.body.link).then(function (certificate) {
-//     console.log(certificate);
-
-//     console.log(certificate.issuer);
-
-//     console.log(certificate.valid_from);
-
-//     console.log(certificate.valid_to);
-
-//     console.log(certificate.pemEncoded);
-//   });
-// };
-
-const hashing = async (file) =>{
+const hashing = async (file) => {
   let readFile = await fs.readFileSync(path.join(__dirname, file.path));
   // console.log(req.file.path)
   let shaObj = new jsSHA("SHA-512", "ARRAYBUFFER");
   await shaObj.update(readFile);
   let hashFile = "0x" + (await shaObj.getHash("HEX"));
-  
-  return hashFile
-}
+
+  return hashFile;
+};
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -77,20 +58,35 @@ app.get("/", function (req, res) {
   // res.send("<p>hello</p>");
 });
 
+app.post("/gethash", upload.single("file"), async function (req, res, next) {
+  const hashFile = await hashing(req.file);
+  res.send(hashFile);
+});
+
 app.post("/registcert", upload.single("file"), async function (req, res, next) {
   // console.log(req.body.account)
-  hashFile = await hashing(req.file);
+  const hashFile = await hashing(req.file);
+  console.log(hashFile);
+  const web3 = await init(req.body.pvk);
+  const id = await web3.eth.net.getId();
+  const deployNetwork = myContract.networks[id];
+  const contract = new web3.eth.Contract(myContract.abi, deployNetwork.address);
+  console.log(contract.methods)
+  const account = await web3.eth.getAccounts();
   console.log(account)
-  if (req.file.filename.length > 0 && account !== 'undefine') {
+  if (req.file.filename.length > 0 && account !== "undefine") {
     const receipt = await contract.methods.addCertificate(hashFile).send({
-      from: account,
+      from: account[0],
     });
-
-    // res.send(hashfile);
+    console.log(receipt);
     res.send(receipt);
   } else {
     res.status(400).json("regist err");
   }
+  
+  //0x05344357796d6ddf4933de1eeb3a164ac0c71da602bac87d7831ef984073b8cb9f6c2c0300df7fe37eb8c55ff1f19324441f66b6b04a73f55f918dc260441796
+  // const read = await contract.methods.findCertificate(hashFile).call();
+  // console.log(read);
 });
 
 app.post("/registweb", function (req, res) {
