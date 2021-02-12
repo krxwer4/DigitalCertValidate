@@ -1,5 +1,6 @@
 const HDWalletProvider = require("truffle-hdwallet-provider");
 require("dotenv").config();
+// npm install -g truffle-hdwallet-provider dotenv
 // const path = require("path");
 
 console.log(process.env.INFURA_KEY);
