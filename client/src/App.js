@@ -1,29 +1,31 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import history from "./history";
+import { Drizzle } from "@drizzle/store";
+import { drizzleReactHooks } from "@drizzle/react-plugin";
+import Poe from "./artifacts/Poe.json";
+import LoadingContainer from "./Components/LoadingContainer";
+import DappComponents from "./DappComponents";
 
-import Menu from "./Menu";
-import Regiscert from "./Regiscert";
-import Validate from "./Validate";
+const drizzleOptions = {
+  contracts: [Poe],
+  // events: {
+  //   Poe: ["Poeset"],
+  // },
+};
+
+const drizzle = new Drizzle(drizzleOptions);
+const { DrizzleProvider } = drizzleReactHooks;
+
+// const { AccountData } = newContextComponents;
 
 function App() {
-  useEffect(() => {
-    history.listen(() => {
-      console.log("wow");
-    });
-  }, []);
 
   return (
-    <div className="App">
-      <Router history={history}>
-        <Switch>
-          <Route exact path="/" component={Menu} />
-          <Route path="/regist" component={Regiscert} />
-          <Route path="/validate" component={Validate} />
-        </Switch>
-      </Router>
-    </div>
+    <DrizzleProvider drizzle={drizzle}>
+      <LoadingContainer>
+        <DappComponents drizzle = {drizzle}/>
+      </LoadingContainer>
+    </DrizzleProvider>
   );
 }
 

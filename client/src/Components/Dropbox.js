@@ -1,4 +1,5 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import fileImportIcon from "../svg/upload.svg";
 import pdfIcon from "../svg/pdf.svg";
@@ -9,22 +10,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import axios from "axios";
-
-const baseStyle = {
-  flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  // alignItems: "center",
-  padding: "20px",
-  height: 300,
-  borderWidth: 5,
-  borderRadius: 2,
-  borderColor: "darkgray",
-  borderStyle: "dashed",
-  backgroundColor: "#CECECE",
-  color: "#000000",
-  transition: "border .24s ease-in-out",
-};
+import { drizzleReactHooks } from "@drizzle/react-plugin";
+const { useDrizzleState } = drizzleReactHooks;
 
 const activeStyle = {
   borderColor: "gold",
@@ -39,6 +26,12 @@ const rejectStyle = {
 };
 
 function Dropbox(props) {
+  const drizzle = props.drizzle;
+  const contract = drizzle.contracts.Poe;
+  const drizzleState = useDrizzleState((drizzleState) => drizzleState);
+  const baseStyle = props.dropboxStyle;
+  const picsize = props.picsize;
+  const history = useHistory();
   const {
     getRootProps,
     getInputProps,
@@ -50,6 +43,9 @@ function Dropbox(props) {
   } = useDropzone({ accept: "application/*", noClick: true, noKeyboard: true });
 
   const [fileAvailable, setFileAvailable] = useState(false);
+  const initialRenderReset = useRef(true);
+  const initialRenderSubmit = useRef(true);
+  const initialRenderValidate = useRef(true);
 
   const files = acceptedFiles.map((file) => (
     <ul key={file.path}>
@@ -64,28 +60,73 @@ function Dropbox(props) {
   ));
 
   useEffect(() => {
-    // console.log("from useEffect" + props.reset);
-    while (acceptedFiles.length > 0) {
-      // console.log(ele);
-      acceptedFiles.pop();
+    if (initialRenderReset.current) {
+      initialRenderReset.current = false;
+    } else {
+      // console.log("from useEffect" + props.reset);
+      while (acceptedFiles.length > 0) {
+        // console.log(ele);
+        acceptedFiles.pop();
+      }
+      setFileAvailable(false);
+      return () => console.log("reset");
     }
-    setFileAvailable(false);
-    return () => console.log("reset");
   }, [props.reset]);
 
   useEffect(() => {
-    console.log("from useEffect " + props.submit);
-    const data = new FormData();
-    if (acceptedFiles.length > 0) {
-      data.append("file", acceptedFiles[0]);
-      // console.log(data)
-
-      axios
-        .post("http://localhost:9876/registcert", data)
-        .then(res => console.log(res.data))
-        .catch((e) => console.log(e));
+    if (initialRenderSubmit.current) {
+      initialRenderSubmit.current = false;
+    } else {
+      console.log("useEffect submit " + props.submitReg);
+      console.log(drizzle)
+      const data = new FormData();
+      if (acceptedFiles.length > 0) {
+        data.append("file", acceptedFiles[0]);
+        // console.log(data)
+        axios
+          .post("http://localhost:9876/gethash", data)
+          .then((res) => {
+            contract.methods["addCertificate"].cacheSend(res.data, {
+              from: drizzleState.accounts[0],
+            });
+          })
+          .catch((e) => console.log(e));
+        history.push("/regsuccess");
+      }
     }
-  }, [props.submit]);
+  }, [props.submitReg]);
+
+  useEffect(() => {
+    if (initialRenderValidate.current) {
+      initialRenderValidate.current = false;
+    } else {
+      console.log("useEffect validate " + props.validate);
+      // console.log(props.publicKey)
+      const data = new FormData();
+      if (acceptedFiles.length > 0) {
+        data.append("file", acceptedFiles[0]);
+        // console.log(data)
+        axios
+          .post("http://localhost:9876/gethash", data)
+          .then((res) => {
+            contract.methods
+              .findCertificate(res.data)
+              .call()
+              .then((res) => {
+                if (res[2] !== "0" && res[1] === props.publicKey) {
+                  console.log("Available");
+                }
+                else{
+                  console.log("Not Available")
+                }
+              });
+          })
+          .catch((e) => console.log(e));
+      }
+    }
+    // contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]})
+    // 0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336
+  }, [props.validate]);
 
   if (files.length > 0 && !fileAvailable) {
     console.log(acceptedFiles[0]);
@@ -119,7 +160,7 @@ function Dropbox(props) {
                 <img
                   src={fileImportIcon}
                   alt="upload icon made by Freepik (www.freepik.com) from www.flaticon.com"
-                  width="32%"
+                  width={picsize}
                 />
                 <p style={{ fontSize: 18 }}>Drag your files here or</p>
               </Box>

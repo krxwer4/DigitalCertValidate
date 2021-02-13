@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import RegistButton from "./Components/RegistButton";
 import ValidateButton from "./Components/ValidateButton";
 import HistoryButton from "./Components/HistoryButton";
@@ -15,9 +14,10 @@ const centStyle = makeStyles((theme) => ({
   },
 }));
 
-function Menu() {
+function Menu(props) {
+  const { drizzle } = props;
   const classes = centStyle();
-
+  // console.log(props.drizzle);
   return (
     <div>
       <Grid
@@ -37,10 +37,10 @@ function Menu() {
             spacing={5}
           >
             <Grid item xs={6}>
-              <WebRegistButton />
+              <WebRegistButton drizzle = {drizzle}/>
             </Grid>
             <Grid item xs={6}>
-              <RegistButton />
+              <RegistButton drizzle = {drizzle}/>
             </Grid>
           </Grid>
         </Grid>
@@ -53,10 +53,10 @@ function Menu() {
             spacing={5}
           >
             <Grid item xs={6}>
-              <ValidateButton />
+              <ValidateButton drizzle = {drizzle}/>
             </Grid>
             <Grid item xs={6}>
-              <HistoryButton />
+              <HistoryButton drizzle = {drizzle}/>
             </Grid>
           </Grid>
         </Grid>
