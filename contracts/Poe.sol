@@ -12,9 +12,9 @@ contract Poe {
   }
   function isValidHash(string memory hash) private pure returns(bool){
     bytes memory b = bytes(hash);
-    uint hashLength = 10;
+    uint hashLength = 128;
     if(b.length != hashLength) return false;
-    for (uint i=0; i<64; i++) {
+    for (uint i=0; i<hashLength; i++) {
         if (b[i] < "0") return false;
         if (b[i] > "9" && b[i] <"a") return false;
         if (b[i] > "f") return false;
