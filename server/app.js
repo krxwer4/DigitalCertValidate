@@ -64,31 +64,35 @@ app.post("/gethash", upload.single("file"), async function (req, res, next) {
 });
 
 app.post("/registcert", upload.single("file"), async function (req, res, next) {
+  // if (req.secure) {
+  //   console.log("secure");
+  // } else if (!req.secure) {
+  //   console.log("not secure");
+  // }
   // console.log(req.body.account)
-  const hashFile = await hashing(req.file);
-  console.log(hashFile);
-  const web3 = await init(req.body.pvk)
-    .then(console.log("provider create"))
-    .catch("can't create provider");
-  const id = await web3.eth.net.getId();
-  const deployNetwork = myContract.networks[id];
-  const contract = new web3.eth.Contract(myContract.abi, deployNetwork.address);
-  // console.log(contract.methods);
-  const account = await web3.eth.getAccounts();
-  console.log(account);
-  if (req.file.filename.length > 0 && account !== "undefine") {
-    const receipt = await contract.methods.addCertificate(hashFile).send({
-      from: account[0],
-    });
-    console.log(receipt);
-    res.send(receipt);
-  } else {
-    res.status(400).json("regist err");
-  }
-
-  //0x05344357796d6ddf4933de1eeb3a164ac0c71da602bac87d7831ef984073b8cb9f6c2c0300df7fe37eb8c55ff1f19324441f66b6b04a73f55f918dc260441796
-  // const read = await contract.methods.findCertificate(hashFile).call();
-  // console.log(read);
+    const hashFile = await hashing(req.file);
+    console.log(hashFile);
+    const web3 = await init(req.body.pvk)
+      .then(console.log("provider create"))
+      .catch("can't create provider");
+    const id = await web3.eth.net.getId();
+    const deployNetwork = myContract.networks[id];
+    const contract = new web3.eth.Contract(
+      myContract.abi,
+      deployNetwork.address
+    );
+    // console.log(contract.methods);
+    const account = await web3.eth.getAccounts();
+    console.log(account);
+    if (req.file.filename.length > 0 && account !== "undefine") {
+      const receipt = await contract.methods.addCertificate(hashFile).send({
+        from: account[0],
+      });
+      console.log(receipt);
+      res.send(receipt);
+    } else {
+      res.status(400).json("regist err");
+    }
 });
 
 app.post(
@@ -96,9 +100,50 @@ app.post(
   upload.single("file"),
   async function (req, res, next) {
     // console.log(req.body.account)
+    try {
+      const hashFile = await hashing(req.file);
+      console.log(hashFile);
+      const web3 = await init(process.env.MNEMONIC)
+        .then(console.log("provider create"))
+        .catch("can't create provider");
+      const id = await web3.eth.net.getId();
+      const deployNetwork = myContract.networks[id];
+      const contract = new web3.eth.Contract(
+        myContract.abi,
+        deployNetwork.address
+      );
+      // console.log(contract.methods);
+      const account = await web3.eth.getAccounts();
+      // console.log(account);
+      if (req.file.filename.length > 0 && account !== "undefine") {
+        const receipt = await contract.methods.findCertificate(hashFile).call();
+        console.log(receipt);
+        if (receipt[0]) {
+          if (receipt[1] === req.body.pubkey) {
+            res.send(receipt);
+          } else if (receipt[1] !== req.body.pubkey) {
+            res.send(
+              `we have this certificate on blockchain but not regist by this pubkey : ${req.body.pubkey}`
+            );
+          }
+        } else if (!receipt[0]) {
+          res.send("not validate");
+        }
+      } else {
+        res.status(400).json("validate err");
+      }
+    } catch (err) {
+      console.log(`validate error : ${err}`);
+    }
+  }
+);
+
+app.post("/togglecert", upload.single("file"), async function (req, res, next) {
+  // console.log(req.body.account)
+  try {
     const hashFile = await hashing(req.file);
     console.log(hashFile);
-    const web3 = await init(process.env.MNEMONIC)
+    const web3 = await init(req.body.pvk)
       .then(console.log("provider create"))
       .catch("can't create provider");
     const id = await web3.eth.net.getId();
@@ -111,56 +156,39 @@ app.post(
     const account = await web3.eth.getAccounts();
     // console.log(account);
     if (req.file.filename.length > 0 && account !== "undefine") {
-      const receipt = await contract.methods.findCertificate(hashFile).call();
+      const receipt = await contract.methods
+        .toggleStatus(hashFile)
+        .send({ from: account[0] });
       console.log(receipt);
-      if (receipt[0]) {
-        if (receipt[1] === req.body.pubkey) {
-          res.send(receipt);
-        } else if (receipt[1] !== req.body.pubkey) {
-          res.send(
-            `we have this certificate on blockchain but not regist by this pubkey : ${req.body.pubkey}`
-          );
-        }
-      } else if (!receipt[0]) {
-        res.send("not validate");
-      }
+      res.send(`${hashFile}\'s status toggled`);
     } else {
       res.status(400).json("validate err");
     }
-  }
-);
-
-app.post("/togglecert", upload.single("file"), async function (req, res, next) {
-  // console.log(req.body.account)
-  const hashFile = await hashing(req.file);
-  console.log(hashFile);
-  const web3 = await init(req.body.pvk)
-    .then(console.log("provider create"))
-    .catch("can't create provider");
-  const id = await web3.eth.net.getId();
-  const deployNetwork = myContract.networks[id];
-  const contract = new web3.eth.Contract(myContract.abi, deployNetwork.address);
-  // console.log(contract.methods);
-  const account = await web3.eth.getAccounts();
-  // console.log(account);
-  if (req.file.filename.length > 0 && account !== "undefine") {
-    const receipt = await contract.methods
-      .toggleStatus(hashFile)
-      .send({ from: account[0] });
-    console.log(receipt);
-    res.send(`${hashFile}\'s status toggled`)
-  } else {
-    res.status(400).json("validate err");
+  } catch (err) {
+    console.log(`toggle error : ${err}`);
   }
 });
 
-app.post("/registweb", function (req, res) {
+app.post("/registweb", async function (req, res) {
   try {
-    console.log("Hello ");
     console.log(req.body.link);
-    getCert();
+    const web3 = await init(req.body.pvk)
+      .then(console.log("provider create"))
+      .catch("can't create provider");
+    const id = await web3.eth.net.getId();
+    const deployNetwork = myContract.networks[id];
+    const contract = new web3.eth.Contract(
+      myContract.abi,
+      deployNetwork.address
+    );
+    const account = await web3.eth.getAccounts();
+    if (req.body.link !== "" || req.body.link !== "undefined") {
+      const receipt = await contract.methods
+        .linkMatch(req.body.link)
+        .send({ from: account[0] });
+    }
   } catch (err) {
-    console.log(err);
+    console.log(`web regist error : ${err}`);
   }
 });
 
