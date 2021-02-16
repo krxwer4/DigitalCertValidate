@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { blue, grey } from "@material-ui/core/colors";
 
-const HistoryButton = (props) => {
+const ToggleButton = (props) => {
 
-  const HistoryButStyle = withStyles((theme) => ({
+  const ToggleButStyle = withStyles((theme) => ({
     root: {
       backgroundColor: blue[300],
       borderColor: blue[500],
@@ -24,19 +24,20 @@ const HistoryButton = (props) => {
   return (
     <Link
       to={{
-        pathname: "/",
+        pathname: "/revoke",
         drizzle: props.drizzle,
       }}
     >
-      <HistoryButStyle
+      <ToggleButStyle
         variant="outlined"
         color="primary"
         size="large"
       >
-        History
-      </HistoryButStyle>
+        Revoke/Unrevoke
+        Certificate
+      </ToggleButStyle>
     </Link>
   );
 };
 
-export default HistoryButton;
+export default ToggleButton;

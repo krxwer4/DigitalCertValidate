@@ -41,18 +41,18 @@ const dropboxStyle = {
   transition: "border .24s ease-in-out",
 };
 
-function Validate(props) {
+function Revoke(props) {
   const drizzle = props.location.drizzle;
   const classes = useStyles();
   const history = useHistory();
   const picUploadSize = "20%";
 
   const [resetState, clickReset] = useState(false);
-  const [validateState, validateTrigger] = useState(false);
-  const [pubValue, setPubValue] = useState("");
+  const [revokeState, revokeTrigger] = useState(false);
+  const [confirmText, setConfirmText] = useState("");
 
   const handleChange = (event) => {
-    setPubValue(event.target.value);
+    setConfirmText(event.target.value);
   };
 
   return (
@@ -81,8 +81,8 @@ function Validate(props) {
           <Dropbox
             picsize={picUploadSize}
             dropboxStyle={dropboxStyle}
-            validate={validateState}
-            publicKey={pubValue}
+            revoke={revokeState}
+            confirmText={confirmText}
             reset={resetState}
             drizzle={drizzle}
           />
@@ -95,12 +95,12 @@ function Validate(props) {
           <TextField
             required
             id="outlined-search"
-            label="Public Key"
-            value={pubValue}
+            label="confirm text"
+            value={confirmText}
             type="text"
             variant="outlined"
             fullWidth
-            helperText="School's Public Key"
+            helperText="confirm text"
             onChange={handleChange}
           />
         </Box>
@@ -127,13 +127,7 @@ function Validate(props) {
               variant="contained"
               color="primary"
               onClick={() => {
-                if(pubValue !== ""){
-                  validateTrigger(!validateState);
-                }
-                else{
-                  console.log("pls enter pubkey")
-                }
-                
+                revokeTrigger(!revokeState);
               }}
             >
               Submit
@@ -145,4 +139,4 @@ function Validate(props) {
   );
 }
 
-export default Validate;
+export default Revoke;

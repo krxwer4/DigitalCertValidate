@@ -23,7 +23,7 @@ const WebRegistButton = (props) => {
   return (
     <Link
       to={{
-        pathname: "/",
+        pathname: "/webregist",
         drizzle: props.drizzle,
       }}
     >

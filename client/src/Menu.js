@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import RegistButton from "./Components/RegistButton";
 import ValidateButton from "./Components/ValidateButton";
-import HistoryButton from "./Components/HistoryButton";
+import ToggleButton from "./Components/ToggleButton";
 import WebRegistButton from "./Components/WebRegistButton";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -56,7 +56,7 @@ function Menu(props) {
               <ValidateButton drizzle = {drizzle}/>
             </Grid>
             <Grid item xs={6}>
-              <HistoryButton drizzle = {drizzle}/>
+              <ToggleButton drizzle = {drizzle}/>
             </Grid>
           </Grid>
         </Grid>

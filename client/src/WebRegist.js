@@ -1,21 +1,15 @@
 import React, { useState } from "react";
-import Dropbox from "./Components/Dropbox";
 import Box from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import { useHistory } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
+import { drizzleReactHooks } from "@drizzle/react-plugin";
+const { useDrizzleState } = drizzleReactHooks;
+
 const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-  input: {
-    display: "none",
-  },
   hoverFocus: {
     color: "#3f51b5",
     "&:hover, &.Mui-focusVisible": {
@@ -25,34 +19,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const dropboxStyle = {
-  flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  // alignItems: "center",
-  padding: "20px",
-  height: 200,
-  borderWidth: 5,
-  borderRadius: 2,
-  borderColor: "darkgray",
-  borderStyle: "dashed",
-  backgroundColor: "#CECECE",
-  color: "#000000",
-  transition: "border .24s ease-in-out",
-};
-
-function Validate(props) {
+function WebRegist(props) {
   const drizzle = props.location.drizzle;
-  const classes = useStyles();
+  console.log(drizzle);
+  const contract = drizzle.contracts.Poe;
+  const drizzleState = useDrizzleState((drizzleState) => drizzleState);
   const history = useHistory();
-  const picUploadSize = "20%";
-
-  const [resetState, clickReset] = useState(false);
-  const [validateState, validateTrigger] = useState(false);
-  const [pubValue, setPubValue] = useState("");
+  const classes = useStyles();
+  console.log("webregist");
+  const [linkText,setLinkText] = useState("");
 
   const handleChange = (event) => {
-    setPubValue(event.target.value);
+    setLinkText(event.target.value);
   };
 
   return (
@@ -65,6 +43,7 @@ function Validate(props) {
       >
         <ArrowBackIcon fontSize="large" />
       </IconButton>
+
       <Box
         display="flex"
         flexDirection="column"
@@ -75,18 +54,9 @@ function Validate(props) {
         bgcolor="background.paper"
       >
         <Box p={1} textAlign="center">
-          <h3 text-align="center">Upload your Certificate file to validate.</h3>
+          <h3 text-align="center">Web Regist</h3>
         </Box>
-        <Box p={1} align="center" alignSelf="center">
-          <Dropbox
-            picsize={picUploadSize}
-            dropboxStyle={dropboxStyle}
-            validate={validateState}
-            publicKey={pubValue}
-            reset={resetState}
-            drizzle={drizzle}
-          />
-        </Box>
+
         <Box
           align="center"
           alignSelf="center"
@@ -95,16 +65,16 @@ function Validate(props) {
           <TextField
             required
             id="outlined-search"
-            label="Public Key"
-            value={pubValue}
+            label="School's Url"
+            value={linkText}
             type="text"
             variant="outlined"
             fullWidth
-            helperText="School's Public Key"
+            helperText="Url that contain your public key"
             onChange={handleChange}
           />
         </Box>
-
+        
         <Box
           display="flex"
           flexDirection="row"
@@ -116,10 +86,10 @@ function Validate(props) {
             <Button
               variant="contained"
               onClick={() => {
-                clickReset(!resetState);
+                setLinkText("");
               }}
             >
-              Reset
+              Clear
             </Button>
           </Box>
           <Box mx={4}>
@@ -127,13 +97,10 @@ function Validate(props) {
               variant="contained"
               color="primary"
               onClick={() => {
-                if(pubValue !== ""){
-                  validateTrigger(!validateState);
-                }
-                else{
-                  console.log("pls enter pubkey")
-                }
-                
+              //   contract.methods["matchLink"].cacheSend(linkText, {
+              // from: drizzleState.accounts[0],
+              // });
+              console.log("s")
               }}
             >
               Submit
@@ -145,4 +112,4 @@ function Validate(props) {
   );
 }
 
-export default Validate;
+export default WebRegist;

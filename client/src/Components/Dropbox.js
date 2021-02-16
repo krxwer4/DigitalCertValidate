@@ -83,13 +83,15 @@ function Dropbox(props) {
         // console.log(data)
         axios
           .post("http://localhost:9876/gethash", data)
-          .then((res) => {
-            contract.methods["addCertificate"].cacheSend(res.data, {
+          .then(async (res) => {
+            await contract.methods["addCertificate"].cacheSend(res.data, {
               from: drizzleState.accounts[0],
             });
           })
+          .then(() => {
+            history.push("/regsuccess");
+          })
           .catch((e) => console.log(e));
-        history.push("/regsuccess");
       }
     }
   }, [props.submitReg]);
@@ -106,28 +108,68 @@ function Dropbox(props) {
         // console.log(data)
         axios
           .post("http://localhost:9876/gethash", data)
-          .then((res) => {
-            contract.methods
+          .then(async (res) => {
+            await contract.methods
               .findCertificate(res.data)
               .call()
               .then((res) => {
                 if (res[2] !== "0" && res[1] === props.publicKey) {
                   console.log("Available");
-                }
-                else{
-                  console.log("Not Available")
+                  console.log(res);
+                } else {
+                  console.log(res);
+                  console.log("Not Available");
                 }
               });
           })
           .catch((e) => console.log(e));
       }
     }
-    // contract.methods["addCertificate"].cacheSend(res.data,{from:drizzleState.accounts[0]})
-    // 0x2bbaea7517a8e52961a7a77d747db9c178d881c1e18b7b6133bec735a99f20353a9e628c30c354b7fe9875c84eb1ccef4401ba941dcef78f24e01c775ee2a336
   }, [props.validate]);
+
+  useEffect(() => {
+    if (initialRenderSubmit.current) {
+      initialRenderSubmit.current = false;
+    } else {
+      console.log("useEffect revoke " + props.revoke);
+      const data = new FormData();
+      if (acceptedFiles.length > 0) {
+        const name = acceptedFiles[0].name.split(".");
+        if (name[0] === props.confirmText) {
+          data.append("file", acceptedFiles[0]);
+          axios
+            .post("http://localhost:9876/gethash", data)
+            .then(async (res) => {
+              await contract.methods
+                .findCertificate(res.data)
+                .call()
+                .then((res) => {
+                  if (res[2] !== "0" && res[1]) {
+                    axios
+                      .post("http://localhost:9876/gethash", data)
+                      .then((res) => {
+                        contract.methods["toggleStatus"].cacheSend(res.data, {
+                          from: drizzleState.accounts[0],
+                        });
+                      })
+                      .catch((e) => console.log(e));
+                  } else {
+                    console.log(
+                      "Can't revoke or unrevoke Certificate not available"
+                    );
+                  }
+                });
+            })
+            .catch((e) => console.log(e));
+        }
+      }
+    }
+  }, [props.revoke]);
 
   if (files.length > 0 && !fileAvailable) {
     console.log(acceptedFiles[0]);
+    const f = acceptedFiles[0];
+    console.log(f.name);
     setFileAvailable(true);
     // console.log(fileAvailable);
   }
