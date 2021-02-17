@@ -1,4 +1,5 @@
 pragma solidity ^0.5.0;
+
 contract Poe {
   struct Record{
     bool status;
@@ -6,7 +7,11 @@ contract Poe {
     uint mineTime;
     uint blockNumber;
   }
+  struct School{
+    string adderName;
+  }
   mapping (string => Record) private docHashes;
+  mapping (address => School) private adder;
 
   constructor() public {
   }
@@ -21,9 +26,13 @@ contract Poe {
     }
     return true;
   }
+  function mapAdder(string memory schoolName) public{
+    School memory newAdder = School(schoolName);
+    adder[msg.sender] = newAdder;
+  }
 
-  function findDocHash(string memory hash) public view returns(bool,address,uint,uint){
-    return (docHashes[hash].status ,docHashes[hash].adderPub ,docHashes[hash].mineTime , docHashes[hash].blockNumber);
+  function findDocHash(string memory hash) public view returns(bool,address,uint,uint,string memory){
+    return (docHashes[hash].status ,docHashes[hash].adderPub ,docHashes[hash].mineTime , docHashes[hash].blockNumber,adder[docHashes[hash].adderPub].adderName);
   }
 
   function addDocHash (string memory hash) public{
@@ -33,7 +42,7 @@ contract Poe {
     docHashes[hash] = newRecord;  
   }
   
-  function toggleStatus(string memory  hash) public{
+  function toggleStatus(string memory hash) public{
     require (msg.sender == docHashes[hash].adderPub);
     if (docHashes[hash].status == true){
       Record memory newRecord = Record(false,msg.sender,now, block.number);
