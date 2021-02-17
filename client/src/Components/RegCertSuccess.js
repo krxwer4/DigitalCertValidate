@@ -38,19 +38,6 @@ const RegCertSuccess = () => {
               </Button>
             </Link>
           </Box>
-          <Box mx={4}>
-            <Link to={{ pathname: "/" }}>
-              <Button
-                variant="contained"
-                color = "primary"
-                onClick={() => {
-                  console.log("wait for edit");
-                }}
-              >
-                View History
-              </Button>
-            </Link>
-          </Box>
         </Box>
       </Box>
     </div>

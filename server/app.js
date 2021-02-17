@@ -19,22 +19,6 @@ web3 = new Web3(provider);
 const contAddr = "0x3bfF0bfCE2a6630542DF02305832dcDaE8ed6C2b";
 const contract = new web3.eth.Contract([contJson], contAddr);
 
-
-var getSslCertificate = require("get-ssl-certificate");
-getCert = async () =>  {
-  await getSslCertificate.get(req.body.link).then(function (certificate) {
-    console.log(certificate);
-
-    console.log(certificate.issuer);
-
-    console.log(certificate.valid_from);
-
-    console.log(certificate.valid_to);
-
-    console.log(certificate.pemEncoded);
-  });
-}
-
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads");
@@ -63,7 +47,7 @@ app.post("/gethash", upload.single("file"), async function (req, res, next) {
     // console.log(req.file.path)
     let  shaObj = new jsSHA("SHA-512", "ARRAYBUFFER");
     await shaObj.update(readFile);
-    let hashFile = "0x" + await shaObj.getHash("HEX");
+    let hashFile = await shaObj.getHash("HEX");
     console.log(hashFile)
     // res.contentType("text");
     res.send(hashFile);

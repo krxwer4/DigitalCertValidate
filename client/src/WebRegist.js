@@ -27,7 +27,7 @@ function WebRegist(props) {
   const history = useHistory();
   const classes = useStyles();
   console.log("webregist");
-  const [linkText,setLinkText] = useState("");
+  const [linkText, setLinkText] = useState("");
 
   const handleChange = (event) => {
     setLinkText(event.target.value);
@@ -74,7 +74,7 @@ function WebRegist(props) {
             onChange={handleChange}
           />
         </Box>
-        
+
         <Box
           display="flex"
           flexDirection="row"
@@ -97,10 +97,10 @@ function WebRegist(props) {
               variant="contained"
               color="primary"
               onClick={() => {
-              //   contract.methods["matchLink"].cacheSend(linkText, {
-              // from: drizzleState.accounts[0],
-              // });
-              console.log("s")
+                contract.methods["mapAdder"].cacheSend(linkText, {
+                  from: drizzleState.accounts[0],
+                });
+                console.log("s");
               }}
             >
               Submit
