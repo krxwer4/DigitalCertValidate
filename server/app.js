@@ -36,7 +36,7 @@ const hashing = async (file) => {
   // console.log(req.file.path)
   let shaObj = new jsSHA("SHA-512", "ARRAYBUFFER");
   await shaObj.update(readFile);
-  let hashFile = "0x" + (await shaObj.getHash("HEX"));
+  let hashFile = (await shaObj.getHash("HEX"));
 
   return hashFile;
 };
