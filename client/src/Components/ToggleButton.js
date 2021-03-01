@@ -11,7 +11,7 @@ const ToggleButton = (props) => {
       backgroundColor: blue[300],
       borderColor: blue[500],
       color: grey[900],
-      width: "13rem",
+      width: "20rem",
       height: "13rem",
       "&:hover": {
         backgroundColor: blue[500],

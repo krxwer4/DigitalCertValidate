@@ -11,7 +11,7 @@ const RegistButton = (props) => {
       color: theme.palette.getContrastText(green[500]),
       backgroundColor: green[300],
       borderColor: green[500],
-      width: "13rem",
+      width: "20rem",
       height: "13rem",
       "&:hover": {
         backgroundColor: green[500],

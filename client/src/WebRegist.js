@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import { drizzleReactHooks } from "@drizzle/react-plugin";
+import CantFindDrizzle from "./Components/CantFindDrizzle";
 const { useDrizzleState } = drizzleReactHooks;
 
 const useStyles = makeStyles((theme) => ({
@@ -22,8 +23,14 @@ const useStyles = makeStyles((theme) => ({
 function WebRegist(props) {
   const drizzle = props.location.drizzle;
   console.log(drizzle);
-  const contract = drizzle.contracts.Poe;
+  var drizzleIn = false;
+  var contract = {}
   const drizzleState = useDrizzleState((drizzleState) => drizzleState);
+  if (drizzle !== undefined) {
+    console.log(typeof(drizzle.contracts.Poe))
+    drizzleIn = true;
+    contract = drizzle.contracts.Poe;
+  }
   const history = useHistory();
   const classes = useStyles();
   console.log("webregist");
@@ -44,70 +51,73 @@ function WebRegist(props) {
         <ArrowBackIcon fontSize="large" />
       </IconButton>
 
-      <Box
-        display="flex"
-        flexDirection="column"
-        flexWrap="wrap"
-        justifyContent="center"
-        m={1}
-        p={1}
-        bgcolor="background.paper"
-      >
-        <Box p={1} textAlign="center">
-          <h3 text-align="center">Web Regist</h3>
-        </Box>
-
-        <Box
-          align="center"
-          alignSelf="center"
-          css={{ width: 600, height: 100 }}
-        >
-          <TextField
-            required
-            id="outlined-search"
-            label="School's Url"
-            value={linkText}
-            type="text"
-            variant="outlined"
-            fullWidth
-            helperText="Url that contain your public key"
-            onChange={handleChange}
-          />
-        </Box>
-
+      {drizzleIn && (
         <Box
           display="flex"
-          flexDirection="row"
+          flexDirection="column"
           flexWrap="wrap"
           justifyContent="center"
+          m={1}
+          p={1}
           bgcolor="background.paper"
         >
-          <Box mx={4}>
-            <Button
-              variant="contained"
-              onClick={() => {
-                setLinkText("");
-              }}
-            >
-              Clear
-            </Button>
+          <Box p={1} textAlign="center">
+            <h3 text-align="center">Web Regist</h3>
           </Box>
-          <Box mx={4}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                contract.methods["mapAdder"].cacheSend(linkText, {
-                  from: drizzleState.accounts[0],
-                });
-                console.log("s");
-              }}
-            >
-              Submit
-            </Button>
+
+          <Box
+            align="center"
+            alignSelf="center"
+            css={{ width: 600, height: 100 }}
+          >
+            <TextField
+              required
+              id="outlined-search"
+              label="School's Url"
+              value={linkText}
+              type="text"
+              variant="outlined"
+              fullWidth
+              helperText="Url that contain your public key"
+              onChange={handleChange}
+            />
+          </Box>
+
+          <Box
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            justifyContent="center"
+            bgcolor="background.paper"
+          >
+            <Box mx={4}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setLinkText("");
+                }}
+              >
+                Clear
+              </Button>
+            </Box>
+            <Box mx={4}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  contract.methods["mapAdder"].cacheSend(linkText, {
+                    from: drizzleState.accounts[0],
+                  });
+                  console.log("s");
+                }}
+              >
+                Submit
+              </Button>
+            </Box>
           </Box>
         </Box>
-      </Box>
+      )}
+      {!drizzleIn && <CantFindDrizzle />}
     </div>
   );
 }

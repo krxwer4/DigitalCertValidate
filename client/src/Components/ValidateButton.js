@@ -12,7 +12,7 @@ const ValidateButton = (props) => {
       backgroundColor: pink[300],
       borderColor: pink[500],
       color: grey[900],
-      width: "13rem",
+      width: "20rem",
       height: "13rem",
       "&:hover": {
         backgroundColor: pink[500],

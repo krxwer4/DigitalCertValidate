@@ -7,6 +7,8 @@ import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
+import CantFindDrizzle from "./Components/CantFindDrizzle";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -46,10 +48,13 @@ function Validate(props) {
   const classes = useStyles();
   const history = useHistory();
   const picUploadSize = "20%";
-
   const [resetState, clickReset] = useState(false);
   const [validateState, validateTrigger] = useState(false);
   const [pubValue, setPubValue] = useState("");
+  var drizzleIn = false;
+  if (drizzle !== undefined) {
+    drizzleIn = true;
+  }
 
   const handleChange = (event) => {
     setPubValue(event.target.value);
@@ -65,82 +70,85 @@ function Validate(props) {
       >
         <ArrowBackIcon fontSize="large" />
       </IconButton>
-      <Box
-        display="flex"
-        flexDirection="column"
-        flexWrap="wrap"
-        justifyContent="center"
-        m={1}
-        p={1}
-        bgcolor="background.paper"
-      >
-        <Box p={1} textAlign="center">
-          <h3 text-align="center">Upload your Certificate file to validate.</h3>
-        </Box>
-        <Box p={1} align="center" alignSelf="center">
-          <Dropbox
-            picsize={picUploadSize}
-            dropboxStyle={dropboxStyle}
-            validate={validateState}
-            publicKey={pubValue}
-            reset={resetState}
-            drizzle={drizzle}
-          />
-        </Box>
-        <Box
-          align="center"
-          alignSelf="center"
-          css={{ width: 600, height: 100 }}
-        >
-          <TextField
-            required
-            id="outlined-search"
-            label="Public Key"
-            value={pubValue}
-            type="text"
-            variant="outlined"
-            fullWidth
-            helperText="School's Public Key"
-            onChange={handleChange}
-          />
-        </Box>
-
+      {drizzleIn && (
         <Box
           display="flex"
-          flexDirection="row"
+          flexDirection="column"
           flexWrap="wrap"
           justifyContent="center"
+          m={1}
+          p={1}
           bgcolor="background.paper"
         >
-          <Box mx={4}>
-            <Button
-              variant="contained"
-              onClick={() => {
-                clickReset(!resetState);
-              }}
-            >
-              Reset
-            </Button>
+          <Box p={1} textAlign="center">
+            <h3 text-align="center">
+              Upload your Certificate file to validate.
+            </h3>
           </Box>
-          <Box mx={4}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                if(pubValue !== ""){
-                  validateTrigger(!validateState);
-                }
-                else{
-                  console.log("pls enter pubkey")
-                }
-                
-              }}
-            >
-              Submit
-            </Button>
+          <Box p={1} align="center" alignSelf="center">
+            <Dropbox
+              picsize={picUploadSize}
+              dropboxStyle={dropboxStyle}
+              validate={validateState}
+              publicKey={pubValue}
+              reset={resetState}
+              drizzle={drizzle}
+            />
+          </Box>
+          <Box
+            align="center"
+            alignSelf="center"
+            css={{ width: 600, height: 100 }}
+          >
+            <TextField
+              required
+              id="outlined-search"
+              label="Public Key"
+              value={pubValue}
+              type="text"
+              variant="outlined"
+              fullWidth
+              helperText="School's Public Key"
+              onChange={handleChange}
+            />
+          </Box>
+
+          <Box
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            justifyContent="center"
+            bgcolor="background.paper"
+          >
+            <Box mx={4}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  clickReset(!resetState);
+                }}
+              >
+                Reset
+              </Button>
+            </Box>
+            <Box mx={4}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  if (pubValue !== "") {
+                    validateTrigger(!validateState);
+                  } else {
+                    console.log("pls enter pubkey");
+                  }
+                }}
+              >
+                Submi
+              </Button>
+            </Box>
           </Box>
         </Box>
-      </Box>
+      )}
+      {!drizzleIn && <CantFindDrizzle />}
     </div>
   );
 }

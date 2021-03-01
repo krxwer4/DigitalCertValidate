@@ -6,6 +6,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
+import CantFindDrizzle from "./Components/CantFindDrizzle";
 
 const useStyles = makeStyles((theme) => ({
   hoverFocus: {
@@ -42,6 +43,11 @@ function Regiscert(props) {
   const [submitState, submitTrigger] = useState(false);
   const uploadPicSize = "32%";
   console.log("regist");
+  var drizzleIn = false;
+  if (drizzle !== undefined) {
+    drizzleIn = true;
+  }
+
   return (
     <div>
       <IconButton
@@ -53,63 +59,66 @@ function Regiscert(props) {
         <ArrowBackIcon fontSize="large" />
       </IconButton>
 
-      <Box
-        display="flex"
-        flexDirection="column"
-        flexWrap="wrap"
-        justifyContent="center"
-        m={1}
-        p={1}
-        bgcolor="background.paper"
-      >
-        <Box p={1} textAlign="center">
-          <h3 text-align="center">Upload Certificate files.</h3>
-        </Box>
-        {/* dropbox */}
-        <Box
-          p={1}
-          align="center"
-          alignSelf="center"
-          css={{ width: 670, height: 370 }}
-        >
-          <Dropbox
-            picsize={uploadPicSize}
-            dropboxStyle={dropboxStyle}
-            reset={resetState}
-            submitReg={submitState}
-            drizzle={drizzle}
-          />
-        </Box>
+      {drizzleIn && (
         <Box
           display="flex"
-          flexDirection="row"
+          flexDirection="column"
           flexWrap="wrap"
           justifyContent="center"
+          m={1}
+          p={1}
           bgcolor="background.paper"
         >
-          <Box mx={4}>
-            <Button
-              variant="contained"
-              onClick={() => {
-                clickReset(!resetState);
-              }}
-            >
-              Reset
-            </Button>
+          <Box p={1} textAlign="center">
+            <h3 text-align="center">Upload Certificate files.</h3>
           </Box>
-          <Box mx={4}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                submitTrigger(!submitState);
-              }}
-            >
-              Submit
-            </Button>
+          {/* dropbox */}
+          <Box
+            p={1}
+            align="center"
+            alignSelf="center"
+            css={{ width: 670, height: 370 }}
+          >
+            <Dropbox
+              picsize={uploadPicSize}
+              dropboxStyle={dropboxStyle}
+              reset={resetState}
+              submitReg={submitState}
+              drizzle={drizzle}
+            />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            justifyContent="center"
+            bgcolor="background.paper"
+          >
+            <Box mx={4}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  clickReset(!resetState);
+                }}
+              >
+                Reset
+              </Button>
+            </Box>
+            <Box mx={4}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  submitTrigger(!submitState);
+                }}
+              >
+                Submit
+              </Button>
+            </Box>
           </Box>
         </Box>
-      </Box>
+      )}
+      {!drizzleIn && <CantFindDrizzle />}
     </div>
   );
 }

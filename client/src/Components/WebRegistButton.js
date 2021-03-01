@@ -10,7 +10,7 @@ const WebRegistButton = (props) => {
       color: theme.palette.getContrastText(orange[500]),
       backgroundColor: orange[300],
       borderColor: orange[500],
-      width: "13rem",
+      width: "20rem",
       height: "13rem",
       "&:hover": {
         backgroundColor: orange[500],
