@@ -85,6 +85,7 @@ function Regiscert(props) {
               reset={resetState}
               submitReg={submitState}
               drizzle={drizzle}
+              caller = {"regist"}
             />
           </Box>
           <Box

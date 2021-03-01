@@ -93,6 +93,7 @@ function Revoke(props) {
               confirmText={confirmText}
               reset={resetState}
               drizzle={drizzle}
+              caller={"revoke"}
             />
           </Box>
           <Box

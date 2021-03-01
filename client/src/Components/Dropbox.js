@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import fileImportIcon from "../svg/upload.svg";
 import pdfIcon from "../svg/pdf.svg";
+import certUploadIcon from "../svg/guarantee-certificate.svg";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -48,13 +49,25 @@ function Dropbox(props) {
 
   const files = acceptedFiles.map((file) => (
     <ul key={file.path}>
-      <img
-        src={pdfIcon}
-        alt="pdf icon made by Dimitry Miroliubov from www.flaticon.com/authors/dimitry-miroliubov"
-        width="16px"
-      />
-      {"  "}
-      {file.path}
+      {props.caller === "regist" && (
+        <div>
+          <img
+            src={pdfIcon}
+            alt="pdf icon made by Dimitry Miroliubov from www.flaticon.com/authors/dimitry-miroliubov"
+            width="16px"
+          />
+          {"  "}
+          {file.path}
+        </div>
+      )}
+
+      {(props.caller === "validate" || props.caller === "revoke") && (
+        <div align="center">
+          <img src={certUploadIcon} alt="forgot" width="96px" />
+          <br />
+          {file.path}
+        </div>
+      )}
     </ul>
   ));
 

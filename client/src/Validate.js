@@ -93,6 +93,7 @@ function Validate(props) {
               publicKey={pubValue}
               reset={resetState}
               drizzle={drizzle}
+              caller={"validate"}
             />
           </Box>
           <Box

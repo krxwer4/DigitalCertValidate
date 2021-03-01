@@ -4,12 +4,13 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { pink, grey } from "@material-ui/core/colors";
-
+import correctionImg from "../svg/correction.svg"
+import Box from "@material-ui/core/Box";
 const ValidateButton = (props) => {
 
   const ValidateButStyle = withStyles((theme) => ({
     root: {
-      backgroundColor: pink[300],
+      borderWidth: "3px",
       borderColor: pink[500],
       color: grey[900],
       width: "20rem",
@@ -29,8 +30,20 @@ const ValidateButton = (props) => {
         drizzle: props.drizzle,
       }}
     >
-      <ValidateButStyle variant="outlined" color="primary" size="large">
-        Cert Check
+      <ValidateButStyle variant="outlined" >
+      <Box
+          display="flex"
+          flexDirection="column"
+          flexWrap="wrap"
+          justifyContent="center"
+        >
+          <Box align="center" alignSelf="center">
+            <img src={correctionImg} alt="forgot" width="96px" />
+          </Box>
+          <Box align="center" alignSelf="center">
+            Validate Certificate
+          </Box>
+        </Box>
       </ValidateButStyle>
     </Link>
   );
