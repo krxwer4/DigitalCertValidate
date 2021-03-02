@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import { drizzleReactHooks } from "@drizzle/react-plugin";
+import { Link } from "react-router-dom";
 import CantFindDrizzle from "./Components/CantFindDrizzle";
 import bwWebRegist from "../src/svg/BWwebsite.svg";
 
@@ -89,7 +90,7 @@ function WebRegist(props) {
               value={linkText}
               type="text"
               variant="outlined"
-              style={{ width: '475px' , marginLeft: '5px' }}
+              style={{ width: "475px", marginLeft: "5px" }}
               helperText="Url that contain your public key"
               onChange={handleChange}
             />
@@ -113,18 +114,27 @@ function WebRegist(props) {
               </Button>
             </Box>
             <Box mx={4}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  contract.methods["mapAdder"].cacheSend(linkText, {
-                    from: drizzleState.accounts[0],
-                  });
-                  console.log("s");
+              <Link
+                to={{
+                  pathname: "/webregcomp",
+                  url: linkText,
+                  account: drizzleState.accounts[0],
+                  caller: "webreg"
                 }}
               >
-                Submit
-              </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    contract.methods["mapAdder"].cacheSend(linkText, {
+                      from: drizzleState.accounts[0],
+                    });
+                    console.log("s");
+                  }}
+                >
+                  Submit
+                </Button>
+              </Link>
             </Box>
           </Box>
         </Box>
