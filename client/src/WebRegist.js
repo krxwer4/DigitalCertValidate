@@ -8,6 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import { drizzleReactHooks } from "@drizzle/react-plugin";
 import CantFindDrizzle from "./Components/CantFindDrizzle";
+import bwWebRegist from "../src/svg/BWwebsite.svg";
+
 const { useDrizzleState } = drizzleReactHooks;
 
 const useStyles = makeStyles((theme) => ({
@@ -24,10 +26,10 @@ function WebRegist(props) {
   const drizzle = props.location.drizzle;
   console.log(drizzle);
   var drizzleIn = false;
-  var contract = {}
+  var contract = {};
   const drizzleState = useDrizzleState((drizzleState) => drizzleState);
   if (drizzle !== undefined) {
-    console.log(typeof(drizzle.contracts.Poe))
+    console.log(typeof drizzle.contracts.Poe);
     drizzleIn = true;
     contract = drizzle.contracts.Poe;
   }
@@ -62,14 +64,24 @@ function WebRegist(props) {
           bgcolor="background.paper"
         >
           <Box p={1} textAlign="center">
-            <h3 text-align="center">Web Regist</h3>
+            <img src={bwWebRegist} alt="forgot" width="270px" />
+          </Box>
+
+          <Box p={1} textAlign="center">
+            <h3 text-align="center">
+              Your Public Key : {drizzleState.accounts[0]}
+            </h3>
           </Box>
 
           <Box
+            display="flex"
+            flexDirection="row"
+            flexWrap="nowrap"
             align="center"
             alignSelf="center"
-            css={{ width: 600, height: 100 }}
+            // css={{ width: 600, height: 100 }}
           >
+            <h3 text-align="center">Enter School Url : </h3>
             <TextField
               required
               id="outlined-search"
@@ -77,7 +89,7 @@ function WebRegist(props) {
               value={linkText}
               type="text"
               variant="outlined"
-              fullWidth
+              style={{ width: '475px' , marginLeft: '5px' }}
               helperText="Url that contain your public key"
               onChange={handleChange}
             />

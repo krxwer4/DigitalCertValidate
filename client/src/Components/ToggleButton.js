@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import { blue, grey } from "@material-ui/core/colors";
-import correctionImg from "../svg/correction.svg";
+import trueFalseImg from "../svg/correction.svg";
 import Box from "@material-ui/core/Box";
 const ToggleButton = (props) => {
   const ToggleButStyle = withStyles((theme) => ({
@@ -37,7 +37,7 @@ const ToggleButton = (props) => {
           justifyContent="center"
         >
           <Box align="center" alignSelf="center">
-            <img src={correctionImg} alt="forgot" width="96px" />
+            <img src={trueFalseImg} alt="forgot" width="96px" />
           </Box>
           <Box align="center" alignSelf="center">
             Revoke/Unrevoke Certificate
