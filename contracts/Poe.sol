@@ -15,6 +15,10 @@ contract Poe {
 
     constructor() public {}
 
+    event Mapped(string name, address schoolAddr);
+    event Added(string docDigest, address docAdder);
+    event Toggled(string docDigest, bool status);
+
     function isValidHash(string memory hash) private pure returns (bool) {
         bytes memory b = bytes(hash);
         uint256 hashLength = 128;
@@ -30,6 +34,7 @@ contract Poe {
     function mapAdder(string memory schoolName) public {
         School memory newAdder = School(schoolName);
         adder[msg.sender] = newAdder;
+        emit Mapped(schoolName, msg.sender);
     }
 
     function findCertificate(string memory hash)
@@ -57,6 +62,7 @@ contract Poe {
         require(docHashes[hash].blockNumber == 0);
         Record memory newRecord = Record(true, msg.sender, now, block.number);
         docHashes[hash] = newRecord;
+        emit Added(hash, msg.sender);
     }
 
     function toggleStatus(string memory hash) public {
@@ -65,10 +71,12 @@ contract Poe {
             Record memory newRecord =
                 Record(false, msg.sender, now, block.number);
             docHashes[hash] = newRecord;
+            emit Toggled(hash, false);
         } else {
             Record memory newRecord =
                 Record(true, msg.sender, now, block.number);
             docHashes[hash] = newRecord;
+            emit Toggled(hash, true);
         }
     }
 }

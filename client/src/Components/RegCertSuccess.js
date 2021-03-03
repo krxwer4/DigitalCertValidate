@@ -30,6 +30,7 @@ const RegCertSuccess = () => {
             <Link to={{ pathname: "/" }}>
               <Button
                 variant="contained"
+                color="primary"
                 onClick={() => {
                   console.log("wait for edit");
                 }}
