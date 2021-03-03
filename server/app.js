@@ -37,7 +37,6 @@ const hashing = async (file) => {
   let shaObj = new jsSHA("SHA-512", "ARRAYBUFFER");
   await shaObj.update(readFile);
   let hashFile = (await shaObj.getHash("HEX"));
-
   return hashFile;
 };
 
@@ -101,6 +100,7 @@ app.post(
   async function (req, res, next) {
     // console.log(req.body.account)
     try {
+      console.log(req.body)
       const hashFile = await hashing(req.file);
       console.log(hashFile);
       const web3 = await init(process.env.MNEMONIC)
@@ -169,9 +169,9 @@ app.post("/togglecert", upload.single("file"), async function (req, res, next) {
   }
 });
 
-app.post("/registweb", async function (req, res) {
+app.post("/registweb", upload.none(), async function (req, res, next) {
   try {
-    console.log(req.body.link);
+    console.log("webreg "+req.body.link);
     const web3 = await init(req.body.pvk)
       .then(console.log("provider create"))
       .catch("can't create provider");
@@ -182,14 +182,19 @@ app.post("/registweb", async function (req, res) {
       deployNetwork.address
     );
     const account = await web3.eth.getAccounts();
+    console.log(contract.methods)
     if (req.body.link !== "" || req.body.link !== "undefined") {
       const receipt = await contract.methods
-        .linkMatch(req.body.link)
+        .mapAdder(req.body.link)
         .send({ from: account[0] });
+        console.log(receipt)
+        res.send(receipt)
     }
   } catch (err) {
     console.log(`web regist error : ${err}`);
+    res.send("web regist error")
   }
+  
 });
 
 app.listen(9876, function () {

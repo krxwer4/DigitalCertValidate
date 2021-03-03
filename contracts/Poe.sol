@@ -7,13 +7,34 @@ contract Poe {
         uint256 mineTime;
         uint256 blockNumber;
     }
+    struct School {
+        string adderName;
+    }
     mapping(string => Record) private docHashes;
+    mapping(address => School) private adder;
 
     constructor() public {}
 
-    function addCertificate(string memory hash) public {
-        Record memory newRecord = Record(true, msg.sender, now, block.number);
-        docHashes[hash] = newRecord;
+    event Mapped(string name, address schoolAddr);
+    event Added(string docDigest, address docAdder);
+    event Toggled(string docDigest, bool status);
+
+    function isValidHash(string memory hash) private pure returns (bool) {
+        bytes memory b = bytes(hash);
+        uint256 hashLength = 128;
+        if (b.length != hashLength) return false;
+        for (uint256 i = 0; i < hashLength; i++) {
+            if (b[i] < "0") return false;
+            if (b[i] > "9" && b[i] < "a") return false;
+            if (b[i] > "f") return false;
+        }
+        return true;
+    }
+
+    function mapAdder(string memory schoolName) public {
+        School memory newAdder = School(schoolName);
+        adder[msg.sender] = newAdder;
+        emit Mapped(schoolName, msg.sender);
     }
 
     function findCertificate(string memory hash)
@@ -23,36 +44,39 @@ contract Poe {
             bool,
             address,
             uint256,
-            uint256
+            uint256,
+            string memory
         )
     {
         return (
             docHashes[hash].status,
             docHashes[hash].adderPub,
             docHashes[hash].mineTime,
-            docHashes[hash].blockNumber
+            docHashes[hash].blockNumber,
+            adder[docHashes[hash].adderPub].adderName
         );
     }
 
+    function addCertificate(string memory hash) public {
+        require(isValidHash(hash));
+        require(docHashes[hash].blockNumber == 0);
+        Record memory newRecord = Record(true, msg.sender, now, block.number);
+        docHashes[hash] = newRecord;
+        emit Added(hash, msg.sender);
+    }
+
     function toggleStatus(string memory hash) public {
-        if (msg.sender == docHashes[hash].adderPub) {
-            if (docHashes[hash].status == true) {
-                Record memory newRecord = Record(
-                    false,
-                    msg.sender,
-                    now,
-                    block.number
-                );
-                docHashes[hash] = newRecord;
-            } else {
-                Record memory newRecord = Record(
-                    true,
-                    msg.sender,
-                    now,
-                    block.number
-                );
-                docHashes[hash] = newRecord;
-            }
+        require(msg.sender == docHashes[hash].adderPub);
+        if (docHashes[hash].status == true) {
+            Record memory newRecord =
+                Record(false, msg.sender, now, block.number);
+            docHashes[hash] = newRecord;
+            emit Toggled(hash, false);
+        } else {
+            Record memory newRecord =
+                Record(true, msg.sender, now, block.number);
+            docHashes[hash] = newRecord;
+            emit Toggled(hash, true);
         }
     }
 }
