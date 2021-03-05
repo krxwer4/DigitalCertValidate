@@ -7939,6 +7939,70 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {
+    "4": {
+      "events": {
+        "0xfb989cb0d132b51483b9258c1befbe92caa5f5b046af3dfdcc617dcf425af493": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "docDigest",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "docAdder",
+              "type": "address"
+            }
+          ],
+          "name": "Added",
+          "type": "event"
+        },
+        "0xb85849511ef6c041570458aa63fbad10e2a54ad7c944d50504920952fdebf5a6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "schoolAddr",
+              "type": "address"
+            }
+          ],
+          "name": "Mapped",
+          "type": "event"
+        },
+        "0x96a8805bf242976cd238e1c7ed9947f4cfc12c1ce0b68d8afce8c6aae60dd280": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "docDigest",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "status",
+              "type": "bool"
+            }
+          ],
+          "name": "Toggled",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xa707353CEbBe53Cce74b2a98873fD102ABECAbfE",
+      "transactionHash": "0x322390664b50a9d79e3ae8eee0b6e6dc66311d4b7f8b6d2993794dcae65c84a7"
+    },
     "5777": {
       "events": {
         "0xfb989cb0d132b51483b9258c1befbe92caa5f5b046af3dfdcc617dcf425af493": {
@@ -8000,12 +8064,12 @@
         }
       },
       "links": {},
-      "address": "0x9462004dc215405ff3F843A45322230e90d29354",
-      "transactionHash": "0x470250858259bdd8b9ec057b91a5a8966d111f0d03c1832bad7b4d7f655a469d"
+      "address": "0xAb3Bdef10E91fB43a3B9e2578Bb64bB3d83FC303",
+      "transactionHash": "0x24eb879fe82f614944aa35dd92b36d87e437afeef432a1ce708ecebbb59533fd"
     }
   },
   "schemaVersion": "3.3.0",
-  "updatedAt": "2021-03-03T09:10:41.706Z",
+  "updatedAt": "2021-03-03T10:33:37.408Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
