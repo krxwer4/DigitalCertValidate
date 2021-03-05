@@ -2,23 +2,21 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import { green, blue , grey} from "@material-ui/core/colors";
-import fileImportIcon from "../svg/upload.svg";
+import { blue, grey } from "@material-ui/core/colors";
+import trueFalseImg from "../svg/correction.svg";
 import Box from "@material-ui/core/Box";
-
-const RegistButton = (props) => {
-  // console.log(props)
-  const RegistCertButStyle = withStyles((theme) => ({
+const ToggleButton = (props) => {
+  const ToggleButStyle = withStyles((theme) => ({
     root: {
-      color:grey[900],
-      // backgroundColor: green[300],
+      // backgroundColor: blue[300],
       borderWidth: "3px",
-      borderColor: green[500],
+      borderColor: blue[500],
+      color: grey[900],
       width: "20rem",
       height: "13rem",
       "&:hover": {
-        backgroundColor: green[500],
-        borderColor: green[700],
+        backgroundColor: blue[500],
+        borderColor: blue[700],
         color: blue[50],
       },
     },
@@ -27,11 +25,11 @@ const RegistButton = (props) => {
   return (
     <Link
       to={{
-        pathname: "/regist",
+        pathname: "/revoke",
         drizzle: props.drizzle,
       }}
     >
-      <RegistCertButStyle variant="outlined">
+      <ToggleButStyle variant="outlined">
         <Box
           display="flex"
           flexDirection="column"
@@ -39,15 +37,15 @@ const RegistButton = (props) => {
           justifyContent="center"
         >
           <Box align="center" alignSelf="center">
-            <img src={fileImportIcon} alt="forgot" width="96px" />
+            <img src={trueFalseImg} alt="forgot" width="96px" />
           </Box>
           <Box align="center" alignSelf="center">
-            Regist Cert
+            Revoke/Unrevoke Certificate
           </Box>
         </Box>
-      </RegistCertButStyle>
+      </ToggleButStyle>
     </Link>
   );
 };
 
-export default RegistButton;
+export default ToggleButton;

@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import Dropbox from "./Components/Dropbox";
 import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import { useHistory } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
-import { makeStyles } from "@material-ui/core/styles";
-import { useHistory } from "react-router-dom";
 import CantFindDrizzle from "./Components/CantFindDrizzle";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  input: {
+    display: "none",
+  },
   hoverFocus: {
     color: "#3f51b5",
     "&:hover, &.Mui-focusVisible": {
@@ -24,7 +33,7 @@ const dropboxStyle = {
   flexDirection: "column",
   // alignItems: "center",
   padding: "20px",
-  height: 300,
+  height: 200,
   borderWidth: 5,
   borderRadius: 2,
   borderColor: "darkgray",
@@ -34,19 +43,22 @@ const dropboxStyle = {
   transition: "border .24s ease-in-out",
 };
 
-function Regiscert(props) {
+function Revoke(props) {
   const drizzle = props.location.drizzle;
-  console.log(drizzle);
-  const history = useHistory();
   const classes = useStyles();
+  const history = useHistory();
+  const picUploadSize = "20%";
+
   const [resetState, clickReset] = useState(false);
-  const [submitState, submitTrigger] = useState(false);
-  const uploadPicSize = "32%";
-  console.log("regist");
+  const [revokeState, revokeTrigger] = useState(false);
+  const [confirmText, setConfirmText] = useState("");
   var drizzleIn = false;
   if (drizzle !== undefined) {
     drizzleIn = true;
   }
+  const handleChange = (event) => {
+    setConfirmText(event.target.value);
+  };
 
   return (
     <div>
@@ -58,7 +70,6 @@ function Regiscert(props) {
       >
         <ArrowBackIcon fontSize="large" />
       </IconButton>
-
       {drizzleIn && (
         <Box
           display="flex"
@@ -70,24 +81,39 @@ function Regiscert(props) {
           bgcolor="background.paper"
         >
           <Box p={1} textAlign="center">
-            <h3 text-align="center">Upload Certificate files.</h3>
+            <h3 text-align="center">
+              Upload your Certificate file to validate.
+            </h3>
           </Box>
-          {/* dropbox */}
-          <Box
-            p={1}
-            align="center"
-            alignSelf="center"
-            css={{ width: 670, height: 370 }}
-          >
+          <Box p={1} align="center" alignSelf="center">
             <Dropbox
-              picsize={uploadPicSize}
+              picsize={picUploadSize}
               dropboxStyle={dropboxStyle}
+              revoke={revokeState}
+              confirmText={confirmText}
               reset={resetState}
-              submitReg={submitState}
               drizzle={drizzle}
-              caller = {"regist"}
+              caller={"revoke"}
             />
           </Box>
+          <Box
+            align="center"
+            alignSelf="center"
+            css={{ width: 600, height: 100 }}
+          >
+            <TextField
+              required
+              id="outlined-search"
+              label="confirm text"
+              value={confirmText}
+              type="text"
+              variant="outlined"
+              fullWidth
+              helperText="confirm text"
+              onChange={handleChange}
+            />
+          </Box>
+
           <Box
             display="flex"
             flexDirection="row"
@@ -110,7 +136,7 @@ function Regiscert(props) {
                 variant="contained"
                 color="primary"
                 onClick={() => {
-                  submitTrigger(!submitState);
+                  revokeTrigger(!revokeState);
                 }}
               >
                 Submit
@@ -124,4 +150,4 @@ function Regiscert(props) {
   );
 }
 
-export default Regiscert;
+export default Revoke;

@@ -7,6 +7,9 @@ import Menu from "./Menu";
 import Regiscert from "./Regiscert";
 import Validate from "./Validate";
 import RegCertSuccess from "./Components/RegCertSuccess";
+import WebRegist from "./WebRegist"
+import Revoke from "./Revoke"
+import WebRegComplete from "./Components/WebRegistComplete";
 // import TransHistory from "./TransHistory"
 
 function DappComponents(props) {
@@ -31,6 +34,9 @@ function DappComponents(props) {
           <Route path="/regist" component={Regiscert} />
           <Route path="/validate" component={Validate} />
           <Route path="/regsuccess" component={RegCertSuccess} />
+          <Route path="/webregist" component={WebRegist} />
+          <Route path="/revoke" component={Revoke} />
+          <Route path="/webregcomp" component={WebRegComplete} />
         </Switch>
       </Router>
     </div>
