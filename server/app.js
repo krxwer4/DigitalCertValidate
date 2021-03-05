@@ -17,7 +17,20 @@ app.use(bdps.json());
 
 // const provider = new Web3.providers.HttpProvider("http://localhost:2805");
 // const account = '0xe084FeA965b591a8AB68506FBafd66682DAda026'
-
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 const init = async (pvk) => {
   const provider = new HDWalletProvider(
@@ -37,8 +50,40 @@ const hashing = async (file) => {
   // console.log(req.file.path)
   let shaObj = new jsSHA("SHA-512", "ARRAYBUFFER");
   await shaObj.update(readFile);
-  let hashFile = (await shaObj.getHash("HEX"));
+  let hashFile = await shaObj.getHash("HEX");
   return hashFile;
+};
+
+const zeroPad = (num) => {
+  if (num < 10) {
+    num = num.toString();
+    num = "0" + num;
+  }
+  return num;
+};
+
+const preparingOutput = (receipt) => {
+  receiptTime = parseInt(receipt[2]);
+  rcTimeToDatetime = new Date(receiptTime * 1000);
+  time =
+    rcTimeToDatetime.getHours() +
+    ":" +
+    zeroPad(rcTimeToDatetime.getMinutes()) +
+    ":" +
+    rcTimeToDatetime.getSeconds();
+  date =
+    rcTimeToDatetime.getDate() +
+    " " +
+    months[rcTimeToDatetime.getMonth()] +
+    " " +
+    rcTimeToDatetime.getFullYear();
+  var certInformation = {};
+  certInformation.status = receipt[0] ? "Usable" : "Revoke";
+  certInformation.addBy = receipt[1];
+  certInformation.dateAdded = date + " " + time + " UTC";
+  certInformation.blocknumber = receipt[3];
+  certInformation.adderPublicKeyLinkCheck = receipt[4];
+  return certInformation;
 };
 
 var storage = multer.diskStorage({
@@ -64,35 +109,39 @@ app.post("/gethash", upload.single("file"), async function (req, res, next) {
 });
 
 app.post("/registcert", upload.single("file"), async function (req, res, next) {
-  // if (req.secure) {
-  //   console.log("secure");
-  // } else if (!req.secure) {
-  //   console.log("not secure");
-  // }
-  // console.log(req.body.account)
-    const hashFile = await hashing(req.file);
-    console.log(hashFile);
-    const web3 = await init(req.body.pvk)
-      .then(console.log("provider create"))
-      .catch("can't create provider");
-    const id = await web3.eth.net.getId();
-    const deployNetwork = myContract.networks[id];
-    const contract = new web3.eth.Contract(
-      myContract.abi,
-      deployNetwork.address
-    );
-    // console.log(contract.methods);
-    const account = await web3.eth.getAccounts();
-    console.log(account);
-    if (req.file.filename.length > 0 && account !== "undefine") {
-      const receipt = await contract.methods.addCertificate(hashFile).send({
+  const hashFile = await hashing(req.file);
+  // console.log(hashFile);
+  const web3 = await init(req.body.pvk)
+    .then(console.log("provider create"))
+    .catch("can't create provider");
+  const id = await web3.eth.net.getId();
+  const deployNetwork = myContract.networks[id];
+  const contract = new web3.eth.Contract(myContract.abi, deployNetwork.address);
+  // console.log(contract.methods);
+  const account = await web3.eth.getAccounts();
+  console.log(account);
+  if (req.file.filename.length > 0 && account !== "undefine") {
+    const receipt = await contract.methods
+      .addCertificate(hashFile)
+      .send({
         from: account[0],
+      })
+      .catch((e) => {
+        console.log(
+          e + "Can't registered.This Certificate is already in blockchain."
+        );
       });
+
+    if (receipt !== undefined) {
       console.log(receipt);
-      res.send(receipt);
-    } else {
-      res.status(400).json("regist err");
+      res.send(receipt.events.Added);
     }
+    else{
+      res.send("Can't registered.This Certificate is already in blockchain.")
+    }
+  } else {
+    res.status(400).json("regist err");
+  }
 });
 
 app.post(
@@ -101,7 +150,7 @@ app.post(
   async function (req, res, next) {
     // console.log(req.body.account)
     try {
-      console.log(req.body)
+      console.log(req.body);
       const hashFile = await hashing(req.file);
       console.log(hashFile);
       const web3 = await init(process.env.MNEMONIC)
@@ -118,17 +167,23 @@ app.post(
       // console.log(account);
       if (req.file.filename.length > 0 && account !== "undefine") {
         const receipt = await contract.methods.findCertificate(hashFile).call();
+
         console.log(receipt);
         if (receipt[0]) {
           if (receipt[1] === req.body.pubkey) {
-            res.send(receipt);
+            //preparing output
+            const certInformation = preparingOutput(receipt);
+            res.send(certInformation);
           } else if (receipt[1] !== req.body.pubkey) {
             res.send(
-              `we have this certificate on blockchain but not regist by this pubkey : ${req.body.pubkey}`
+              `This certificate is available in blockchain but not registered by this public key : ${req.body.pubkey}`
             );
           }
-        } else if (!receipt[0]) {
-          res.send("not validate");
+        } else if (!receipt[0] && receipt[2] !== "0") {
+          const certInformation = preparingOutput(receipt);
+          res.send(certInformation);
+        } else if (!receipt[0] && receipt[2] === "0") {
+          res.send("This certificate is NOT AVAILABLE in blockchain");
         }
       } else {
         res.status(400).json("validate err");
@@ -172,7 +227,7 @@ app.post("/togglecert", upload.single("file"), async function (req, res, next) {
 
 app.post("/registweb", upload.none(), async function (req, res, next) {
   try {
-    console.log("webreg "+req.body.link);
+    console.log("webreg " + req.body.link);
     const web3 = await init(req.body.pvk)
       .then(console.log("provider create"))
       .catch("can't create provider");
@@ -183,19 +238,17 @@ app.post("/registweb", upload.none(), async function (req, res, next) {
       deployNetwork.address
     );
     const account = await web3.eth.getAccounts();
-    console.log(contract.methods)
     if (req.body.link !== "" || req.body.link !== "undefined") {
       const receipt = await contract.methods
         .mapAdder(req.body.link)
         .send({ from: account[0] });
-        console.log(receipt)
-        res.send(receipt)
+      console.log(receipt);
+      res.send(receipt.events.Mapped);
     }
   } catch (err) {
     console.log(`web regist error : ${err}`);
-    res.send("web regist error")
+    res.send("web regist error");
   }
-  
 });
 
 app.listen(9876, function () {
