@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useRef } from "react";
+import React, { useMemo, useState, useEffect, useRef, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import fileImportIcon from "../svg/upload.svg";
@@ -33,6 +33,8 @@ function Dropbox(props) {
   const baseStyle = props.dropboxStyle;
   const picsize = props.picsize;
   const history = useHistory();
+  // const { setValidateResult } = useContext(Context);
+
   const {
     getRootProps,
     getInputProps,
@@ -91,7 +93,7 @@ function Dropbox(props) {
       initialRenderSubmit.current = false;
     } else {
       console.log("useEffect submit " + props.submitReg);
-      console.log(drizzle)
+      console.log(drizzle);
       const data = new FormData();
       if (acceptedFiles.length > 0) {
         data.append("file", acceptedFiles[0]);
@@ -135,7 +137,9 @@ function Dropbox(props) {
                   console.log(res);
                   console.log("Not Available");
                 }
-              });
+                //edit path to validate page
+                history.push({ pathname: "/regsuccess", response: { res } });
+              })
           })
           .catch((e) => console.log(e));
       }

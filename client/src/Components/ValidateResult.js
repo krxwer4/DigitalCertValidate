@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import confirmationIcon from "../svg/happy.svg";
+import availableIcon from "../svg/check.svg";
+import notAvailableIcon from "../svg/close.svg";
+//alt for check && close icon : Alfredo Hernandez
 import { Link } from "react-router-dom";
 
-const RegCertSuccess = (props) => {
-  useEffect(() => {
-    console.log(props);
-  });
+const ValidateResult = () => {
+  const {valResult} = useContext(Context);
+
   return (
     <div>
       <Box
@@ -20,7 +21,8 @@ const RegCertSuccess = (props) => {
         bgcolor="background.paper"
       >
         <Box p={1} textAlign="center">
-          <img src={confirmationIcon} alt="freepik" width="350px" />
+          <img src={availableIcon} alt="Alfredo Hernandez" width="350px" />
+          {/* <img src={notAvailableIcon} alt="Alfredo Hernandez" width="350px" /> */}
         </Box>
         <Box p={1} textAlign="center">
           <h1>Please comfirm your transaction in Metamask!</h1>
@@ -52,4 +54,4 @@ const RegCertSuccess = (props) => {
   );
 };
 
-export default RegCertSuccess;
+export default ValidateResult;

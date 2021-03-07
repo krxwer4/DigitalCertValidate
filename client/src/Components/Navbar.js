@@ -25,7 +25,7 @@ const Navbar = (props) => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h5" className={classes.title}>
-          Web Name
+          OatPejoy
         </Typography>
         <DrizzleComponent/>
       </Toolbar>

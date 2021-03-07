@@ -9,6 +9,11 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
 import CantFindDrizzle from "./Components/CantFindDrizzle";
 
+export const Context = React.createContext({
+  validateResult: null,
+  setValidateResult: () => {},
+});
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -51,6 +56,7 @@ function Validate(props) {
   const [resetState, clickReset] = useState(false);
   const [validateState, validateTrigger] = useState(false);
   const [pubValue, setPubValue] = useState("");
+  const [validateResult, setValidateResult] = useState(null);
   var drizzleIn = false;
   if (drizzle !== undefined) {
     drizzleIn = true;
@@ -61,96 +67,100 @@ function Validate(props) {
   };
 
   return (
-    <div>
-      <IconButton
-        className={classes.hoverFocus}
-        onClick={() => {
-          history.push("/");
-        }}
-      >
-        <ArrowBackIcon fontSize="large" />
-      </IconButton>
-      {drizzleIn && (
-        <Box
-          display="flex"
-          flexDirection="column"
-          flexWrap="wrap"
-          justifyContent="center"
-          m={1}
-          p={1}
-          bgcolor="background.paper"
+    <Context.Provider value={{ validateResult, setValidateResult }}>
+      <div>
+        <IconButton
+          className={classes.hoverFocus}
+          onClick={() => {
+            history.push("/");
+          }}
         >
-          <Box p={1} textAlign="center">
-            <h3 text-align="center">
-              Upload your Certificate file to validate.
-            </h3>
-          </Box>
-          <Box p={1} align="center" alignSelf="center">
-            <Dropbox
-              picsize={picUploadSize}
-              dropboxStyle={dropboxStyle}
-              validate={validateState}
-              publicKey={pubValue}
-              reset={resetState}
-              drizzle={drizzle}
-              caller={"validate"}
-            />
-          </Box>
-          <Box
-            align="center"
-            alignSelf="center"
-            css={{ width: 600, height: 100 }}
-          >
-            <TextField
-              required
-              id="outlined-search"
-              label="Public Key"
-              value={pubValue}
-              type="text"
-              variant="outlined"
-              fullWidth
-              helperText="School's Public Key"
-              onChange={handleChange}
-            />
-          </Box>
-
+          <ArrowBackIcon fontSize="large" />
+        </IconButton>
+        {drizzleIn && (
           <Box
             display="flex"
-            flexDirection="row"
+            flexDirection="column"
             flexWrap="wrap"
             justifyContent="center"
+            m={1}
+            p={1}
             bgcolor="background.paper"
           >
-            <Box mx={4}>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  clickReset(!resetState);
-                }}
-              >
-                Reset
-              </Button>
+            <Box p={1} textAlign="center">
+              <h3 text-align="center">
+                Upload your Certificate file to validate.
+              </h3>
             </Box>
-            <Box mx={4}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  if (pubValue !== "") {
-                    validateTrigger(!validateState);
-                  } else {
-                    console.log("pls enter pubkey");
-                  }
-                }}
-              >
-                Submi
-              </Button>
+            <Box p={1} align="center" alignSelf="center">
+              <Context.Provider value={{ validateResult, setValidateResult }}>
+                <Dropbox
+                  picsize={picUploadSize}
+                  dropboxStyle={dropboxStyle}
+                  validate={validateState}
+                  publicKey={pubValue}
+                  reset={resetState}
+                  drizzle={drizzle}
+                  caller={"validate"}
+                />
+              </Context.Provider>
+            </Box>
+            <Box
+              align="center"
+              alignSelf="center"
+              css={{ width: 600, height: 100 }}
+            >
+              <TextField
+                required
+                id="outlined-search"
+                label="Public Key"
+                value={pubValue}
+                type="text"
+                variant="outlined"
+                fullWidth
+                helperText="School's Public Key"
+                onChange={handleChange}
+              />
+            </Box>
+
+            <Box
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              justifyContent="center"
+              bgcolor="background.paper"
+            >
+              <Box mx={4}>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    clickReset(!resetState);
+                  }}
+                >
+                  Reset
+                </Button>
+              </Box>
+              <Box mx={4}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    if (pubValue !== "") {
+                      validateTrigger(!validateState);
+                    } else {
+                      console.log("pls enter pubkey");
+                    }
+                  }}
+                >
+                  Submi
+                </Button>
+              </Box>
             </Box>
           </Box>
-        </Box>
-      )}
-      {!drizzleIn && <CantFindDrizzle />}
-    </div>
+        )}
+        {!drizzleIn && <CantFindDrizzle />}
+      </div>
+    </Context.Provider>
   );
 }
 
