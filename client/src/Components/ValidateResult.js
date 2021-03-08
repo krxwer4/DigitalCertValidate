@@ -90,7 +90,6 @@ const ValidateResult = (props) => {
             props.location.state.res[2] === "0" && (
               <div>
                 <h2>We can't find your certificate in blockchain.</h2>
-                <h3></h3>
               </div>
             )}
         </Box>

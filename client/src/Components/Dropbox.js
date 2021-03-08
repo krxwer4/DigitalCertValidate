@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useRef, useContext } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import fileImportIcon from "../svg/upload.svg";
@@ -169,6 +169,8 @@ function Dropbox(props) {
                         contract.methods["toggleStatus"].cacheSend(res.data, {
                           from: drizzleState.accounts[0],
                         });
+                      }).then(()=>{
+                        history.push("/togglecomp")
                       })
                       .catch((e) => console.log(e));
                   } else {

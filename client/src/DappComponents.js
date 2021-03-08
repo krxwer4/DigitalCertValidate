@@ -11,6 +11,7 @@ import WebRegist from "./WebRegist";
 import Revoke from "./Revoke";
 import WebRegComplete from "./Components/WebRegistComplete";
 import ValidateResult from "./Components/ValidateResult";
+import ToggleComplete from "./Components/ToggleComplete";
 // import TransHistory from "./TransHistory"
 
 function DappComponents(props) {
@@ -39,6 +40,7 @@ function DappComponents(props) {
           <Route path="/revoke" component={Revoke} />
           <Route path="/webregcomp" component={WebRegComplete} />
           <Route path="/validateres" component={ValidateResult} />
+          <Route path="/togglecomp" component={ToggleComplete} />
         </Switch>
       </Router>
     </div>
