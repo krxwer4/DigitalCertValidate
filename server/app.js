@@ -63,15 +63,15 @@ const zeroPad = (num) => {
 };
 
 const preparingOutput = (receipt) => {
-  receiptTime = parseInt(receipt[2]);
-  rcTimeToDatetime = new Date(receiptTime * 1000);
-  time =
+  const receiptTime = parseInt(receipt[2]);
+  const rcTimeToDatetime = new Date(receiptTime * 1000);
+  const time =
     rcTimeToDatetime.getHours() +
     ":" +
     zeroPad(rcTimeToDatetime.getMinutes()) +
     ":" +
     rcTimeToDatetime.getSeconds();
-  date =
+  const date =
     rcTimeToDatetime.getDate() +
     " " +
     months[rcTimeToDatetime.getMonth()] +

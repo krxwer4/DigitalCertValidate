@@ -1,14 +1,59 @@
-import React, { useContext } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import availableIcon from "../svg/check.svg";
 import notAvailableIcon from "../svg/close.svg";
-//alt for check && close icon : Alfredo Hernandez
 import { Link } from "react-router-dom";
 
-const ValidateResult = () => {
-  const {valResult} = useContext(Context);
+const ValidateResult = (props) => {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
+  const zeroPad = (num) => {
+    if (num < 10) {
+      num = num.toString();
+      num = "0" + num;
+    }
+    return num;
+  };
+
+  const preparingOutput = (receipt) => {
+    const receiptTime = parseInt(receipt[2]);
+    const rcTimeToDatetime = new Date(receiptTime * 1000);
+    const time =
+      rcTimeToDatetime.getHours() +
+      ":" +
+      zeroPad(rcTimeToDatetime.getMinutes()) +
+      ":" +
+      rcTimeToDatetime.getSeconds();
+    const date =
+      rcTimeToDatetime.getDate() +
+      " " +
+      months[rcTimeToDatetime.getMonth()] +
+      " " +
+      rcTimeToDatetime.getFullYear();
+    var certInformation = {};
+    certInformation.status = receipt[0] ? "Usable" : "Revoke";
+    certInformation.addBy = receipt[1];
+    certInformation.dateAdded = date + " " + time + " UTC";
+    certInformation.blocknumber = receipt[3];
+    certInformation.adderPublicKeyLinkCheck = receipt[4];
+    console.log(certInformation);
+    return certInformation;
+  };
+  const certInformation = preparingOutput(props.location.state.res);
   return (
     <div>
       <Box
@@ -21,12 +66,33 @@ const ValidateResult = () => {
         bgcolor="background.paper"
       >
         <Box p={1} textAlign="center">
-          <img src={availableIcon} alt="Alfredo Hernandez" width="350px" />
-          {/* <img src={notAvailableIcon} alt="Alfredo Hernandez" width="350px" /> */}
+          {props.location.state.res[0] === true && (
+            <img src={availableIcon} alt="Alfredo Hernandez" width="250px" />
+          )}
+          {props.location.state.res[0] === false && (
+            <img src={notAvailableIcon} alt="Alfredo Hernandez" width="250px" />
+          )}
         </Box>
         <Box p={1} textAlign="center">
-          <h1>Please comfirm your transaction in Metamask!</h1>
-          <h2>And your certificate will available in Blockchain.</h2>
+          {props.location.state.res[2] !== "0" && (
+            <div>
+              <h2>We found your certificate in blockchain!</h2>
+              <h3>Certificate's Status : {certInformation.status}</h3>
+              <h3>Certificate's Added By : {certInformation.addBy}</h3>
+              <h3>Certificate's Date Added : {certInformation.dateAdded}</h3>
+              <h3>
+                Certificate's Adder Link :{" "}
+                {certInformation.adderPublicKeyLinkCheck}
+              </h3>
+            </div>
+          )}
+          {props.location.state.res[0] === false &&
+            props.location.state.res[2] === "0" && (
+              <div>
+                <h2>We can't find your certificate in blockchain.</h2>
+                <h3></h3>
+              </div>
+            )}
         </Box>
         <Box
           display="flex"

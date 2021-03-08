@@ -131,14 +131,13 @@ function Dropbox(props) {
               .call()
               .then((res) => {
                 if (res[2] !== "0" && res[1] === props.publicKey) {
-                  console.log("Available");
                   console.log(res);
+                  console.log("Available");
                 } else {
                   console.log(res);
                   console.log("Not Available");
                 }
-                //edit path to validate page
-                history.push({ pathname: "/regsuccess", response: { res } });
+                history.push({ pathname: "/validateres", state: { res } });
               })
           })
           .catch((e) => console.log(e));

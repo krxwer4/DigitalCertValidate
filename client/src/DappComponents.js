@@ -7,9 +7,10 @@ import Menu from "./Menu";
 import Regiscert from "./Regiscert";
 import Validate from "./Validate";
 import RegCertSuccess from "./Components/RegCertSuccess";
-import WebRegist from "./WebRegist"
-import Revoke from "./Revoke"
+import WebRegist from "./WebRegist";
+import Revoke from "./Revoke";
 import WebRegComplete from "./Components/WebRegistComplete";
+import ValidateResult from "./Components/ValidateResult";
 // import TransHistory from "./TransHistory"
 
 function DappComponents(props) {
@@ -37,6 +38,7 @@ function DappComponents(props) {
           <Route path="/webregist" component={WebRegist} />
           <Route path="/revoke" component={Revoke} />
           <Route path="/webregcomp" component={WebRegComplete} />
+          <Route path="/validateres" component={ValidateResult} />
         </Switch>
       </Router>
     </div>

@@ -55,7 +55,7 @@ const WebRegistComplete = (props) => {
         </Box>
 
         <Box textAlign="center">
-          <p>Match to this Url:</p>
+          <p>Confirm your transaction in Metamask then your account will match to this Url:</p>
         </Box>
 
         <Box textAlign="center">
