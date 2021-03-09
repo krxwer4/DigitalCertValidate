@@ -16,7 +16,7 @@ app.options("*", cors());
 app.use(bdps.json());
 
 // const provider = new Web3.providers.HttpProvider("http://localhost:2805");
-// const account = '0xe084FeA965b591a8AB68506FBafd66682DAda026'
+
 const months = [
   "January",
   "February",
@@ -32,17 +32,22 @@ const months = [
   "December",
 ];
 
+const infuraTestnetUrl = "https://rinkeby.infura.io/v3/b7a05df5e4ff4c05b767ad142933054e"
+const ganacheLocalUrl = "http://127.0.0.1:2805"
+const ganacheMnemonic = process.env.GANACHE_MNE
+
 const init = async (pvk) => {
   const provider = new HDWalletProvider(
-    // process.env.MNEMONIC,
+    // ganacheMnemonic,
     pvk,
-    "https://rinkeby.infura.io/v3/b7a05df5e4ff4c05b767ad142933054e"
+    ganacheLocalUrl
   );
   const web3 = new Web3(provider);
 
   return web3;
 };
 
+//HTTP://127.0.0.1:2805
 // console.log(contract.methods.findCertificate(hashFile).call())
 
 const hashing = async (file) => {
@@ -170,11 +175,15 @@ app.post(
 
         console.log(receipt);
         if (receipt[0]) {
-          if (receipt[1] === req.body.pubkey) {
+          var pubkey = req.body.pubkey
+          if (pubkey.substring(0, 2) !== "0x"){
+            pubkey = "0x" + pubkey
+          }
+          if (receipt[1] === pubkey) {
             //preparing output
             const certInformation = preparingOutput(receipt);
             res.send(certInformation);
-          } else if (receipt[1] !== req.body.pubkey) {
+          } else if (receipt[1] !== pubkey) {
             res.send(
               `This certificate is available in blockchain but not registered by this public key : ${req.body.pubkey}`
             );
