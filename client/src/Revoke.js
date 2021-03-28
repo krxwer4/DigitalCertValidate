@@ -49,9 +49,6 @@ const dropboxStyle = {
   transition: "border .24s ease-in-out",
 };
 
-const goDoc = () => {
-  window.open("https://www.reg.kmitl.ac.th/index/index.php");
-}
 
 function Revoke(props) {
   const drizzle = props.location.drizzle;
@@ -71,6 +68,13 @@ function Revoke(props) {
     setConfirmText(event.target.value);
   };
 
+  const goDoc = () => {
+    window.open("https://www.reg.kmitl.ac.th/index/index.php");
+  }
+  
+  const resetClick = () =>{
+    setConfirmText("");
+  }
   return (
     <div>
       <IconButton
@@ -116,12 +120,12 @@ function Revoke(props) {
               <TextField
                 required
                 id="outlined-search"
-                label="confirm text"
+                label="File Name"
                 value={confirmText}
                 type="text"
                 variant="outlined"
                 fullWidth
-                helperText="confirm text"
+                helperText="Enter file name (without file format) for confirmation."
                 onChange={handleChange}
               />
             </Box>
@@ -138,6 +142,7 @@ function Revoke(props) {
                   variant="contained"
                   onClick={() => {
                     clickReset(!resetState);
+                    resetClick();
                   }}
                 >
                   Reset

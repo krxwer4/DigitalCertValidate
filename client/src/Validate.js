@@ -54,9 +54,7 @@ const dropboxStyle = {
   transition: "border .24s ease-in-out",
 };
 
-const goDoc = () => {
-  window.open("https://www.reg.kmitl.ac.th/index/index.php");
-}
+
 
 function Validate(props) {
   const drizzle = props.location.drizzle;
@@ -71,10 +69,18 @@ function Validate(props) {
   if (drizzle !== undefined) {
     drizzleIn = true;
   }
+  
+  const goDoc = () => {
+    window.open("https://www.reg.kmitl.ac.th/index/index.php");
+  }
 
   const handleChange = (event) => {
     setPubValue(event.target.value);
   };
+
+  const resetClick = () =>{
+    setPubValue("");
+  }
 
   return (
     <div>
@@ -143,6 +149,7 @@ function Validate(props) {
                   variant="contained"
                   onClick={() => {
                     clickReset(!resetState);
+                    resetClick();
                   }}
                 >
                   Reset

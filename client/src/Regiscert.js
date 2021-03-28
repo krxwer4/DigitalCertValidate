@@ -24,9 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const goDoc = () => {
-  window.open("https://www.reg.kmitl.ac.th/index/index.php");
-}
+
 
 const dropboxStyle = {
   flex: 1,
@@ -57,6 +55,10 @@ function Regiscert(props) {
   var drizzleIn = false;
   if (drizzle !== undefined) {
     drizzleIn = true;
+  }
+  
+  const goDoc = () => {
+    window.open("https://www.reg.kmitl.ac.th/index/index.php");
   }
 
   return (

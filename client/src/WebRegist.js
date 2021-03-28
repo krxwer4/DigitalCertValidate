@@ -29,9 +29,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const goDoc = () => {
-  window.open("https://www.reg.kmitl.ac.th/index/index.php");
-}
 
 function WebRegist(props) {
   const drizzle = props.location.drizzle;
@@ -54,6 +51,10 @@ function WebRegist(props) {
     setLinkText(event.target.value);
   };
 
+  const goDoc = () => {
+    window.open("https://www.reg.kmitl.ac.th/index/index.php");
+  }
+  
   return (
     <div>
       <IconButton
