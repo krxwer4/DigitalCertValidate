@@ -69,9 +69,9 @@ function Validate(props) {
   if (drizzle !== undefined) {
     drizzleIn = true;
   }
-  
+
   const goDoc = () => {
-    window.open("https://www.reg.kmitl.ac.th/index/index.php");
+    window.open("https://op-digitalcertval-docu.netlify.app/docs/doc1.html#regist-cert");
   }
 
   const handleChange = (event) => {
