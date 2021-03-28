@@ -40,7 +40,7 @@ const init = async (pvk) => {
   const provider = new HDWalletProvider(
     // ganacheMnemonic,
     pvk,
-    ganacheLocalUrl
+    infuraTestnetUrl
   );
   const web3 = new Web3(provider);
 
