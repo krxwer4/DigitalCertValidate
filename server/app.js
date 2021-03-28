@@ -1,3 +1,4 @@
+var PORT = process.env.PORT || 9876;
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
@@ -104,8 +105,8 @@ const path = require("path");
 
 app.get("/", function (req, res) {
   // res.sendFile(__dirname + '/index.html')
-  console.log("default path");
-  // res.send("<p>hello</p>");
+  // console.log("default path");
+  res.send("<p>oat-pejoy-api</p>");
 });
 
 app.post("/gethash", upload.single("file"), async function (req, res, next) {
@@ -260,6 +261,6 @@ app.post("/registweb", upload.none(), async function (req, res, next) {
   }
 });
 
-app.listen(9876, function () {
-  console.log("certificate-validate-server running on port 9876");
+app.listen(PORT, function () {
+  console.log(`certificate-validate-server running on port ${PORT}`);
 });
