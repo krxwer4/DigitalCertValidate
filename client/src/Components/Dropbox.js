@@ -124,7 +124,8 @@ function Dropbox(props) {
         data.append("file", acceptedFiles[0]);
         // console.log(data)
         axios
-          .post("https://oatpejoyapi.herokuapp.com/", data)
+          .post("https://oatpejoyapi.herokuapp.com/gethash", data)
+          // .post("http://localhost:9876/gethash", data)
           .then(async (res) => {
             await contract.methods
               .findCertificate(res.data)
@@ -137,6 +138,7 @@ function Dropbox(props) {
                   console.log(res);
                   console.log("Not Available");
                 }
+                res.publicKey = props.publicKey;
                 history.push({ pathname: "/validateres", state: { res } });
               })
           })
