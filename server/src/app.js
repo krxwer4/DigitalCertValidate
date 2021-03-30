@@ -109,6 +109,7 @@ const path = require("path");
 router.get("/", function (req, res) {
   // res.sendFile(__dirname + '/index.html')
   // console.log("default path");
+  res.writeHead(200, { "Content-Type": "text/html" });
   res.send("<p>oat-pejoy-api</p>");
 });
 
@@ -274,4 +275,5 @@ app.listen(PORT, function () {
   console.log(`certificate-validate-server running on port ${PORT}`);
 });
 
+module.exports = app;
 module.exports.handler = serverless(app);
