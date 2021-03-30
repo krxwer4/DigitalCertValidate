@@ -18,7 +18,7 @@ require("dotenv").config();
 app.use(cors());
 app.options("*", cors());
 app.use(bdps.json());
-app.use("/.netlify/functions/api",router);
+app.use("/.netlify/functions/app",router);
 
 // const provider = new Web3.providers.HttpProvider("http://localhost:2805");
 
