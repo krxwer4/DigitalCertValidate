@@ -18,5 +18,8 @@
   "scripts": {
     "start": "./node_modules/.bin/netlify-lambda serve src",
     "build": "./node_modules/.bin/netlify-lambda build src"
+  },
+  "devDependencies": {
+    "electron": "^12.0.2"
   }
 }
