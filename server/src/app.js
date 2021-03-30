@@ -2,6 +2,7 @@
 var PORT = process.env.PORT || 9876;
 const express = require("express");
 const serverless = require("serverless-http");
+const path = require('path');
 const multer = require("multer");
 const fs = require("fs");
 const jsSHA = require("jssha");
@@ -98,7 +99,7 @@ const preparingOutput = (receipt) => {
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./uploads");
+    cb(null, "../uploads");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
