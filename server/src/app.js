@@ -3,6 +3,7 @@ var PORT = process.env.PORT || 9876;
 const express = require("express");
 const serverless = require("serverless-http");
 const multer = require("multer");
+const path = require("path");
 const fs = require("fs");
 const jsSHA = require("jssha");
 const bdps = require("body-parser");
@@ -56,7 +57,8 @@ const init = async (pvk) => {
 // console.log(contract.methods.findCertificate(hashFile).call())
 
 const hashing = async (file) => {
-  let readFile = await fs.readFileSync(path.join(__dirname, file.path));
+  // let readFile = await fs.readFileSync(path.join(__dirname, file.path));
+  let readFile = await fs.readFileSync(path.join(file.path));
   // console.log(req.file.path)
   let shaObj = new jsSHA("SHA-512", "ARRAYBUFFER");
   await shaObj.update(readFile);
@@ -98,14 +100,13 @@ const preparingOutput = (receipt) => {
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./uploads");
+    cb(null, path.join(__dirname,"/uploads/"));
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
 });
 var upload = multer({ storage: storage });
-const path = require("path");
 
 router.get("/", function (req, res) {
   // res.sendFile(__dirname + '/index.html')
@@ -274,6 +275,11 @@ router.post("/registweb", upload.none(), async function (req, res, next) {
 
 app.listen(PORT, function () {
   console.log(`certificate-validate-server running on port ${PORT}`);
+  // fs.readdir(__dirname, (err, files) => {
+  //   files.forEach(file => {
+  //     console.log(file);
+  //   });
+  // });
 });
 
 module.exports = app;
