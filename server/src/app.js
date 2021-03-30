@@ -20,6 +20,9 @@ app.use(cors());
 app.options("*", cors());
 app.use(bdps.json());
 app.use("/.netlify/functions/app",router);
+if (!fs.existsSync(__dirname+"/uploads")){
+  fs.mkdirSync(__dirname+"/uploads");
+}
 
 // const provider = new Web3.providers.HttpProvider("http://localhost:2805");
 
