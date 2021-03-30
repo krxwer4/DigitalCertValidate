@@ -275,11 +275,11 @@ router.post("/registweb", upload.none(), async function (req, res, next) {
 
 app.listen(PORT, function () {
   console.log(`certificate-validate-server running on port ${PORT}`);
-  // fs.readdir(__dirname, (err, files) => {
-  //   files.forEach(file => {
-  //     console.log(file);
-  //   });
-  // });
+  fs.readdir(__dirname, (err, files) => {
+    files.forEach(file => {
+      console.log(file);
+    });
+  });
 });
 
 module.exports = app;
