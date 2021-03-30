@@ -1,3 +1,4 @@
+'use strict';
 var PORT = process.env.PORT || 9876;
 const express = require("express");
 const serverless = require("serverless-http");
