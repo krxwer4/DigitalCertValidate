@@ -2,7 +2,6 @@
 var PORT = process.env.PORT || 9876;
 const express = require("express");
 const serverless = require("serverless-http");
-const path = require('path');
 const multer = require("multer");
 const fs = require("fs");
 const jsSHA = require("jssha");
