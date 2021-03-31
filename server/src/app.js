@@ -1,7 +1,6 @@
 'use strict';
 var PORT = process.env.PORT || 9876;
 const express = require("express");
-const serverless = require("serverless-http");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
@@ -13,13 +12,11 @@ const myContract = require("../artifacts/Poe.json");
 const HDWalletProvider = require("truffle-hdwallet-provider");
 // const contJson = myContract;
 const cors = require("cors");
-const router = express.Router();
 require("dotenv").config();
 
 app.use(cors());
 app.options("*", cors());
 app.use(bdps.json());
-app.use("/.netlify/functions/app",router);
 if (!fs.existsSync(__dirname+"/uploads")){
   fs.mkdirSync(__dirname+"/uploads");
 }
@@ -111,25 +108,25 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-router.get("/", function (req, res) {
+app.get("/", function (req, res) {
   // res.sendFile(__dirname + '/index.html')
   // console.log("default path");
   res.writeHead(200, { "Content-Type": "text/html" });
   res.send("<p>oat-pejoy-api</p>");
 });
 
-router.get("/test", function (req, res) {
+app.get("/test", function (req, res) {
   // res.sendFile(__dirname + '/index.html')
   // console.log("default path");
   res.send("<p>oat-pejoy-api/test</p>");
 });
 
-router.post("/gethash", upload.single("file"), async function (req, res, next) {
+app.post("/gethash", upload.single("file"), async function (req, res, next) {
   const hashFile = await hashing(req.file);
   res.send(hashFile);
 });
 
-router.post("/registcert", upload.single("file"), async function (req, res, next) {
+app.post("/registcert", upload.single("file"), async function (req, res, next) {
   const hashFile = await hashing(req.file);
   // console.log(hashFile);
   const web3 = await init(req.body.pvk)
@@ -165,7 +162,7 @@ router.post("/registcert", upload.single("file"), async function (req, res, next
   }
 });
 
-router.post(
+app.post(
   "/validatecert",
   upload.single("file"),
   async function (req, res, next) {
@@ -219,7 +216,7 @@ router.post(
   }
 );
 
-router.post("/togglecert", upload.single("file"), async function (req, res, next) {
+app.post("/togglecert", upload.single("file"), async function (req, res, next) {
   // console.log(req.body.account)
   try {
     const hashFile = await hashing(req.file);
@@ -250,7 +247,7 @@ router.post("/togglecert", upload.single("file"), async function (req, res, next
   }
 });
 
-router.post("/registweb", upload.none(), async function (req, res, next) {
+app.post("/registweb", upload.none(), async function (req, res, next) {
   try {
     console.log("webreg " + req.body.link);
     const web3 = await init(req.body.pvk)
@@ -278,12 +275,10 @@ router.post("/registweb", upload.none(), async function (req, res, next) {
 
 app.listen(PORT, function () {
   console.log(`certificate-validate-server running on port ${PORT}`);
-  fs.readdir(__dirname, (err, files) => {
-    files.forEach(file => {
-      console.log(file);
-    });
-  });
+  // fs.readdir(__dirname, (err, files) => {
+  //   files.forEach(file => {
+  //     console.log(file);
+  //   });
+  // });
 });
 
-module.exports = app;
-module.exports.handler = serverless(app);
