@@ -1,10 +1,11 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import RegistButton from "./Components/RegistButton";
 import ValidateButton from "./Components/ValidateButton";
-import HistoryButton from "./Components/HistoryButton";
+import ToggleButton from "./Components/ToggleButton";
 import WebRegistButton from "./Components/WebRegistButton";
+import Chip from "@material-ui/core/Chip";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import { makeStyles } from "@material-ui/core/styles";
 
 const centStyle = makeStyles((theme) => ({
@@ -15,9 +16,14 @@ const centStyle = makeStyles((theme) => ({
   },
 }));
 
-function Menu() {
-  const classes = centStyle();
+function Menu(props) {
+  const goDoc = () => {
+    window.open("https://op-digitalcertval-docu.netlify.app/docs/doc1.html");
+  }
 
+  const { drizzle } = props;
+  const classes = centStyle();
+  // console.log(props.drizzle);
   return (
     <div>
       <Grid
@@ -37,10 +43,10 @@ function Menu() {
             spacing={5}
           >
             <Grid item xs={6}>
-              <WebRegistButton />
+              <WebRegistButton drizzle = {drizzle}/>
             </Grid>
             <Grid item xs={6}>
-              <RegistButton />
+              <RegistButton drizzle = {drizzle}/>
             </Grid>
           </Grid>
         </Grid>
@@ -53,14 +59,21 @@ function Menu() {
             spacing={5}
           >
             <Grid item xs={6}>
-              <ValidateButton />
+              <ValidateButton drizzle = {drizzle}/>
             </Grid>
             <Grid item xs={6}>
-              <HistoryButton />
+              <ToggleButton drizzle = {drizzle}/>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
+      <Chip
+            color="primary"
+            icon={<HelpOutlineIcon />}
+            label="How to use"
+            onClick={goDoc}
+            style={{position: "absolute", bottom: 10, right: 10}}
+          />
     </div>
   );
 }
