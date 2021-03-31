@@ -16,8 +16,5 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server"
-  },
-  "devDependencies": {
-    "electron": "^12.0.2"
   }
 }
