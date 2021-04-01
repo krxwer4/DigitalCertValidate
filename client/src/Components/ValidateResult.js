@@ -48,7 +48,7 @@ const ValidateResult = (props) => {
     var certInformation = {};
     certInformation.status = receipt[0] ? "Usable" : "Revoke";
     certInformation.addBy = receipt[1];
-    certInformation.dateAdded = date + " " + time + " UTC";
+    certInformation.dateAdded = date + " " + time + " UTC+7";
     certInformation.blocknumber = receipt[3];
     certInformation.adderPublicKeyLinkCheck = receipt[4];
     console.log(certInformation);
