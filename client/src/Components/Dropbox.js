@@ -99,7 +99,7 @@ function Dropbox(props) {
         data.append("file", acceptedFiles[0]);
         // console.log(data)
         axios
-          .post("http://157.230.244.170/gethash/", data)
+          .post("https://oatpejoyapi.ml/gethash/", data)
           .then(async (res) => {
             await contract.methods["addCertificate"].cacheSend(res.data, {
               from: drizzleState.accounts[0],
@@ -124,7 +124,7 @@ function Dropbox(props) {
         data.append("file", acceptedFiles[0]);
         // console.log(data)
         axios
-          .post("http://157.230.244.170/gethash/", data)
+          .post("https://oatpejoyapi.ml/gethash/", data)
           // .post("http://localhost:9876/gethash", data)
           .then(async (res) => {
             await contract.methods
@@ -158,7 +158,7 @@ function Dropbox(props) {
         if (name[0] === props.confirmText) {
           data.append("file", acceptedFiles[0]);
           axios
-            .post("http://157.230.244.170/gethash/", data)
+            .post("https://oatpejoyapi.ml/gethash/", data)
             .then(async (res) => {
               await contract.methods
                 .findCertificate(res.data)
@@ -166,7 +166,7 @@ function Dropbox(props) {
                 .then((res) => {
                   if (res[2] !== "0" && res[1]) {
                     axios
-                      .post("http://157.230.244.170/gethash/", data)
+                      .post("https://oatpejoyapi.ml/gethash/", data)
                       .then((res) => {
                         contract.methods["toggleStatus"].cacheSend(res.data, {
                           from: drizzleState.accounts[0],
