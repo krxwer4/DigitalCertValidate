@@ -98,7 +98,7 @@ function Revoke(props) {
           >
             <Box p={1} textAlign="center">
               <h3 text-align="center">
-                Upload your Certificate file to validate.
+                Upload your Certificate file to revoke/unrevoke.
               </h3>
             </Box>
             <Box p={1} align="center" alignSelf="center">

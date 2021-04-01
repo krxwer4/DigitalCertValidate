@@ -3,6 +3,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import availableIcon from "../svg/check.svg";
 import notAvailableIcon from "../svg/close.svg";
+import warningIcon from "../svg/warning.svg";
 import { Link } from "react-router-dom";
 
 const ValidateResult = (props) => {
@@ -68,12 +69,23 @@ const ValidateResult = (props) => {
         bgcolor="background.paper"
       >
         <Box p={1} textAlign="center">
-          {props.location.state.res[0] === true && (
-            <img src={availableIcon} alt="Alfredo Hernandez" width="250px" />
-          )}
-          {props.location.state.res[0] === false && (
-            <img src={notAvailableIcon} alt="Alfredo Hernandez" width="250px" />
-          )}
+          {props.location.state.res[0] === true &&
+            props.location.state.res.publicKey === certInformation.addBy && (
+              <img src={availableIcon} alt="Alfredo Hernandez" width="250px" />
+            )}
+          {props.location.state.res[0] === false &&
+            props.location.state.res[2] !== "0" &&
+            props.location.state.res.publicKey === certInformation.addBy && (
+              <img
+                src={notAvailableIcon}
+                alt="Alfredo Hernandez"
+                width="250px"
+              />
+            )}
+          {props.location.state.res[2] !== "0" &&
+            props.location.state.res.publicKey !== certInformation.addBy && (
+              <img src={warningIcon} alt="Freepik" width="250px" />
+            )}
         </Box>
         <Box p={1} textAlign="center">
           {props.location.state.res[2] !== "0" && (
