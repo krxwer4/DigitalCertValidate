@@ -82,7 +82,16 @@ const ValidateResult = (props) => {
                 width="250px"
               />
             )}
+          {props.location.state.res[0] === false &&
+            props.location.state.res[2] === "0" && (
+              <img
+                src={notAvailableIcon}
+                alt="Alfredo Hernandez"
+                width="250px"
+              />
+            )}
           {props.location.state.res[2] !== "0" &&
+            props.location.state.res[3] !== "0" &&
             props.location.state.res.publicKey !== certInformation.addBy && (
               <img src={warningIcon} alt="Freepik" width="250px" />
             )}
@@ -130,13 +139,7 @@ const ValidateResult = (props) => {
         >
           <Box mx={4}>
             <Link to={{ pathname: "/" }}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  console.log("wait for edit");
-                }}
-              >
+              <Button variant="contained" color="primary">
                 Menu
               </Button>
             </Link>

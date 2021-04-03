@@ -139,6 +139,7 @@ function Dropbox(props) {
                   console.log("Not Available");
                 }
                 res.publicKey = props.publicKey;
+
                 history.push({ pathname: "/validateres", state: { res } });
               });
           })
