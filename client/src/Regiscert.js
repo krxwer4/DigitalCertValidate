@@ -10,9 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import CantFindDrizzle from "./Components/CantFindDrizzle";
 
-import "./Modal.css";
-import Modal from "./Modal";
-import useModal from "./useModal";
+
 
 const useStyles = makeStyles((theme) => ({
   hoverFocus: {
@@ -49,7 +47,6 @@ function Regiscert(props) {
   const classes = useStyles();
   const [resetState, clickReset] = useState(false);
   const [submitState, submitTrigger] = useState(false);
-  const { isShowing, toggle } = useModal();
   const uploadPicSize = "32%";
   console.log("regist");
   var drizzleIn = false;
@@ -138,7 +135,6 @@ function Regiscert(props) {
             onClick={goDoc}
             style={{position: "absolute", bottom: 10, right: 10}}
           />
-          <Modal isShowing={isShowing} hide={toggle} />
         </div>
       )}
       {!drizzleIn && <CantFindDrizzle />}

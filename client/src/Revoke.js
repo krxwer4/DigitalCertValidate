@@ -11,10 +11,6 @@ import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import IconButton from "@material-ui/core/IconButton";
 import CantFindDrizzle from "./Components/CantFindDrizzle";
 
-import "./Modal.css";
-import Modal from "./Modal";
-import useModal from "./useModal";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -59,7 +55,6 @@ function Revoke(props) {
   const [resetState, clickReset] = useState(false);
   const [revokeState, revokeTrigger] = useState(false);
   const [confirmText, setConfirmText] = useState("");
-  const { isShowing, toggle } = useModal();
   var drizzleIn = false;
   if (drizzle !== undefined) {
     drizzleIn = true;
@@ -168,7 +163,6 @@ function Revoke(props) {
             onClick={goDoc}
             style={{ position: "absolute", bottom: 10, right: 10 }}
           />
-          <Modal isShowing={isShowing} hide={toggle} />
         </div>
       )}
       {!drizzleIn && <CantFindDrizzle />}

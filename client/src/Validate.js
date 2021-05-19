@@ -11,9 +11,6 @@ import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import IconButton from "@material-ui/core/IconButton";
 import CantFindDrizzle from "./Components/CantFindDrizzle";
 
-import "./Modal.css";
-import Modal from "./Modal";
-import useModal from "./useModal";
 
 export const Context = React.createContext({
   validateResult: null,
@@ -63,7 +60,6 @@ function Validate(props) {
   const picUploadSize = "20%";
   const [resetState, clickReset] = useState(false);
   const [validateState, validateTrigger] = useState(false);
-  const { isShowing, toggle } = useModal();
   const [pubValue, setPubValue] = useState("");
   var drizzleIn = false;
   if (drizzle !== undefined) {
@@ -179,7 +175,6 @@ function Validate(props) {
             onClick={goDoc}
             style={{ position: "absolute", bottom: 10, right: 10 }}
           />
-          <Modal isShowing={isShowing} hide={toggle} />
         </div>
       )}
       {!drizzleIn && <CantFindDrizzle />}

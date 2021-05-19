@@ -13,9 +13,6 @@ import { Link } from "react-router-dom";
 import CantFindDrizzle from "./Components/CantFindDrizzle";
 import bwWebRegist from "../src/svg/BWwebsite.svg";
 
-import "./Modal.css";
-import Modal from "./Modal";
-import useModal from "./useModal";
 
 const { useDrizzleState } = drizzleReactHooks;
 
@@ -36,7 +33,6 @@ function WebRegist(props) {
   var drizzleIn = false;
   var contract = {};
   const drizzleState = useDrizzleState((drizzleState) => drizzleState);
-  const { isShowing, toggle } = useModal();
   if (drizzle !== undefined) {
     console.log(typeof drizzle.contracts.Poe);
     drizzleIn = true;
@@ -158,7 +154,6 @@ function WebRegist(props) {
             onClick={goDoc}
             style={{ position: "absolute", bottom: 10, right: 10 }}
           />
-          <Modal isShowing={isShowing} hide={toggle} />
         </div>
       )}
       {!drizzleIn && <CantFindDrizzle />}
